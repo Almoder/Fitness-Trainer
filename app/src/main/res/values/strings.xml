@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Fitness Trainer</string>
+    <string name="fuck_description">Fuck it</string>
+    <!-- Menu Items -->
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+    <string name="m1">Excercises</string>
+    <string name="m2">Workouts</string>
+    <string name="m3">Another</string>
+    <string name="m4">Settings</string>
+    <string name="m5">Share</string>
+</resources>
