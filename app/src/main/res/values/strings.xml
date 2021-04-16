@@ -1,12 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fitness Trainer</string>
-    <string name="fuck_description">Fuck it</string>
+    <string name="undefined">Undefined</string>
     <!-- Menu Items -->
     <string name="nav_drawer_open">Open navigation drawer</string>
     <string name="nav_drawer_close">Close navigation drawer</string>
-    <string name="m1">Excercises</string>
+    <string name="m1">Exercises</string>
     <string name="m2">Workouts</string>
     <string name="m3">Another</string>
     <string name="m4">Settings</string>
     <string name="m5">Share</string>
+    <string name="m6">About</string>
+    <!-- About -->
+    <string-array name="about_text">
+        <item>The fitness trainer program is designed to help with physical activity.</item>
+        <item>Thanks to the "fitness trainer" you can:</item>
+        <item>- quickly learn suitable or just new exercises</item>
+        <item>- create and conveniently use a detailed training plan</item>
+        <item>- learn something new about fitness and much more</item>
+        <item>This program was developed as a graduation project by
+            a student of Polotsk State University, group 17-VS.</item>
+    </string-array>
+
 </resources>
