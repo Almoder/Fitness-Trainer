@@ -20,6 +20,7 @@ public class AboutFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
+
         String[] stringArray = view.getResources().getStringArray(R.array.about_text);
         TextView textView = view.findViewById(R.id.about_text);
         for (String s : stringArray) {

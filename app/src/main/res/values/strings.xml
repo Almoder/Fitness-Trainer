@@ -11,6 +11,9 @@
     <string name="m4">Settings</string>
     <string name="m5">Share</string>
     <string name="m6">About</string>
+    <!-- Exercises -->
+    <string name="search">Search</string>
+    <string name="sort_az">Sort A-Z</string>
     <!-- About -->
     <string-array name="about_text">
         <item>The fitness trainer program is designed to help with physical activity.</item>

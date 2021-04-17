@@ -1,24 +1,24 @@
 {
     "id": "0002",
     "name": "static-neck-side-flexion",
-    "title": "Static Neck Side Flexion",
-    "primer": "An exercise either build or warm up neck side flexors.",
-    "type": "isometric",
+    "title": "Статическое сгибание шеи на бок",
+    "primer": "Упражнение на наращивание или разогрев сгибателей шеи.",
+    "type": "изометрический",
     "primary": [
-        "trapezius"
+        "трапециевидные"
     ],
     "secondary": [],
     "equipment": [
-        "body"
+        "тело"
     ],
     "steps": [
-        "Stand or sit with your head in neutral position.",
-        "Place your left hand against the left side of your head, above your ear.",
-        "Push your head against your hand, without moving your head.",
-        "Repeat with your right hand, right side of your head."
+        "Встаньте или сядьте, положив голову в нейтральное положение.",
+        "Положите левую руку на левую сторону головы над ухом.",
+        "Прижмите голову к руке, не двигая головой.",
+        "Повторите то же самое правой рукой, правой стороной головы."
     ],
     "tips": [
-        "Make sure you maintain your chin at a 90 degree angle to your neck"
+        "Убедитесь, что вы держите подбородок под углом 90 градусов к шее"
     ],
     "references": []
 }

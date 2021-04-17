@@ -65,9 +65,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ContentViewHolder>
     public void onBindViewHolder(ContentViewHolder contentViewHolder, int i) {
         contentViewHolder.cvTitle.setText(mCardContents.get(i).title());
         contentViewHolder.cvType.setText(mCardContents.get(i).type());
-        contentViewHolder.cvImage.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         contentViewHolder.cvImage.setImageResource(mCardContents.get(i).imgRes());
-
     }
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView rv) {
