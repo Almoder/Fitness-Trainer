@@ -1,7 +1,11 @@
 package almoder.space.fitnesstrainer.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -10,19 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.LinkedList;
 
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVAdapter;
 import almoder.space.fitnesstrainer.RowData;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClickListener {
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -32,18 +38,38 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
         View view = inflater.inflate(R.layout.fragment_exercises, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new SlideInUpAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        ArrayList<RowData> arrayList = new ArrayList<>();
-        for (int i = 1; i < 31; i++) arrayList.add(new RowData(view.getContext(), i));
-        recyclerView.setAdapter(new RVAdapter(arrayList, this));
-        SnapHelper snapHelper = new LinearSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
+        LinkedList<RowData> list = new LinkedList<>();
+        for (int i = 1; i < 61; i++) list.add(new RowData(view.getContext(), i));
+        recyclerView.setAdapter(new RVAdapter(list, this));
+        //SnapHelper snapHelper = new LinearSnapHelper();
+        //snapHelper.attachToRecyclerView(recyclerView);
         return view;
     }
 
     @Override
     public void onItemClicked(int position) {
         Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.exersises_menu, menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                Toast.makeText(getContext(), "Search", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.sort:
+                Toast.makeText(getContext(), "Sort", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 }
