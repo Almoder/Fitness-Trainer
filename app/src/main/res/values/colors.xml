@@ -2,5 +2,7 @@
 <resources>
     <color name="colorPrimary">#4567BB</color>
     <color name="colorPrimaryDark">#AABBCC</color>
+    <color name="colorPrimarySurface">#FFFFFF</color>
     <color name="colorAccent">#4567BB</color>
+    <color name="android_colorBackground">#FFFFFF</color>
 </resources>

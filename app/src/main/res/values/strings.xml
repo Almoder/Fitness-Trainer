@@ -14,6 +14,8 @@
     <!-- Exercises -->
     <string name="search">Search</string>
     <string name="sort_az">Sort A-Z</string>
+    <!-- Description -->
+    <string name="description_steps">Steps:</string>
     <!-- About -->
     <string-array name="about_text">
         <item>The fitness trainer program is designed to help with physical activity.</item>

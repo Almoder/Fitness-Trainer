@@ -11,12 +11,13 @@ import java.util.Scanner;
 
 public class RowData {
 
-    private final int imgRes;
+    private final int num, imgRes;
     private String title;
     private String type;
 
     public RowData(Context c, int num) {
         Resources res = c.getResources();
+        this.num = num;
         title = res.getString(R.string.undefined);
         type = title;
         imgRes = res.getIdentifier(
@@ -32,11 +33,11 @@ public class RowData {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     public String title() { return title; }
     public String type() { return type; }
+    public int num() { return num; }
     public int imgRes() { return imgRes; }
 
 }

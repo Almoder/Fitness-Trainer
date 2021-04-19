@@ -3,7 +3,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimarySurface">@color/colorPrimarySurface</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/android_colorBackground</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

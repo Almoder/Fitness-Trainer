@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,11 +23,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
+import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
 import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
 import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        ExercisesFragment.ExercisesFragmentListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -43,49 +47,59 @@ public class MainActivity extends AppCompatActivity
                 R.string.nav_drawer_open, R.string.nav_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        if (sis == null) getSupportFragmentManager().beginTransaction().replace(
-                R.id.fragment_container, new AboutFragment()).commit();
+        if (sis == null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container, new AboutFragment());
+            ft.commit();
+        }
         else toolbar.setTitle(sis.getCharSequence("m"));
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()) {
             case R.id.nav_exercise:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ExercisesFragment()).commit();
+                ft.replace(R.id.fragment_container, new ExercisesFragment());
                 toolbar.setTitle(R.string.m1);
-                drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_workouts:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new WorkoutsFragment()).commit();
+                ft.replace(R.id.fragment_container, new WorkoutsFragment());
                 toolbar.setTitle(R.string.m2);
-                drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_another:
                 Toast.makeText(this, getString(R.string.m3), Toast.LENGTH_SHORT).show();
                 toolbar.setTitle(R.string.m3);
                 drawer.closeDrawer(GravityCompat.START);
-                break;
+                return true;
             case R.id.nav_config:
                 Toast.makeText(this, getString(R.string.m4), Toast.LENGTH_SHORT).show();
                 toolbar.setTitle(R.string.m4);
                 drawer.closeDrawer(GravityCompat.START);
-                break;
+                return true;
             case R.id.nav_share:
                 Toast.makeText(this, getString(R.string.m5), Toast.LENGTH_SHORT).show();
                 drawer.closeDrawer(GravityCompat.START);
-                break;
+                return true;
             case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AboutFragment()).commit();
+                ft.replace(R.id.fragment_container, new AboutFragment());
                 toolbar.setTitle(R.string.m6);
-                drawer.closeDrawer(GravityCompat.START);
                 break;
         }
+        ft.addToBackStack(null);
+        ft.commit();
+        drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void itemClicked(int id) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, new DescriptionFragment(id));
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override
@@ -103,11 +117,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else super.onBackPressed();
-    }
-
-    @Override
-    public void onClick(View view) {
-
+        else getSupportFragmentManager().popBackStack();
     }
 }

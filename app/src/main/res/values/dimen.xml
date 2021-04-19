@@ -5,4 +5,9 @@
     <dimen name="row_image">72sp</dimen>
     <dimen name="row_title">20sp</dimen>
     <dimen name="row_type">16sp</dimen>
+    <dimen name="description_title">20sp</dimen>
+    <dimen name="description_type">16sp</dimen>
+    <dimen name="description_primer">16sp</dimen>
+    <dimen name="description_margin">4sp</dimen>
+    <dimen name="description_steps">16sp</dimen>
 </resources>

@@ -1,6 +1,7 @@
 package almoder.space.fitnesstrainer.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +25,13 @@ import almoder.space.fitnesstrainer.RowData;
 
 public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClickListener {
 
+    public static interface ExercisesFragmentListener {
+        void itemClicked(int id);
+    };
+
+    private ExercisesFragmentListener listener;
+    private LinkedList<RowData> list = null;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +47,25 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        LinkedList<RowData> list = new LinkedList<>();
+        list = new LinkedList<>();
         for (int i = 1; i < 61; i++) list.add(new RowData(view.getContext(), i));
         recyclerView.setAdapter(new RVAdapter(list, this));
+
         //SnapHelper snapHelper = new LinearSnapHelper();
         //snapHelper.attachToRecyclerView(recyclerView);
         return view;
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        listener = (ExercisesFragmentListener)context;
+    }
+
+    @Override
     public void onItemClicked(int position) {
-        Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+        if (listener != null) listener.itemClicked(list.get(position).num());
+        else Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override

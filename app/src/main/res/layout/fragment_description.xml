@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/description_margin"
+        android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/description_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/description_title"/>
+
+            <TextView
+                android:id="@+id/description_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/description_margin"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/description_type"/>
+
+            <TextView
+                android:id="@+id/description_primer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/description_margin"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/description_primer"/>
+
+            <ImageView
+                android:id="@+id/description_image"
+                android:background="@color/colorPrimarySurface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/description_margin"
+                tools:ignore="ContentDescription"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/description_margin"
+                android:foreground="?selectableItemBackground"
+                android:clickable="false"
+                android:focusable="false"
+                card_view:cardBackgroundColor="@color/colorPrimarySurface"
+                card_view:cardCornerRadius="8sp"
+                card_view:contentPadding="4sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description_steps"
+                        android:textSize="@dimen/description_steps"/>
+
+                    <TextView
+                        android:id="@+id/description_steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textSize="@dimen/description_steps"/>
+
+                </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
