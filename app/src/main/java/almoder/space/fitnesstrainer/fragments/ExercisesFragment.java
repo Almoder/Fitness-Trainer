@@ -30,7 +30,7 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
     };
 
     private ExercisesFragmentListener listener;
-    private LinkedList<RowData> list = null;
+    private static final LinkedList<RowData> list = new LinkedList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +47,7 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        list = new LinkedList<>();
-        for (int i = 1; i < 61; i++) list.add(new RowData(view.getContext(), i));
+        for (int i = 1; i < 101; i++) list.add(new RowData(view.getContext(), i));
         recyclerView.setAdapter(new RVAdapter(list, this));
 
         //SnapHelper snapHelper = new LinearSnapHelper();
