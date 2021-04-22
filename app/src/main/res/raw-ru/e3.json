@@ -1,25 +1,23 @@
 {
     "id": "0003",
     "name": "seated-shoulder-press-machine",
-    "title": "Seated Shoulder Press Machine",
-    "primer": "This is an exercise for the shoulder strengthening.",
-    "type": "isolation",
+    "title": "Жим от плеч сидя в тренажере",
+    "primer": "Упражнение для укрепления мышц плеч.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидные"
     ],
     "secondary": [
-        "triceps brachii"
+        "трицепс"
     ],
     "equipment": [
-        "machine"
+        "машина"
     ],
     "steps": [
-        "Sit upright with your back supported by the chair and draw your abs in.",
-        "Place your hands on the bars and with smooth even motions press upward extending your arms, but not locking them.",
-        "At the top pause then with controlled motion lower the bars to your starting position."
+        "Сядьте прямо, опираясь спиной на стул, и втяните пресс.",
+        "Возьмитесь руками за перекладины и плавными ровными движениями надавите вверх, вытягивая руки, но не сжимая их.",
+        "Задержитесь в верхнем положении, затем контролируемым движением опустите перекладины в исходное положение."
     ],
-    "tips": [
-        "Ensure that the seat and bar have been adjusted for optimal posture."
-    ],
+    "tips": [],
     "references": []
 }
