@@ -20,14 +20,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.LinkedList;
 
 import almoder.space.fitnesstrainer.R;
-import almoder.space.fitnesstrainer.RVAdapter;
+import almoder.space.fitnesstrainer.RVEAdapter;
 import almoder.space.fitnesstrainer.RowData;
 
-public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClickListener {
+public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 
-    public static interface ExercisesFragmentListener {
-        void itemClicked(int id);
-    };
+    public interface ExercisesFragmentListener {
+        void exItemClicked(int id);
+    }
 
     private ExercisesFragmentListener listener;
     private static final LinkedList<RowData> list = new LinkedList<>();
@@ -47,8 +47,10 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        for (int i = 1; i < 101; i++) list.add(new RowData(view.getContext(), i));
-        recyclerView.setAdapter(new RVAdapter(list, this));
+        if (list.isEmpty()) {
+            for (int i = 1; i < 101; i++) list.add(new RowData(view.getContext(), i));
+        }
+        recyclerView.setAdapter(new RVEAdapter(list, this));
 
         //SnapHelper snapHelper = new LinearSnapHelper();
         //snapHelper.attachToRecyclerView(recyclerView);
@@ -63,7 +65,7 @@ public class ExercisesFragment extends Fragment implements RVAdapter.OnItemClick
 
     @Override
     public void onItemClicked(int position) {
-        if (listener != null) listener.itemClicked(list.get(position).num());
+        if (listener != null) listener.exItemClicked(list.get(position).num());
         else Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
     }
 

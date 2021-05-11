@@ -14,6 +14,8 @@
     <!-- Exercises -->
     <string name="search">Search</string>
     <string name="sort_az">Sort A-Z</string>
+    <!-- Workouts -->
+    <string name="exs_count">Exercises count: </string>
     <!-- Description -->
     <string name="description_steps">Steps:</string>
     <!-- About -->

@@ -5,6 +5,10 @@
     <dimen name="row_image">72sp</dimen>
     <dimen name="row_title">20sp</dimen>
     <dimen name="row_type">16sp</dimen>
+    <dimen name="wkt_add">64sp</dimen>
+    <dimen name="wkt_image">36sp</dimen>
+    <dimen name="wkt_title">20sp</dimen>
+    <dimen name="wkt_text">16sp</dimen>
     <dimen name="description_title">20sp</dimen>
     <dimen name="description_type">16sp</dimen>
     <dimen name="description_primer">16sp</dimen>

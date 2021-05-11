@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ContentViewHolder> {
+public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolder> {
 
     private final OnItemClickListener mItemClickListener;
 
@@ -21,17 +21,15 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ContentViewHolder>
     }
 
     public static class ContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        CardView cv;
-        TextView cvTitle, cvType;
-        ImageView cvImage;
+        TextView wktTitle, wktCount;
+        ImageView wktImage;
         OnItemClickListener cvClickListener;
 
         public ContentViewHolder(View itemView, OnItemClickListener clickListener) {
             super(itemView);
-            cv = itemView.findViewById(R.id.cv);
-            cvTitle = itemView.findViewById(R.id.row_title);
-            cvType = itemView.findViewById(R.id.row_type);
-            cvImage = itemView.findViewById(R.id.row_image);
+            wktTitle = itemView.findViewById(R.id.wkt_title);
+            wktCount = itemView.findViewById(R.id.wkt_count);
+            wktImage = itemView.findViewById(R.id.wkt_image);
             cvClickListener = clickListener;
             itemView.setOnClickListener(this);
         }
@@ -42,12 +40,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ContentViewHolder>
         }
     }
 
-    List<RowData> mCardContents;
+    List<WktData> mCardContents;
 
-    public RVAdapter(List<RowData> mCardContents, OnItemClickListener itemClickListener) {
+    public RVWAdapter(List<WktData> mCardContents, OnItemClickListener itemClickListener) {
         this.mCardContents = mCardContents;
         this.mItemClickListener = itemClickListener;
-
     }
 
     @Override
@@ -58,15 +55,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ContentViewHolder>
     @NonNull
     @Override
     public ContentViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.wkt, viewGroup, false);
         return new ContentViewHolder(v, mItemClickListener);
     }
+
     @Override
     public void onBindViewHolder(ContentViewHolder contentViewHolder, int i) {
-        contentViewHolder.cvTitle.setText(mCardContents.get(i).title());
-        contentViewHolder.cvType.setText(mCardContents.get(i).type());
-        contentViewHolder.cvImage.setImageResource(mCardContents.get(i).imgRes());
+        contentViewHolder.wktTitle.setText(mCardContents.get(i).title());
+        contentViewHolder.wktCount.append(" " + mCardContents.get(i).count());
+        contentViewHolder.wktImage.setImageResource(R.drawable.ic_workouts);
     }
+
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView rv) {
         super.onAttachedToRecyclerView(rv);

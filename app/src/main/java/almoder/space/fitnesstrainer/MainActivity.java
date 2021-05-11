@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -25,14 +26,17 @@ import java.util.Objects;
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
 import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
 import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
+import almoder.space.fitnesstrainer.fragments.SettingsFragment;
 import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
-        ExercisesFragment.ExercisesFragmentListener {
+        ExercisesFragment.ExercisesFragmentListener,
+        WorkoutsFragment.WorkoutsFragmentListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
+    private int type;
 
     @Override
     protected void onCreate(Bundle sis) {
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements
         if (sis == null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_container, new AboutFragment());
-            ft.commit();
+            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
         }
         else toolbar.setTitle(sis.getCharSequence("m"));
     }
@@ -59,13 +63,16 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment f = null;
         switch (item.getItemId()) {
             case R.id.nav_exercise:
-                ft.replace(R.id.fragment_container, new ExercisesFragment());
+                f = new ExercisesFragment();
+                type = 0;
                 toolbar.setTitle(R.string.m1);
                 break;
             case R.id.nav_workouts:
-                ft.replace(R.id.fragment_container, new WorkoutsFragment());
+                f = new WorkoutsFragment();
+                type = 1;
                 toolbar.setTitle(R.string.m2);
                 break;
             case R.id.nav_another:
@@ -74,32 +81,43 @@ public class MainActivity extends AppCompatActivity implements
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_config:
-                Toast.makeText(this, getString(R.string.m4), Toast.LENGTH_SHORT).show();
+                f = new SettingsFragment();
                 toolbar.setTitle(R.string.m4);
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
+                break;
             case R.id.nav_share:
                 Toast.makeText(this, getString(R.string.m5), Toast.LENGTH_SHORT).show();
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_about:
-                ft.replace(R.id.fragment_container, new AboutFragment());
+                f = new AboutFragment();
                 toolbar.setTitle(R.string.m6);
                 break;
         }
-        ft.addToBackStack(null);
-        ft.commit();
-        drawer.closeDrawer(GravityCompat.START);
+        if (f != null) {
+            ft.replace(R.id.fragment_container, f);
+            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+            drawer.closeDrawer(GravityCompat.START);
+        }
         return true;
     }
 
     @Override
-    public void itemClicked(int id) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, new DescriptionFragment(id));
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(null);
-        ft.commit();
+    public void exItemClicked(int id) {
+        if (type == 0) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container, new DescriptionFragment(id));
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+        }
+    }
+
+    @Override
+    public void wkItemClicked(int id) {
+        Toast.makeText(this, "Pos: " + id, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onAddClick(View view) {
+        Toast.makeText(this, "Adding workout", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -116,7 +134,11 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else getSupportFragmentManager().popBackStack();
+        else if (fm.getBackStackEntryCount() > 1) {
+            fm.popBackStack();
+            toolbar.setTitle(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName());
+        }
     }
 }

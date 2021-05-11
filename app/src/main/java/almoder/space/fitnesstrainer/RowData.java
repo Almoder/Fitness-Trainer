@@ -12,8 +12,7 @@ import java.util.Scanner;
 public class RowData {
 
     private final int num, imgRes;
-    private String title;
-    private String type;
+    private String title, type;
 
     public RowData(Context c, int num) {
         Resources res = c.getResources();

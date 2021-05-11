@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#AABBCC</color>
     <color name="colorPrimarySurface">#FFFFFF</color>
     <color name="colorAccent">#4567BB</color>
+    <color name="colorControlActivated">#6789DD</color>
     <color name="android_colorBackground">#FFFFFF</color>
+    <color name="tabTextColor">#FFFFFF</color>
 </resources>

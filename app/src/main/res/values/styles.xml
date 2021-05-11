@@ -5,10 +5,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimarySurface">@color/colorPrimarySurface</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorControlActivated</item>
         <item name="android:colorBackground">@color/android_colorBackground</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.MyApp.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>
