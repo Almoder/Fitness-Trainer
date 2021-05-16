@@ -6,6 +6,9 @@
         <item name="colorPrimarySurface">@color/colorPrimarySurface</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">@color/colorControlActivated</item>
+        <item name="android:textColor">@color/android_textColor</item>
+        <!--item name="android:textColorPrimary">@color/android_textColor</item-->
+        <item name="android:editTextColor">@color/android_textColor</item>
         <item name="android:colorBackground">@color/android_colorBackground</item>
     </style>
     <style name="AppTheme.NoActionBar">

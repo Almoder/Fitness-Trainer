@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="25sp"
         android:text="@string/app_name"
+        android:textColor="@color/tabTextColor"
         android:textSize="@dimen/menu_title_text"
         android:textStyle="bold|italic"/>
 

@@ -7,10 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolder> {
 
@@ -40,16 +39,26 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
         }
     }
 
-    List<WktData> mCardContents;
+    private LinkedList<WktData> content;
 
-    public RVWAdapter(List<WktData> mCardContents, OnItemClickListener itemClickListener) {
-        this.mCardContents = mCardContents;
+    public void addItem(WktData item) {
+        content.add(item);
+        notifyDataSetChanged();
+    }
+
+    public RVWAdapter(OnItemClickListener itemClickListener) {
+        content = new LinkedList<>();
         this.mItemClickListener = itemClickListener;
+    }
+
+    public RVWAdapter(OnItemClickListener itemClickListener, LinkedList<WktData> content) {
+        this(itemClickListener);
+        this.content = content;
     }
 
     @Override
     public int getItemCount() {
-        return mCardContents.size();
+        return content == null ? 0 : content.size();
     }
 
     @NonNull
@@ -61,8 +70,8 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
 
     @Override
     public void onBindViewHolder(ContentViewHolder contentViewHolder, int i) {
-        contentViewHolder.wktTitle.setText(mCardContents.get(i).title());
-        contentViewHolder.wktCount.append(" " + mCardContents.get(i).count());
+        contentViewHolder.wktTitle.setText(content.get(i).title());
+        contentViewHolder.wktCount.append(" " + content.get(i).count());
         contentViewHolder.wktImage.setImageResource(R.drawable.ic_workouts);
     }
 

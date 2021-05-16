@@ -7,14 +7,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public class RVEAdapter extends RecyclerView.Adapter<RVEAdapter.ContentViewHolder> {
 
-    private final OnItemClickListener mItemClickListener;
+    private final OnItemClickListener itemClickListener;
 
     public interface OnItemClickListener{
         void onItemClicked(int position);
@@ -41,31 +40,31 @@ public class RVEAdapter extends RecyclerView.Adapter<RVEAdapter.ContentViewHolde
         }
     }
 
-    List<RowData> mCardContents;
+    LinkedList<Exercise> content;
 
-    public RVEAdapter(List<RowData> mCardContents, OnItemClickListener itemClickListener) {
-        this.mCardContents = mCardContents;
-        this.mItemClickListener = itemClickListener;
+    public RVEAdapter(LinkedList<Exercise> content, OnItemClickListener itemClickListener) {
+        this.content = content;
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
     public int getItemCount() {
-        return mCardContents.size();
+        return content.size();
     }
 
     @NonNull
     @Override
     public ContentViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row, viewGroup, false);
-        return new ContentViewHolder(v, mItemClickListener);
+        return new ContentViewHolder(v, itemClickListener);
     }
 
     @Override
     public void onBindViewHolder(ContentViewHolder cvh, int i) {
-        cvh.num = mCardContents.get(i).num();
-        cvh.cvTitle.setText(mCardContents.get(i).title());
-        cvh.cvType.setText(mCardContents.get(i).type());
-        cvh.cvImage.setImageResource(mCardContents.get(i).imgRes());
+        cvh.num = content.get(i).num();
+        cvh.cvTitle.setText(content.get(i).title());
+        cvh.cvType.setText(content.get(i).type());
+        cvh.cvImage.setImageResource(content.get(i).imgRes1());
     }
 
     @Override

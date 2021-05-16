@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="8sp"
+    android:paddingEnd="8sp"
+    android:paddingBottom="8sp"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:id="@+id/adding_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/adding_edit_title"
+        android:layout_alignBottom="@+id/adding_edit_title"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical"
+        android:text="@string/wkt_title"
+        android:textAlignment="gravity"
+        android:textSize="@dimen/adding_text"/>
+
+    <EditText
+        android:id="@+id/adding_edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/adding_title"
+        android:textSize="@dimen/adding_edit"
+        android:inputType="text"
+        tools:ignore="Autofill,LabelFor"/>
+
+    <ImageButton
+        android:background="@drawable/round_button"
+        android:layout_width="@dimen/wkt_add"
+        android:layout_height="@dimen/wkt_add"
+        android:layout_margin="8sp"
+        android:elevation="4sp"
+        android:src="@drawable/ic_done"
+        android:onClick="onDoneClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="ContentDescription"/>
+
+</RelativeLayout>

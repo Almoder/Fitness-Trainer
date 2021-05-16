@@ -19,9 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 
+import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVEAdapter;
-import almoder.space.fitnesstrainer.RowData;
 
 public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 
@@ -30,7 +30,7 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     }
 
     private ExercisesFragmentListener listener;
-    private static final LinkedList<RowData> list = new LinkedList<>();
+    private static final LinkedList<Exercise> list = new LinkedList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         if (list.isEmpty()) {
-            for (int i = 1; i < 101; i++) list.add(new RowData(view.getContext(), i));
+            for (int i = 1; i < 101; i++) list.add(new Exercise(view.getContext(), i));
         }
         recyclerView.setAdapter(new RVEAdapter(list, this));
 

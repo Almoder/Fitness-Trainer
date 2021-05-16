@@ -5,10 +5,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -20,13 +23,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
 import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
 import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
 import almoder.space.fitnesstrainer.fragments.SettingsFragment;
+import almoder.space.fitnesstrainer.fragments.WktAddingFragment;
 import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
 
 public class MainActivity extends AppCompatActivity implements
@@ -117,19 +120,35 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void onAddClick(View view) {
-        Toast.makeText(this, "Adding workout", Toast.LENGTH_SHORT).show();
+        toolbar.setTitle(getString(R.string.wkt_adding));
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, new WktAddingFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+    }
+
+    public void onDoneClick(View view) {
+        EditText editText = findViewById(R.id.adding_edit_title);
+        if (String.valueOf(editText.getText()).isEmpty())
+            Toast.makeText(this, "Title is empty!", Toast.LENGTH_SHORT).show();
+        else {
+            view.clearFocus();
+            new SharedPreferencer(this).saveWorkout(
+                    new WktData(String.valueOf(editText.getText())));
+            onBackPressed();
+        }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putCharSequence("m", getSupportActionBar().getTitle());
+        outState.putCharSequence("m", Objects.requireNonNull(getSupportActionBar()).getTitle());
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle sis) {
         super.onRestoreInstanceState(sis);
-        getSupportActionBar().setTitle(sis.getCharSequence("m"));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(sis.getCharSequence("m"));
     }
 
     @Override

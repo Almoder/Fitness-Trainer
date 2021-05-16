@@ -9,9 +9,13 @@
     <dimen name="wkt_image">36sp</dimen>
     <dimen name="wkt_title">20sp</dimen>
     <dimen name="wkt_text">16sp</dimen>
+    <dimen name="adding_text">16sp</dimen>
+    <dimen name="adding_edit">17sp</dimen>
     <dimen name="description_title">20sp</dimen>
     <dimen name="description_type">16sp</dimen>
     <dimen name="description_primer">16sp</dimen>
     <dimen name="description_margin">4sp</dimen>
     <dimen name="description_steps">16sp</dimen>
+    <dimen name="description_tips">16sp</dimen>
+    <dimen name="description_cv_text">16sp</dimen>
 </resources>

@@ -2,32 +2,34 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/description_margin"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="start">
 
-            <TextView
-                android:id="@+id/description_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:textSize="@dimen/description_title"/>
+        <TextView
+            android:id="@+id/description_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/undefined"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/description_title" />
 
             <TextView
                 android:id="@+id/description_type"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/description_title"
                 android:layout_marginTop="@dimen/description_margin"
+                android:text="@string/undefined"
                 android:textAlignment="viewStart"
                 android:textSize="@dimen/description_type"/>
 
@@ -35,15 +37,56 @@
                 android:id="@+id/description_primer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/description_type"
                 android:layout_marginTop="@dimen/description_margin"
+                android:text="@string/undefined"
                 android:textAlignment="viewStart"
                 android:textSize="@dimen/description_primer"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/description_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/description_margin"
+            android:layout_below="@id/description_primer"
+            android:foreground="?selectableItemBackground"
+            android:clickable="false"
+            android:focusable="false"
+            android:visibility="gone"
+            card_view:cardBackgroundColor="@color/colorPrimarySurface"
+            card_view:cardCornerRadius="8sp"
+            card_view:contentPadding="4sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/description_repeats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/description_cv_text"/>
+
+                <TextView
+                    android:id="@+id/description_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/description_cv_text"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/description_image"
                 android:background="@color/colorPrimarySurface"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/description_cv"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/description_margin"
                 tools:ignore="ContentDescription"/>
 
@@ -51,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/description_margin"
+                android:layout_below="@id/description_image"
                 android:foreground="?selectableItemBackground"
                 android:clickable="false"
                 android:focusable="false"
@@ -76,10 +120,26 @@
                         android:textAlignment="viewStart"
                         android:textSize="@dimen/description_steps"/>
 
+                    <TextView
+                        android:id="@+id/description_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description_tips"
+                        android:textSize="@dimen/description_tips"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/description_tips_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textSize="@dimen/description_tips"
+                        android:visibility="gone"/>
+
                 </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>
