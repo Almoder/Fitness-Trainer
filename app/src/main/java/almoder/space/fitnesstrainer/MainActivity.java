@@ -5,8 +5,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -132,7 +134,8 @@ public class MainActivity extends AppCompatActivity implements
         if (String.valueOf(editText.getText()).isEmpty())
             Toast.makeText(this, "Title is empty!", Toast.LENGTH_SHORT).show();
         else {
-            view.clearFocus();
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             new SharedPreferencer(this).saveWorkout(
                     new WktData(String.valueOf(editText.getText())));
             onBackPressed();

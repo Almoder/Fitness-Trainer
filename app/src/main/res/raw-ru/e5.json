@@ -1,25 +1,25 @@
 {
     "id": "0005",
     "name": "shoulder-shrugs",
-    "title": "Shoulder Shrugs: Dumbbell",
-    "primer": "An exercise for trapezius strengthening.",
-    "type": "isolation",
+    "title": "Пожимание плечами: Гантели",
+    "primer": "Упражнение на укрепление трапециевидных мышц.",
+    "type": "изоляция",
     "primary": [
-        "trapezius"
+        "трапециевидные"
     ],
     "secondary": [],
     "equipment": [
-        "dumbbell"
+        "гантели"
     ],
     "steps": [
-        "Stand with your feet shoulder width apart and a slight bend in your knees.",
-        "Hold a dumbbell in each hand and with your arms at your sides.",
-        "Lower your shoulders as much as possible.",
-        "With your arms straight raise both shoulders up towards your ears.",
-        "Hold the upright positions for a moment and then lower in a controlled motion."
+        "Встаньте, расставив ноги на ширине плеч и слегка согнув колени.",
+        "Держите по гантели в каждой руке, руки по бокам.",
+        "Максимально опустите плечи.",
+        "С выпрямленными руками поднимите оба плеча к ушам.",
+        "Задержитесь на мгновение в вертикальном положении, а затем опустите его контролируемым движением."
     ],
     "tips": [
-        "Do not do this exercise if you are experiencing any shoulder or neck pain."
+        "Не делайте это упражнение, если вы испытываете боль в плече или шее."
     ],
     "references": []
 }

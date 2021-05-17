@@ -1,26 +1,26 @@
 {
     "id": "0012",
     "name": "dumbbell-shoulder-press",
-    "title": "Dumbbell Shoulder Press",
-    "primer": "An exercise for shoulder, chest and triceps strengthening.",
-    "type": "isolation",
+    "title": "Жим гантелей сидя",
+    "primer": "Упражнение на укрепление плеч, груди и трицепсов.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "triceps brachii",
-        "pectoralis major"
+        "трицепс",
+        "большая грудная мышца"
     ],
     "equipment": [
-        "dumbbell"
+        "гантель"
     ],
     "steps": [
-        "Sitting on a bench, with your abs drawn in grasp a dumbbell in each hand, with your palms facing forward.",
-        "Begin with your arms at the height of your shoulders.",
-        "Extend your arms and raise the dumbbells up above your head.",
-        "At the top of the movement, bring your arms closer together.",
-        "Pause for a moment and then in a controlled movement lower the dumbbells to the starting position.",
-        "Repeat"
+        "Сидя на скамейке, сжимая пресс в каждой руке по гантели, ладони смотрят вперед.",
+        "Начните с того, что руки на высоте плеч.",
+        "Вытяните руки и поднимите гантели над головой.",
+        "В верхнем положении сведите руки вместе.",
+        "Сделайте паузу и затем контролируемым движением опустите гантели в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

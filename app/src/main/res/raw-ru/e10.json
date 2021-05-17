@@ -1,29 +1,29 @@
 {
     "id": "0010",
     "name": "front-raises",
-    "title": "Front Raises",
-    "primer": "This is an exercise for shoulder, chest and forearm strengthening.",
-    "type": "isolation",
+    "title": "Подъемы гантелей спереди",
+    "primer": "Упражнение на укрепление плеч, груди и предплечий.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "forearm",
-        "pectoralis major"
+        "предплечье",
+        "большая грудная мышца"
     ],
     "equipment": [
-        "dumbbell"
+        "гантели"
     ],
     "steps": [
-        "Stand with your feet shoulder width apart, abs drawn in and knees slightly bent.",
-        "Grasp a dumbbell in each hand, with your palm facing down.",
-        "Start with the dumbbell at waist height.",
-        "Raise your left arm, keeping your elbow slightly bent and your arm straight, to in line with your shoulder.",
-        "Pause for a moment and with a controlled motion lower your arm to back to the starting position at your waist.",
-        "Repeat with your right arm."
+        "Положение стоя, ноги на ширине плеч, пресс втянут, колени слегка согнуты.",
+        "Возьмите по гантели в каждую руку ладонью вниз.",
+        "Начните с гантели на уровне талии.",
+        "Поднимите левую руку, слегка согнув локоть, а руку выпрямите так, чтобы она совпадала с плечом.",
+        "Задержитесь на мгновение и контролируемым движением опустите руку, чтобы вернуться в исходное положение на талии.",
+        "Повторите с правой рукой."
     ],
     "tips": [
-        "Do not perform this exercise if you have any shoulder, elbow or wrist pain."
+        "Не выполняйте это упражнение, если у вас болят плечо, локоть или запястье."
     ],
     "references": []
 }

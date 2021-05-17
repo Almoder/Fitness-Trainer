@@ -1,29 +1,29 @@
 {
     "id": "0015",
     "name": "upright-cable-row",
-    "title": "Upright Cable Row",
-    "primer": "This is an exercise for shoulder, biceps and upper back strengthening.",
-    "type": "isolation",
+    "title": "Вертикальная тяга троса",
+    "primer": "упражнение для укрепления плеч, бицепсов и верхней части спины.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "upper back",
-        "biceps brachii"
+        "верхняя часть спины",
+        "бицепс"
     ],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Attach a straight bar to the pulley on the floor.",
-        "Stand with your feet shoulder width apart, your abs drawn in and your back straight.",
-        "Grasp the bar with an overhand grasp (your palms facing downwards) and pull it up towards your waist, this is the starting position.",
-        "Raise the bar up to in line with your shoulders.",
-        "Pause at the top and rotate your shoulder blades together.",
-        "Lower the bar in a controlled motion to the starting position."
+        "Прикрепите прямую штангу к шкиву на полу.",
+        "Положение стоя, ноги на ширине плеч, пресс втянут, спина прямая.",
+        "Возьмитесь за перекладину хватом сверху (ладони смотрят вниз) и потяните ее вверх к талии, это исходное положение.",
+        "Поднимите перекладину до уровня плеч.",
+        "Задержитесь в верхнем положении и сведите лопатки.",
+        "Контролируемым движением опустите штангу в исходное положение."
     ],
     "tips": [
-        "Do not arch your back when raising the bar to your shoulders."
+        "Не выгибайте спину, поднимая штангу на плечи."
     ],
     "references": []
 }

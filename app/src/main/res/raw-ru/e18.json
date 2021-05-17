@@ -1,28 +1,28 @@
 {
     "id": "0018",
     "name": "lateral-dumbbell-raises",
-    "title": "Lateral Dumbbell Raises",
-    "primer": "This is an exercise for lateral deltoid, shoulder and forearm strengthening.",
-    "type": "isolation",
+    "title": "Подъем гантелей в стороны",
+    "primer": "Упражнение для укрепления боковых дельтовидных мышц, плеч и предплечий.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "forearm"
+        "предплечье"
     ],
     "equipment": [
-        "dumbbells"
+        "гантели"
     ],
     "steps": [
-        "Grasp a dumbbell in each hand, palms facing inward towards your body and the dumbbells at your sides.",
-        "Standing with your feet shoulder with apart, draw your abs in and bend your knees slightly.",
-        "While keeping your torso still, raise the your arms up to the sides keeping your arms straight with a slight bend in the elbows.",
-        "Raise your arms up until in line with your shoulders, your palms should face the floor.",
-        "Hold the position for a moment then in a controlled movement lower your arms to the starting position.",
-        "Repeat"
+        "Возьмите по гантели в каждую руку ладонями внутрь к телу, а гантели по бокам.",
+        "Стоя, ноги расставлены плечом, втяните пресс и слегка согните ноги в коленях.",
+        "Удерживая туловище неподвижно, поднимите руки в стороны, держа руки прямыми, с небольшим сгибанием в локтях.",
+        "Поднимите руки вверх до уровня плеч, ладони должны быть обращены к полу.",
+        "На мгновение задержитесь в верхнем положении, затем контролируемым движением опустите руки в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Maintain a good upright posture ensuring no arching in the back in order to prevent injuries."
+        "Сохраняйте правильную вертикальную осанку, не прогибая спину во избежание травм."
     ],
     "references": []
 }

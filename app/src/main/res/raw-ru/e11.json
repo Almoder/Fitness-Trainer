@@ -1,27 +1,27 @@
 {
     "id": "0011",
     "name": "barbell-shoulder-press",
-    "title": "Seated Barbell Shoulder Press",
-    "primer": "This is an exercise for shoulder, chest and triceps strengthening.",
-    "type": "isolation",
+    "title": "Жим штанги сидя",
+    "primer": "Упражнение на укрепление плеч, груди и трицепсов.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "triceps brachii",
-        "pectoralis major"
+        "трицепс",
+        "большая грудная мышца"
     ],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Sitting on a bench with a barbell rack, grasp the barbell with a grip 3 to 4 inches wider than your shoulders.",
-        "Lift the bar off the rack and lower it to just at the height of your shoulders.",
-        "While maintaining  good posture, straighten your arms and raise the bar up above your head.",
-        "Pause for a moment and then in a controlled movement lower the bar to the starting position."
+        "Сидя на скамейке со штангой, возьмитесь за гриф хватом на 3–4 дюйма шире плеч.",
+        "Поднимите штангу со стойки и опустите ее до уровня плеч.",
+        "Сохраняя хорошую осанку, выпрямите руки и поднимите штангу над головой.",
+        "Сделайте паузу на мгновение, а затем контролируемым движением опустите штангу в исходное положение."
     ],
     "tips": [
-        "Do not perform this exercise if you have shoulder, elbow or wrist pain."
+        "Не выполняйте это упражнение, если у вас болят плечо, локоть или запястье."
     ],
     "references": []
 }

@@ -1,30 +1,30 @@
 {
     "id": "0008",
     "name": "front-cable-raises",
-    "title": "Front Cable Raises",
-    "primer": "An exercise for shoulders, chest and forearm strengthening.",
-    "type": "isolation",
+    "title": "Подъем троса спереди",
+    "primer": "Упражнение на укрепление плеч, груди и предплечий.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "pectoralis major",
-        "forearm"
+        "большая грудная мышца",
+        "предплечье"
     ],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Place the pulley on the setting just above the floor.",
-        "Stand with your feet shoulder width apart, your abs drawn in and your knees slightly bent.",
-        "Starting at waist height, take the pulley in your left hand, palm facing the floor with otherwise known as an overhand grip, and raise your straight arm up towards your left shoulder.",
-        "At shoulder height pause for a moment.",
-        "With a controlled movement resist the weight and slowly lower your arm back to starting position at your waist.",
-        "Repeat the exercise with your right arm."
+        "Поместите шкив на опору чуть выше пола.",
+        "Встаньте, ноги на ширине плеч, живот втянут, а колени слегка согнуты.",
+        "Начиная с уровня талии, возьмите блок в левую руку ладонью к полу и поднимите прямую руку к левому плечу.",
+        "На уровне плеч сделайте паузу на мгновение.",
+        "Контролируемым движением сопротивляйтесь весу и медленно опустите руку обратно в исходное положение на талии.",
+        "Повторите упражнение правой рукой."
     ],
     "tips": [
-        "Maintain a good posture at all times during this exercise ensuring not swaying or arching at your back.",
-        "Do not perform this exercise if you have shoulder pain."
+        "Во время этого упражнения все время сохраняйте хорошую осанку, следя за тем, чтобы спина не раскачивалась и не выгибалась.",
+        "Не выполняйте это упражнение, если у вас болит плечо."
     ],
     "references": []
 }

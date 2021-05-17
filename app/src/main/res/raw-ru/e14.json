@@ -1,29 +1,29 @@
 {
     "id": "0014",
     "name": "upright-barbell-rows",
-    "title": "Upright Barbell Rows",
-    "primer": "This is an exercise for shoulder, biceps and upper back strengthening.",
-    "type": "isolation",
+    "title": "Тяга штанги в вертикальном положении",
+    "primer": "Упражнение для укрепления плеч, бицепсов и верхней части спины.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "biceps brachii",
-        "upper back"
+        "бицепс",
+        "широчайная мышца спины"
     ],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Stand with your feet shoulder width apart, your abs drawn in and back straight.",
-        "Place the bar on rack in the position where your arms are fully extended in front of you with your elbows slightly bent.",
-        "Place your hands shoulder width apart and raise the bar up towards your chin with a controlled motion.",
-        "Pause at the top for a moment and rotate your shoulder blades together.",
-        "Lower the bar to the starting position.",
-        "Repeat"
+        "Положение стоя, ноги на ширине плеч, пресс втянут, спина прямая.",
+        "Поместите штангу на стойку в положение, при котором ваши руки полностью вытянуты перед вами, а локти слегка согнуты.",
+        "Разведите руки на ширине плеч и контролируемым движением поднимите штангу к подбородку.",
+        "Задержитесь в верхнем положении.",
+        "Опустить штангу в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Do not arch your back when raising the barbell towards your chin."
+        "Не выгибайте спину, поднимая штангу к подбородку."
     ],
     "references": []
 }

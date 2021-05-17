@@ -1,31 +1,31 @@
 {
     "id": "0016",
     "name": "dumbbell-upright-rows",
-    "title": "Upright Row: Dumbbell",
-    "primer": "This is an exercise for shoulder, biceps and upper back strengthening.",
-    "type": "isolation",
+    "title": "Вертикальная тяга: гантели",
+    "primer": "Упражнение на укрепление плеч, бицепсов и верхней части спины.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "biceps brachii",
-        "upper back"
+        "бицепс",
+        "верхняя часть спины"
     ],
     "equipment": [
-        "dumbbells"
+        "гантели"
     ],
     "steps": [
-        "Grasp a dumbbell in each hand with an overhand grip (palms facing downwards) and hold them in front of your thighs.",
-        "Stand with your feet shoulder width apart, your abs drawn in and your back straight.",
-        "Starting with the dumbbells at your thighs, slowly raise them up towards your shoulders by bending your elbows.",
-        "Pause at the top and rotate your shoulder blades together.",
-        "Lower the dumbbells in a controlled motion to your thighs.",
-        "Repeat"
+        "Возьмите гантели в каждую руку хватом сверху (ладони смотрят вниз) и держите их перед бедрами.",
+        "Встаньте, ноги на ширине плеч, пресс втянут, спина прямая.",
+        "Начиная с исходного положения, медленно поднимите гантели к плечам, сгибая руки в локтях.",
+        "Задержитесь в верхнем положении.",
+        "Контролируемым движением вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Do not arch your back when raising the dumbbells towards your shoulders.",
-        "Ensure the dumbbells are held close to your body throughout the exercise.",
-        "Do not perform this exercise if you have wrist, shoulder or elbow pain."
+        "Старайтесь не выгибать спину, поднимая гантели к плечам.",
+        "Убедитесь, что гантели прижаты к телу на протяжении всего упражнения.",
+        "Не выполняйте это упражнение, если у вас болят запястье, плечо или локоть."
     ],
     "references": []
 }

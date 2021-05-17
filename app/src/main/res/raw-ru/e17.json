@@ -1,30 +1,31 @@
 {
     "id": "0017",
     "name": "bent-over-lateral-cable-raises",
-    "title": "Bent-over Lateral Cable Raises",
-    "primer": "This is an exercise for shoulder, trapezius and middle back strengthening.",
-    "type": "isolation",
+    "title": "Боковой подъем троса в наклоне",
+    "primer": "Упражнение для укрепления плеч, трапеций и средней части спины.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "trapezius",
-        "latissimus dorsi"
+        "трапециевидная",
+        "широчайшая мышца спиты"
     ],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Grasp the handle of the low pulley with your right hand.",
-        "Bend forward from the waist; your upper body should be nearly parallel with the floor. Bend your knees slightly and place your left hand on your left thigh. Let your right arm hang from your shoulder in front of you with your elbow slightly bent. This is your starting position.",
-        "Lift your right arm, keeping your elbow slightly bent.",
-        "Keep moving your arm until it is parallel to the floor, in line with your right ear.",
-        "Slowly bring the weight back down to the starting position.",
-        "Perform exercise on left arm and then repeat."
+        "Возьмитесь за ручку нижнего шкива правой рукой.",
+        "Наклонитесь вперед от талии; ваша верхняя часть тела должна быть почти параллельна полу.",
+        "Слегка согните колени и положите левую руку на левое бедро. Пусть ваша правая рука свисает с плеча перед собой, слегка согнув локоть. Это ваша исходная позиция.",
+        "Поднимите правую руку, слегка согнув локоть.",
+        "Продолжайте двигать рукой, пока она не станет параллельна полу, на уровне правого уха.",
+        "Медленно вернитесь в исходное положение.",
+        "Повторяйте упражнение левой рукой."
     ],
     "tips": [
-        "Start with a lower weight in order to perfect the technique.",
-        "Ensure your back remains straight throughout this exercise in order to prevent injury."
+        "Начните с меньшего веса, чтобы усовершенствовать технику.",
+        "Следите, чтобы ваша спина оставалась прямой на протяжении всего упражнения, во избежание травм."
     ],
     "references": []
 }

@@ -1,28 +1,28 @@
 {
     "id": "0007",
     "name": "front-barbell-raises",
-    "title": "Front Barbell Raises",
-    "primer": "An exercise for shoulder, chest and forearm strengthening.",
-    "type": "isolation",
+    "title": "Подъемы штанги спереди",
+    "primer": "Упражнение на укрепление плеч, груди и предплечий.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "pectoralis major",
-        "forerm"
+        "большая грудная мышца",
+        "предплечье"
     ],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Grasp a barbell with an overhand grip(palms of hands face downwards) .",
-        "Stand up-right with your feet shoulder width apart, knees slightly bent and your abs drawn in.",
-        "With your arms straight, raise the barbell in a controlled motion to shoulder level.",
-        "Hold for a moment and then lower the barbell in at the same motion."
+        "Возьмитесь за штангу хватом сверху (ладонями вниз).",
+        "Встаньте прямо, ноги на ширине плеч, колени слегка согнуты, пресс втянут.",
+        "С выпрямленными руками поднимите штангу контролируемым движением до уровня плеч.",
+        "Задержитесь на мгновение, а затем опустите штангу тем же движением."
     ],
     "tips": [
-        "Maintain a good upright posture when performing this exercise, do not sway or arch your back.",
-        "Do not perform this exercise if you have shoulder pain."
+        "При выполнении этого упражнения сохраняйте правильную вертикальную осанку, не раскачивайте и не выгибайте спину.",
+        "Не выполняйте это упражнение, если у вас болит плечо."
     ],
     "references": []
 }
