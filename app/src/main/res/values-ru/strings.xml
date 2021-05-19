@@ -11,9 +11,10 @@
     <string name="m4">Настройки</string>
     <string name="m5">Поделиться</string>
     <string name="m6">О программе</string>
-    <!-- Exercises -->
+    <!-- Menus -->
     <string name="search">Поиск</string>
     <string name="sort_az">Сортировать А-Я</string>
+    <string name="menu_edit">Редактировать</string>
     <!-- Workouts -->
     <string name="exs_count">Кол-во упражнений: </string>
     <string name="wkt_adding">Добавление тренировки</string>

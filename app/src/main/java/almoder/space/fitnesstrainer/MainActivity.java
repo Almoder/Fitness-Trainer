@@ -32,6 +32,7 @@ import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
 import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
 import almoder.space.fitnesstrainer.fragments.SettingsFragment;
 import almoder.space.fitnesstrainer.fragments.WktAddingFragment;
+import almoder.space.fitnesstrainer.fragments.WktDescFragment;
 import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
 
 public class MainActivity extends AppCompatActivity implements
@@ -108,17 +109,19 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void exItemClicked(int id) {
-        if (type == 0) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_container, new DescriptionFragment(id));
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
-        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, new DescriptionFragment(id));
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
     }
 
     @Override
-    public void wkItemClicked(int id) {
-        Toast.makeText(this, "Pos: " + id, Toast.LENGTH_SHORT).show();
+    public void wkItemClicked(int id, String title) {
+        toolbar.setTitle(title);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, new WktDescFragment(id));
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
     }
 
     public void onAddClick(View view) {

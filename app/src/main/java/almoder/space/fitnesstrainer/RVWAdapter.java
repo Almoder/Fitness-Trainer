@@ -14,6 +14,8 @@ import java.util.LinkedList;
 public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolder> {
 
     private final OnItemClickListener mItemClickListener;
+    private boolean edit = false;
+    private String count;
 
     public interface OnItemClickListener{
         void onItemClicked(int position);
@@ -46,13 +48,19 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
         notifyDataSetChanged();
     }
 
-    public RVWAdapter(OnItemClickListener itemClickListener) {
-        content = new LinkedList<>();
-        this.mItemClickListener = itemClickListener;
+    public void editMode() {
+        edit = !edit;
+        notifyDataSetChanged();
     }
 
-    public RVWAdapter(OnItemClickListener itemClickListener, LinkedList<WktData> content) {
-        this(itemClickListener);
+    public RVWAdapter(OnItemClickListener itemClickListener, String count) {
+        content = new LinkedList<>();
+        this.mItemClickListener = itemClickListener;
+        this.count = count;
+    }
+
+    public RVWAdapter(OnItemClickListener itemClickListener, LinkedList<WktData> content, String count) {
+        this(itemClickListener, count);
         this.content = content;
     }
 
@@ -69,10 +77,11 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
     }
 
     @Override
-    public void onBindViewHolder(ContentViewHolder contentViewHolder, int i) {
-        contentViewHolder.wktTitle.setText(content.get(i).title());
-        contentViewHolder.wktCount.append(" " + content.get(i).count());
-        contentViewHolder.wktImage.setImageResource(R.drawable.ic_workouts);
+    public void onBindViewHolder(ContentViewHolder cvh, int i) {
+        cvh.wktTitle.setText(content.get(i).title());
+        String temp = count + " " + content.get(i).count();
+        cvh.wktCount.setText(temp);
+        cvh.wktImage.setImageResource(edit ? R.drawable.ic_remove : R.drawable.ic_workouts);
     }
 
     @Override

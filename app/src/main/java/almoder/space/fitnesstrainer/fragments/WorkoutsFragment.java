@@ -1,11 +1,16 @@
 package almoder.space.fitnesstrainer.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,10 +28,20 @@ import almoder.space.fitnesstrainer.WktData;
 public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClickListener {
 
     public interface WorkoutsFragmentListener {
-        void wkItemClicked(int id);
+        void wkItemClicked(int id, String title);
     }
 
+    private boolean edit = false;
+    private RVWAdapter adapter;
+    private SharedPreferencer sp;
     private WorkoutsFragment.WorkoutsFragmentListener listener;
+    private MenuItem editItem = null;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -38,9 +53,10 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        SharedPreferencer sp = new SharedPreferencer(view.getContext());
+        sp = new SharedPreferencer(view.getContext());
         sp.loadWorkouts();
-        recyclerView.setAdapter(new RVWAdapter(this, sp.workouts));
+        adapter = new RVWAdapter(this, sp.workouts, getString(R.string.exs_count));
+        recyclerView.setAdapter(adapter);
         return view;
     }
 
@@ -51,7 +67,32 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        edit = false;
+    }
+
+    @Override
     public void onItemClicked(int position) {
-        listener.wkItemClicked(position);
+        if (!edit) listener.wkItemClicked(position, sp.workouts.get(position).title());
+        else {
+            sp.removeWorkout(position);
+            adapter.notifyDataSetChanged();
+            if (sp.workouts.size() == 0) onOptionsItemSelected(editItem);
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.wkt_desc_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        edit = !edit;
+        editItem = item;
+        item.setIcon(edit ? R.drawable.ic_done : R.drawable.ic_menu_edit);
+        adapter.editMode();
+        return true;
     }
 }

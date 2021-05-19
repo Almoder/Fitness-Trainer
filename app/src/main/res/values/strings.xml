@@ -11,9 +11,10 @@
     <string name="m4">Settings</string>
     <string name="m5">Share</string>
     <string name="m6">About</string>
-    <!-- Exercises -->
+    <!-- Menus -->
     <string name="search">Search</string>
     <string name="sort_az">Sort A-Z</string>
+    <string name="menu_edit">Edit</string>
     <!-- Workouts -->
     <string name="exs_count">Exercises count: </string>
     <string name="wkt_adding">Workout adding</string>
