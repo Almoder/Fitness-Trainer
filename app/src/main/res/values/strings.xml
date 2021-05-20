@@ -22,6 +22,12 @@
     <!-- Description -->
     <string name="description_steps">Steps:</string>
     <string name="description_tips">Advice:</string>
+    <!-- Settings -->
+    <string name="settings_language">Language</string>
+    <string-array name="settings_lang">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
     <!-- About -->
     <string-array name="about_text">
         <item>The fitness trainer program is designed to help with physical activity.</item>

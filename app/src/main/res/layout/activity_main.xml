@@ -21,6 +21,7 @@
             android:background="@color/colorAccent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:elevation="4sp"
+            app:title="@string/app_name"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
         <FrameLayout

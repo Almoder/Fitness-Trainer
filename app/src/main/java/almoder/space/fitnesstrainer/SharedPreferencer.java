@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.LinkedList;
+import java.util.Locale;
 
 public class SharedPreferencer {
 
@@ -62,6 +63,10 @@ public class SharedPreferencer {
             s++;
         }
     }
+
+    public void localization(String str) { sPref.edit().putString("localization", str).apply(); }
+
+    public String localization() { return sPref.getString("localization", "en"); }
 
     private int count() { return sPref.getInt("wktCount", 0); }
 }

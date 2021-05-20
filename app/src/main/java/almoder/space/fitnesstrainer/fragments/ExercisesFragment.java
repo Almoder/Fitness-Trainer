@@ -2,6 +2,7 @@ package almoder.space.fitnesstrainer.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,10 +19,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
+import java.util.Locale;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVEAdapter;
+import almoder.space.fitnesstrainer.SharedPreferencer;
 
 public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 

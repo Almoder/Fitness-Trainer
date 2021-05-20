@@ -22,6 +22,10 @@ public class WktDescFragment extends Fragment {
 
     private int id;
 
+    public WktDescFragment() {
+        this.id = 0;
+    }
+
     public WktDescFragment(int id) {
         this.id = id;
     }

@@ -22,6 +22,12 @@
     <!-- Description -->
     <string name="description_steps">Этапы:</string>
     <string name="description_tips">Совет:</string>
+    <!-- Settings -->
+    <string name="settings_language">Язык интерфейса</string>
+    <string-array name="settings_lang">
+        <item>Английский</item>
+        <item>Русский</item>
+    </string-array>
     <!-- About -->
     <string-array name="about_text">
         <item>Программа "Fitness Trainer" предназначена для помощи при занятиях физической активностью.</item>

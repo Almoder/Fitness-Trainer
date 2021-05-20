@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
@@ -42,7 +44,15 @@ public class MainActivity extends AppCompatActivity implements
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    private int type;
+    private int title;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Configuration config = getResources().getConfiguration();
+        config.setLocale(new Locale(new SharedPreferencer(this).localization()));
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
 
     @Override
     protected void onCreate(Bundle sis) {
@@ -58,11 +68,15 @@ public class MainActivity extends AppCompatActivity implements
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         if (sis == null) {
+            title = R.string.app_name;
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_container, new AboutFragment());
-            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+            ft.addToBackStack(String.valueOf(title)).commit();
         }
-        else toolbar.setTitle(sis.getCharSequence("m"));
+        else {
+            title = sis.getInt("m", 0);
+            toolbar.setTitle(title);
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -73,22 +87,20 @@ public class MainActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.nav_exercise:
                 f = new ExercisesFragment();
-                type = 0;
-                toolbar.setTitle(R.string.m1);
+                title = R.string.m1;
                 break;
             case R.id.nav_workouts:
                 f = new WorkoutsFragment();
-                type = 1;
-                toolbar.setTitle(R.string.m2);
+                title = R.string.m2;
                 break;
             case R.id.nav_another:
                 Toast.makeText(this, getString(R.string.m3), Toast.LENGTH_SHORT).show();
-                toolbar.setTitle(R.string.m3);
+                title = R.string.m3;
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_config:
                 f = new SettingsFragment();
-                toolbar.setTitle(R.string.m4);
+                title = R.string.m4;
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, getString(R.string.m5), Toast.LENGTH_SHORT).show();
@@ -96,12 +108,13 @@ public class MainActivity extends AppCompatActivity implements
                 return true;
             case R.id.nav_about:
                 f = new AboutFragment();
-                toolbar.setTitle(R.string.m6);
+                title = R.string.m6;
                 break;
         }
         if (f != null) {
             ft.replace(R.id.fragment_container, f);
-            ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+            ft.addToBackStack(String.valueOf(title)).commit();
+            toolbar.setTitle(title);
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
@@ -112,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, new DescriptionFragment(id));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+        ft.addToBackStack(String.valueOf(title)).commit();
     }
 
     @Override
@@ -121,15 +134,16 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, new WktDescFragment(id));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+        ft.addToBackStack("_" + toolbar.getTitle()).commit();
     }
 
     public void onAddClick(View view) {
-        toolbar.setTitle(getString(R.string.wkt_adding));
+        title = R.string.wkt_adding;
+        toolbar.setTitle(title);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, new WktAddingFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(toolbar.getTitle())).commit();
+        ft.addToBackStack(String.valueOf(title)).commit();
     }
 
     public void onDoneClick(View view) {
@@ -148,13 +162,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putCharSequence("m", Objects.requireNonNull(getSupportActionBar()).getTitle());
+        outState.putInt("m", title);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle sis) {
         super.onRestoreInstanceState(sis);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(sis.getCharSequence("m"));
+        title = sis.getInt("m", 0);
+        toolbar.setTitle(title);
     }
 
     @Override
@@ -163,7 +178,12 @@ public class MainActivity extends AppCompatActivity implements
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
         else if (fm.getBackStackEntryCount() > 1) {
             fm.popBackStack();
-            toolbar.setTitle(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName());
+            String temp = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName();
+            if (temp != null && temp.toCharArray()[0] == '_') toolbar.setTitle(temp.substring(1));
+            else {
+                title = Integer.parseInt(Objects.requireNonNull(temp));
+                toolbar.setTitle(title);
+            }
         }
     }
 }
