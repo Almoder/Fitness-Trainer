@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -14,10 +16,15 @@ public class Exercise {
 
     private int num, imgRes1, imgRes2, reps = 0, weight = 0;
     private String title, primer, type, primary;
-    private String equipment, steps, tips;
-    private final String builder;
+    private String equipment, steps, tips, builder;
+    private final Context c;
+
+    public Exercise(Context c) {
+        this.c = c;
+    }
 
     public Exercise(Context c, int num) {
+        this(c);
         Resources res = c.getResources();
         num(num);
         imgRes1(res.getIdentifier(
@@ -73,6 +80,19 @@ public class Exercise {
             for (int i = 1; i < a4.length(); i++) tips(tips.concat("\n" + a4.getString(i)));
         } catch (JSONException e) { e.printStackTrace(); }
 
+    }
+
+    public List<Exercise> getData(int startPosition, int length) {
+        int sp = startPosition + 1, l = length;
+        List<Exercise> ret = new ArrayList<>();
+        if (sp > 100) return ret;
+        if (sp == 100) {
+            ret.add(new Exercise(c, 100));
+            return ret;
+        }
+        if (sp + l > 100) l = 100 - sp;
+        for (int i = sp; i < sp + l; i++) ret.add(new Exercise(c, i));
+        return ret;
     }
 
     public String[] params() { return new String[]{ title(), type(), primer(), steps() }; }

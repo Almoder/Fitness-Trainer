@@ -47,20 +47,15 @@ public class MainActivity extends AppCompatActivity implements
     private int title;
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onCreate(Bundle sis) {
+        super.onCreate(sis);
         Configuration config = getResources().getConfiguration();
         config.setLocale(new Locale(new SharedPreferencer(this).localization()));
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-    }
-
-    @Override
-    protected void onCreate(Bundle sis) {
-        super.onCreate(sis);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer);
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -70,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements
         if (sis == null) {
             title = R.string.app_name;
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_container, new AboutFragment());
+            ft.replace(R.id.container, new AboutFragment());
             ft.addToBackStack(String.valueOf(title)).commit();
         }
         else {
@@ -112,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
         }
         if (f != null) {
-            ft.replace(R.id.fragment_container, f);
+            ft.replace(R.id.container, f);
             ft.addToBackStack(String.valueOf(title)).commit();
             toolbar.setTitle(title);
             drawer.closeDrawer(GravityCompat.START);
@@ -123,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void exItemClicked(int id) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, new DescriptionFragment(id));
+        ft.replace(R.id.container, new DescriptionFragment(id));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack(String.valueOf(title)).commit();
     }
@@ -132,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements
     public void wkItemClicked(int id, String title) {
         toolbar.setTitle(title);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, new WktDescFragment(id));
+        ft.replace(R.id.container, new WktDescFragment(id));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack("_" + toolbar.getTitle()).commit();
     }
@@ -141,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements
         title = R.string.wkt_adding;
         toolbar.setTitle(title);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, new WktAddingFragment());
+        ft.replace(R.id.container, new WktAddingFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack(String.valueOf(title)).commit();
     }

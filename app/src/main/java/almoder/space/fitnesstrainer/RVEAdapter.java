@@ -1,5 +1,8 @@
 package almoder.space.fitnesstrainer;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,25 +10,96 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedListAdapter;
+import androidx.paging.PositionalDataSource;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.Executor;
 
-public class RVEAdapter extends RecyclerView.Adapter<RVEAdapter.ContentViewHolder> {
+public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseViewHolder> {
 
-    private final OnItemClickListener itemClickListener;
+    private final OnItemClickListener listener;
 
-    public interface OnItemClickListener{
-        void onItemClicked(int position);
+    public RVEAdapter(DiffUtil.ItemCallback<Exercise> diffUtilCallback, OnItemClickListener listener) {
+        super(diffUtilCallback);
+        this.listener = listener;
     }
 
-    public static class ContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    @NonNull
+    @Override
+    public ExerciseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, parent, false);
+        return new ExerciseViewHolder(view, listener);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ExerciseViewHolder holder, int position) {
+        holder.num = Objects.requireNonNull(getItem(position)).num();
+        holder.cvTitle.setText(Objects.requireNonNull(getItem(position)).title());
+        holder.cvType.setText(Objects.requireNonNull(getItem(position)).type());
+        holder.cvImage.setImageResource(Objects.requireNonNull(getItem(position)).imgRes1());
+    }
+
+    public interface OnItemClickListener{ void onItemClicked(int position); }
+
+    public static class MainThreadExecutor implements Executor {
+        private final Handler mHandler = new Handler(Looper.getMainLooper());
+
+        @Override
+        public void execute(Runnable command) { mHandler.post(command); }
+    }
+
+    public static class ExerciseDataSource extends PositionalDataSource<Exercise> {
+
+        private final Exercise storage;
+
+        public ExerciseDataSource(Exercise storage) {
+            this.storage = storage;
+        }
+
+        @Override
+        public void loadInitial(@NonNull LoadInitialParams params,
+                                @NonNull LoadInitialCallback<Exercise> callback) {
+            Log.d("TAG:", "loadInitial, requestedStartPosition = " + params.requestedStartPosition +
+                    ", requestedLoadSize = " + params.requestedLoadSize);
+            List<Exercise> result = storage.getData(
+                    params.requestedStartPosition, params.requestedLoadSize);
+            callback.onResult(result, 0);
+        }
+
+        @Override
+        public void loadRange(@NonNull LoadRangeParams params,
+                              @NonNull LoadRangeCallback<Exercise> callback) {
+            Log.d("TAG:", "loadRange, startPosition = " + params.startPosition + ", loadSize = " + params.loadSize);
+            List<Exercise> result = storage.getData(params.startPosition, params.loadSize);
+            callback.onResult(result);
+        }
+    }
+
+    public static class ExerciseDiffUtilCallback extends DiffUtil.ItemCallback<Exercise> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Exercise oldItem, @NonNull Exercise newItem) {
+            return oldItem.num() == newItem.num();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Exercise oldItem, @NonNull Exercise newItem) {
+            return oldItem.title().equals(newItem.title()) && oldItem.type().equals(newItem.type());
+        }
+    }
+
+    public static class ExerciseViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         int num;
         TextView cvTitle, cvType;
         ImageView cvImage;
-        OnItemClickListener cvClickListener;
+        RVEAdapter.OnItemClickListener cvClickListener;
 
-        public ContentViewHolder(View itemView, OnItemClickListener clickListener) {
+        public ExerciseViewHolder(View itemView, RVEAdapter.OnItemClickListener clickListener) {
             super(itemView);
             cvTitle = itemView.findViewById(R.id.row_title);
             cvType = itemView.findViewById(R.id.row_type);
@@ -38,37 +112,5 @@ public class RVEAdapter extends RecyclerView.Adapter<RVEAdapter.ContentViewHolde
         public void onClick(View v) {
             cvClickListener.onItemClicked(getLayoutPosition());
         }
-    }
-
-    LinkedList<Exercise> content;
-
-    public RVEAdapter(LinkedList<Exercise> content, OnItemClickListener itemClickListener) {
-        this.content = content;
-        this.itemClickListener = itemClickListener;
-    }
-
-    @Override
-    public int getItemCount() {
-        return content.size();
-    }
-
-    @NonNull
-    @Override
-    public ContentViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row, viewGroup, false);
-        return new ContentViewHolder(v, itemClickListener);
-    }
-
-    @Override
-    public void onBindViewHolder(ContentViewHolder cvh, int i) {
-        cvh.num = content.get(i).num();
-        cvh.cvTitle.setText(content.get(i).title());
-        cvh.cvType.setText(content.get(i).type());
-        cvh.cvImage.setImageResource(content.get(i).imgRes1());
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView rv) {
-        super.onAttachedToRecyclerView(rv);
     }
 }
