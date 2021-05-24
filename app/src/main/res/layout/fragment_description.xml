@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimaryDark"
+    android:background="?attr/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -31,7 +31,8 @@
                 android:layout_marginTop="@dimen/description_margin"
                 android:text="@string/undefined"
                 android:textAlignment="viewStart"
-                android:textSize="@dimen/description_type"/>
+                android:textSize="@dimen/description_type"
+                android:textColor="?attr/colorPrimary"/>
 
             <TextView
                 android:id="@+id/description_primer"
@@ -53,7 +54,7 @@
             android:clickable="false"
             android:focusable="false"
             android:visibility="gone"
-            card_view:cardBackgroundColor="@color/colorPrimarySurface"
+            card_view:cardBackgroundColor="?attr/colorPrimarySurface"
             card_view:cardCornerRadius="8sp"
             card_view:contentPadding="4sp">
 
@@ -82,7 +83,7 @@
 
             <ImageView
                 android:id="@+id/description_image"
-                android:background="@color/colorPrimarySurface"
+                android:background="?android:attr/editTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description_cv"
@@ -98,7 +99,7 @@
                 android:foreground="?selectableItemBackground"
                 android:clickable="false"
                 android:focusable="false"
-                card_view:cardBackgroundColor="@color/colorPrimarySurface"
+                card_view:cardBackgroundColor="?attr/colorPrimarySurface"
                 card_view:cardCornerRadius="8sp"
                 card_view:contentPadding="4sp">
 

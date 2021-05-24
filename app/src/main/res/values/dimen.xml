@@ -19,4 +19,5 @@
     <dimen name="description_tips">16sp</dimen>
     <dimen name="description_cv_text">16sp</dimen>
     <dimen name="settings_text">16sp</dimen>
+    <dimen name="settings_padding">8sp</dimen>
 </resources>

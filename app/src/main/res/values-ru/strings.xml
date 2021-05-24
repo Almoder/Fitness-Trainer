@@ -23,10 +23,16 @@
     <string name="description_steps">Этапы:</string>
     <string name="description_tips">Совет:</string>
     <!-- Settings -->
-    <string name="settings_language">Язык интерфейса</string>
-    <string-array name="settings_lang">
+    <string name="settings_appearance">Внешний вид</string>
+    <string name="settings_lang_prompt">Язык интерфейса</string>
+    <string-array name="settings_langs">
         <item>Английский</item>
         <item>Русский</item>
+    </string-array>
+    <string name="settings_theme_prompt">Цветовая тема</string>
+    <string-array name="settings_themes">
+        <item>По умолчанию</item>
+        <item>Темная</item>
     </string-array>
     <!-- About -->
     <string-array name="about_text">
@@ -38,4 +44,5 @@
         <item>данная программа была разработана в качестве дипломного проекта
             студентом Полоцкого Государственного Университета группы 17-ВС.</item>
     </string-array>
+    <string name="empty"> </string>
 </resources>

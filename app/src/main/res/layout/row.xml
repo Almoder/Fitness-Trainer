@@ -9,7 +9,7 @@
     android:layout_marginBottom="2sp"
     android:layout_marginEnd="@dimen/row_margin"
     android:layout_marginTop="2sp"
-    card_view:cardBackgroundColor="#FFFF"
+    card_view:cardBackgroundColor="?attr/colorPrimarySurface"
     card_view:cardCornerRadius="8sp"
     card_view:contentPadding="4sp"
     android:foreground="?selectableItemBackground"
@@ -25,6 +25,7 @@
             android:id="@+id/row_image"
             android:layout_width="@dimen/row_image"
             android:layout_height="@dimen/row_image"
+            android:background="#FFFFFF"
             android:src="@drawable/ic_workouts"
             tools:ignore="ContentDescription"/>
 
@@ -50,7 +51,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:text="@string/undefined"
-                android:textSize="@dimen/row_type"/>
+                android:textSize="@dimen/row_type"
+                android:textColor="?attr/colorPrimary"/>
 
         </RelativeLayout>
 

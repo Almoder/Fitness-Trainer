@@ -23,10 +23,16 @@
     <string name="description_steps">Steps:</string>
     <string name="description_tips">Advice:</string>
     <!-- Settings -->
-    <string name="settings_language">Language</string>
-    <string-array name="settings_lang">
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_lang_prompt">Language</string>
+    <string-array name="settings_langs">
         <item>English</item>
         <item>Russian</item>
+    </string-array>
+    <string name="settings_theme_prompt">ColorTheme</string>
+    <string-array name="settings_themes">
+        <item>Default</item>
+        <item>Dark</item>
     </string-array>
     <!-- About -->
     <string-array name="about_text">
@@ -38,5 +44,5 @@
         <item>This program was developed as a graduation project by
             a student of Polotsk State University, group 17-VS.</item>
     </string-array>
-
+    <string name="empty"> </string>
 </resources>

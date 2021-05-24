@@ -26,7 +26,7 @@ public class SharedPreferencer {
     }
 
     public void removeWorkout(int num) {
-        if(workouts.remove(num) != null) {
+        if (workouts.remove(num) != null) {
             SharedPreferences.Editor editor = sPref.edit();
             editor.clear();
             int i = 0;
@@ -57,16 +57,16 @@ public class SharedPreferencer {
             workouts.add(new WktData(sPref.getString("w" + i, "")));
             for (int j = 0; j < sPref.getInt(temp + "Count", 0); j++) {
                 workouts.get(i).addExercise(c, sPref.getInt(temp + j + "num", 0),
-                    sPref.getInt(temp + j + "reps", 0),
-                    sPref.getInt(temp + j + "weight", 0));
+                        sPref.getInt(temp + j + "reps", 0),
+                        sPref.getInt(temp + j + "weight", 0));
             }
             s++;
         }
     }
 
-    public void localization(String str) { sPref.edit().putString("localization", str).apply(); }
-
-    public String localization() { return sPref.getString("localization", "en"); }
-
     private int count() { return sPref.getInt("wktCount", 0); }
+    public void localization(String str) { sPref.edit().putString("localization", str).apply(); }
+    public String localization() { return sPref.getString("localization", "en"); }
+    public void saveTheme(int resId) { sPref.edit().putInt("usedTheme", resId).apply(); }
+    public int loadTheme() { return sPref.getInt("usedTheme", R.style.AppTheme); }
 }

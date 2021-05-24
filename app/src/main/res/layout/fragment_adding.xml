@@ -7,7 +7,7 @@
     android:paddingStart="8sp"
     android:paddingEnd="8sp"
     android:paddingBottom="8sp"
-    android:background="@color/colorPrimaryDark">
+    android:background="?attr/colorPrimaryDark">
 
     <TextView
         android:id="@+id/adding_title"
@@ -41,6 +41,6 @@
         android:onClick="onDoneClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription,UsingOnClickInXml"/>
 
 </RelativeLayout>

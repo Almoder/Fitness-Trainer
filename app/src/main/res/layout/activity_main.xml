@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:background="?attr/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,11 +19,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:background="?attr/colorAccent"
             android:elevation="4sp"
             app:title="@string/app_name"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            app:titleTextColor="?android:attr/textColorPrimary"/>
 
         <FrameLayout
             android:id="@+id/container"
@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemTextColor="?android:attr/textColor"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/drawer_menu"/>
 

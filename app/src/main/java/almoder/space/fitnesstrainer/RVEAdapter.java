@@ -37,10 +37,18 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
 
     @Override
     public void onBindViewHolder(@NonNull ExerciseViewHolder holder, int position) {
-        holder.num = Objects.requireNonNull(getItem(position)).num();
-        holder.cvTitle.setText(Objects.requireNonNull(getItem(position)).title());
-        holder.cvType.setText(Objects.requireNonNull(getItem(position)).type());
-        holder.cvImage.setImageResource(Objects.requireNonNull(getItem(position)).imgRes1());
+        if (getItem(position) == null) {
+            holder.num = 0;
+            holder.cvTitle.setText(R.string.empty);
+            holder.cvType.setText(R.string.empty);
+            holder.cvImage.setImageResource(R.drawable.ic_empty);
+        }
+        else {
+            holder.num = getItem(position).num();
+            holder.cvTitle.setText(getItem(position).title());
+            holder.cvType.setText(getItem(position).type());
+            holder.cvImage.setImageResource(getItem(position).imgRes1());
+        }
     }
 
     public interface OnItemClickListener{ void onItemClicked(int position); }
@@ -63,17 +71,17 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
         @Override
         public void loadInitial(@NonNull LoadInitialParams params,
                                 @NonNull LoadInitialCallback<Exercise> callback) {
-            Log.d("TAG:", "loadInitial, requestedStartPosition = " + params.requestedStartPosition +
+            Log.d("TAG", "loadInitial, requestedStartPosition = " + params.requestedStartPosition +
                     ", requestedLoadSize = " + params.requestedLoadSize);
             List<Exercise> result = storage.getData(
                     params.requestedStartPosition, params.requestedLoadSize);
-            callback.onResult(result, 0);
+            callback.onResult(result, params.requestedStartPosition);
         }
 
         @Override
         public void loadRange(@NonNull LoadRangeParams params,
                               @NonNull LoadRangeCallback<Exercise> callback) {
-            Log.d("TAG:", "loadRange, startPosition = " + params.startPosition + ", loadSize = " + params.loadSize);
+            Log.d("TAG", "loadRange, startPosition = " + params.startPosition + ", loadSize = " + params.loadSize);
             List<Exercise> result = storage.getData(params.startPosition, params.loadSize);
             callback.onResult(result);
         }

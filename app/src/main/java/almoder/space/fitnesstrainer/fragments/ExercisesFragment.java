@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,6 +44,7 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
 
     private ExercisesFragmentListener listener;
     private PagedList<Exercise> pagedList;
+    private int position = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,18 +57,20 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle sis) {
         View view = inflater.inflate(R.layout.fragment_exercises, container, false);
         RVEAdapter.ExerciseDataSource dataSource = new RVEAdapter.ExerciseDataSource(new Exercise(view.getContext()));
+        if (sis != null) position = sis.getInt("pos", 0);
+        Log.d("TAG", "(onCreate(). position: " + position);
         PagedList.Config config = new PagedList.Config.Builder()
-                .setInitialLoadSizeHint(30)
                 .setEnablePlaceholders(false)
-                .setPrefetchDistance(30)
-                .setPageSize(10)
+                .setPrefetchDistance(16)
+                .setPageSize(4)
                 .build();
         pagedList = new PagedList.Builder<>(dataSource, config)
                 .setNotifyExecutor(new RVEAdapter.MainThreadExecutor())
                 .setFetchExecutor(Executors.newFixedThreadPool(4))
+                .setInitialKey(position)
                 .build();
         RVEAdapter adapter = new RVEAdapter(new RVEAdapter.ExerciseDiffUtilCallback(), this);
         adapter.submitList(pagedList);
@@ -74,6 +78,14 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                position = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager()))
+                        .findFirstVisibleItemPosition();
+            }
+        });
         return view;
     }
 
@@ -81,6 +93,19 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         listener = (ExercisesFragmentListener)context;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onSaveInstanceState(new Bundle());
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("pos", position);
+        Log.d("TAG", "onSave...position: " + position);
     }
 
     @Override

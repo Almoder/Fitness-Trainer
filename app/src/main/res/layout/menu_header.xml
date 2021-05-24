@@ -3,10 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
+    android:background="?attr/colorAccent"
     android:gravity="bottom"
     android:padding="16sp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:elevation="4sp">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="25sp"
         android:text="@string/app_name"
-        android:textColor="@color/tabTextColor"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="@dimen/menu_title_text"
         android:textStyle="bold|italic"/>
 

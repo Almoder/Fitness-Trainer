@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private int title;
+    private NavigationView nav;
 
     @Override
     protected void onCreate(Bundle sis) {
+        setTheme(new SharedPreferencer(this).loadTheme());
         super.onCreate(sis);
         Configuration config = getResources().getConfiguration();
         config.setLocale(new Locale(new SharedPreferencer(this).localization()));
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
-        NavigationView nav = findViewById(R.id.nav_view);
+        nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.nav_drawer_open, R.string.nav_drawer_close);
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.container, new AboutFragment());
             ft.addToBackStack(String.valueOf(title)).commit();
+            nav.setCheckedItem(R.id.nav_about);
         }
         else {
             title = sis.getInt("m", 0);
@@ -167,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements
         toolbar.setTitle(title);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
@@ -178,6 +182,14 @@ public class MainActivity extends AppCompatActivity implements
             else {
                 title = Integer.parseInt(Objects.requireNonNull(temp));
                 toolbar.setTitle(title);
+                switch (title) {
+                    case R.string.m1: nav.setCheckedItem(R.id.nav_exercise); break;
+                    case R.string.m2: nav.setCheckedItem(R.id.nav_workouts); break;
+                    case R.string.m3: nav.setCheckedItem(R.id.nav_another); break;
+                    case R.string.m4: nav.setCheckedItem(R.id.nav_config); break;
+                    case R.string.m5: nav.setCheckedItem(R.id.nav_share); break;
+                    default: nav.setCheckedItem(R.id.nav_about); break;
+                }
             }
         }
     }

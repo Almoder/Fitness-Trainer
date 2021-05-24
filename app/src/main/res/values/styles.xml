@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimarySurface">@color/colorPrimarySurface</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlActivated">@color/colorControlActivated</item>
-        <item name="android:textColor">@color/android_textColor</item>
-        <item name="android:textColorPrimary">@color/android_textColor</item>
-        <item name="android:editTextColor">@color/tabTextColor</item>
-        <item name="android:colorBackground">@color/android_colorBackground</item>
+        <item name="colorPrimary">@color/appThemePrimary</item>
+        <item name="colorPrimaryDark">@color/appThemePrimaryDark</item>
+        <item name="colorPrimarySurface">@color/appThemePrimarySurface</item>
+        <item name="colorAccent">@color/appThemeAccent</item>
+        <item name="colorControlActivated">@color/appThemeControlActivated</item>
+        <item name="android:textColor">@color/appThemeTextColor</item>
+        <item name="android:textColorPrimary">@color/appThemeTextColorPrimary</item>
+        <item name="android:editTextColor">@color/appThemeColorBackground</item>
+        <item name="android:colorBackground">@color/appThemeTabTextColor</item>
+        <item name="colorControlNormal">@color/appThemePrimarySurface</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppTheme.NoActionBar">
+    <style name="DarkTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/darkThemePrimary</item>
+        <item name="colorPrimaryDark">@color/darkThemePrimaryDark</item>
+        <item name="colorPrimarySurface">@color/darkThemePrimarySurface</item>
+        <item name="colorAccent">@color/darkThemeAccent</item>
+        <item name="colorControlActivated">@color/darkThemeControlActivated</item>
+        <item name="android:textColor">@color/darkThemeTextColor</item>
+        <item name="android:textColorPrimary">@color/darkThemeTextColorPrimary</item>
+        <item name="android:editTextColor">@color/darkThemeColorBackground</item>
+        <item name="android:colorBackground">@color/darkThemeTabTextColor</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
