@@ -6,11 +6,14 @@
         <item name="colorPrimarySurface">@color/appThemePrimarySurface</item>
         <item name="colorAccent">@color/appThemeAccent</item>
         <item name="colorControlActivated">@color/appThemeControlActivated</item>
+        <item name="colorControlNormal">@color/appThemePrimarySurface</item>
         <item name="android:textColor">@color/appThemeTextColor</item>
         <item name="android:textColorPrimary">@color/appThemeTextColorPrimary</item>
         <item name="android:editTextColor">@color/appThemeColorBackground</item>
         <item name="android:colorBackground">@color/appThemeTabTextColor</item>
-        <item name="colorControlNormal">@color/appThemePrimarySurface</item>
+        <item name="android:textSize">@dimen/default_text</item>
+        <item name="android:keyTextSize">@dimen/default_key_text</item>
+        <item name="android:constantSize">@dimen/constant_size</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -24,8 +27,23 @@
         <item name="android:textColorPrimary">@color/darkThemeTextColorPrimary</item>
         <item name="android:editTextColor">@color/darkThemeColorBackground</item>
         <item name="android:colorBackground">@color/darkThemeTabTextColor</item>
+        <item name="android:textSize">@dimen/default_text</item>
+        <item name="android:keyTextSize">@dimen/default_key_text</item>
+        <item name="android:constantSize">@dimen/constant_size</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    <style name="DefaultText">
+        <item name="android:textSize">@dimen/default_text</item>
+        <item name="android:keyTextSize">@dimen/default_key_text</item>
+    </style>
+    <style name="SmallText">
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:keyTextSize">@dimen/small_key_text</item>
+    </style>
+    <style name="LargeText">
+        <item name="android:textSize">@dimen/large_text</item>
+        <item name="android:keyTextSize">@dimen/large_key_text</item>
     </style>
     <style name="ShapeAppearanceOverlay.MyApp.Button.Rounded" parent="">
         <item name="cornerFamily">rounded</item>

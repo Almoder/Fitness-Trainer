@@ -15,6 +15,7 @@ import androidx.paging.PositionalDataSource;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
@@ -44,10 +45,10 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
             holder.cvImage.setImageResource(R.drawable.ic_empty);
         }
         else {
-            holder.num = getItem(position).num();
-            holder.cvTitle.setText(getItem(position).title());
-            holder.cvType.setText(getItem(position).type());
-            holder.cvImage.setImageResource(getItem(position).imgRes1());
+            holder.num = Objects.requireNonNull(getItem(position)).num();
+            holder.cvTitle.setText(Objects.requireNonNull(getItem(position)).title());
+            holder.cvType.setText(Objects.requireNonNull(getItem(position)).type());
+            holder.cvImage.setImageResource(Objects.requireNonNull(getItem(position)).imgRes1());
         }
     }
 
@@ -62,10 +63,15 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
 
     public static class ExerciseDataSource extends PositionalDataSource<Exercise> {
 
-        private final Exercise storage;
+        private Exercise storage;
+        private List<Exercise> store = null;
 
         public ExerciseDataSource(Exercise storage) {
             this.storage = storage;
+        }
+
+        public ExerciseDataSource(List<Exercise> store) {
+            this.store = store;
         }
 
         @Override
@@ -73,17 +79,43 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
                                 @NonNull LoadInitialCallback<Exercise> callback) {
             Log.d("TAG", "loadInitial, requestedStartPosition = " + params.requestedStartPosition +
                     ", requestedLoadSize = " + params.requestedLoadSize);
-            List<Exercise> result = storage.getData(
-                    params.requestedStartPosition, params.requestedLoadSize);
-            callback.onResult(result, params.requestedStartPosition);
+            if (storage != null) {
+                List<Exercise> result = storage.getData(
+                        params.requestedStartPosition, params.requestedLoadSize);
+                callback.onResult(result, params.requestedStartPosition);
+            }
+            else if (store != null && store.size() != 0){
+                int sp = params.requestedStartPosition, loadSize = params.requestedLoadSize;
+                List<Exercise> result = new LinkedList<>();
+                if (sp >= store.size()) {
+                    callback.onResult(result, params.requestedStartPosition);
+                    return;
+                }
+                else if (sp + loadSize >= store.size()) loadSize = store.size() - sp;
+                for (int i = sp; i < loadSize; i++) result.add(store.get(i));
+                callback.onResult(result, params.requestedStartPosition);
+            }
         }
 
         @Override
         public void loadRange(@NonNull LoadRangeParams params,
                               @NonNull LoadRangeCallback<Exercise> callback) {
             Log.d("TAG", "loadRange, startPosition = " + params.startPosition + ", loadSize = " + params.loadSize);
-            List<Exercise> result = storage.getData(params.startPosition, params.loadSize);
-            callback.onResult(result);
+            if (storage != null) {
+                List<Exercise> result = storage.getData(params.startPosition, params.loadSize);
+                callback.onResult(result);
+            }
+            else if (store != null){
+                int sp = params.startPosition, loadSize = params.loadSize;
+                List<Exercise> result = new LinkedList<>();
+                if (sp >= store.size()) {
+                    callback.onResult(result);
+                    return;
+                }
+                else if (sp + loadSize >= store.size()) loadSize = store.size() - sp;
+                for (int i = sp; i < loadSize; i++) result.add(store.get(i));
+                callback.onResult(result);
+            }
         }
     }
 

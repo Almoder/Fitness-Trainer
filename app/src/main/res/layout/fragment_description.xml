@@ -11,7 +11,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/description_margin"
         android:gravity="start">
 
         <TextView
@@ -19,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/description_margin"
             android:text="@string/undefined"
             android:textAlignment="viewStart"
             android:textSize="@dimen/description_title" />
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description_title"
-                android:layout_marginTop="@dimen/description_margin"
+                android:layout_marginStart="@dimen/description_margin"
                 android:text="@string/undefined"
                 android:textAlignment="viewStart"
                 android:textSize="@dimen/description_type"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description_type"
-                android:layout_marginTop="@dimen/description_margin"
+                android:layout_margin="@dimen/description_margin"
                 android:text="@string/undefined"
                 android:textAlignment="viewStart"
                 android:textSize="@dimen/description_primer"/>
@@ -48,34 +48,81 @@
             android:id="@+id/description_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/description_margin"
             android:layout_below="@id/description_primer"
             android:foreground="?selectableItemBackground"
             android:clickable="false"
             android:focusable="false"
             android:visibility="gone"
             card_view:cardBackgroundColor="?attr/colorPrimarySurface"
-            card_view:cardCornerRadius="8sp"
-            card_view:contentPadding="4sp">
+            card_view:contentPaddingLeft="@dimen/description_margin"
+            card_view:contentPaddingRight="@dimen/description_margin">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/description_repeats"
+                    android:id="@+id/description_reps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/description_reps_edit"
                     android:layout_alignParentStart="true"
-                    android:textSize="@dimen/description_cv_text"/>
+                    android:gravity="center_vertical"
+                    android:text="@string/description_reps"
+                    android:textAlignment="gravity"
+                    android:textSize="?android:attr/textSize"/>
+
+                <EditText
+                    android:id="@+id/description_reps_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@id/description_reps"
+                    android:paddingTop="0sp"
+                    android:inputType="numberSigned"
+                    android:textSize="@dimen/adding_edit"
+                    android:textColor="?android:attr/textColor"
+                    tools:ignore="Autofill,LabelFor"/>
 
                 <TextView
                     android:id="@+id/description_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="@dimen/description_cv_text"
+                    android:layout_alignTop="@id/description_weight_edit"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/description_weight"
+                    android:textAlignment="gravity"
+                    android:textSize="?android:attr/textSize"
                     android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/description_weight_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description_reps"
+                    android:layout_toEndOf="@id/description_weight"
+                    android:layout_marginTop="@dimen/description_margin"
+                    android:paddingTop="0sp"
+                    android:inputType="numberSigned"
+                    android:textSize="@dimen/adding_edit"
+                    android:textColor="?android:attr/textColor"
+                    android:visibility="gone"
+                    tools:ignore="Autofill,LabelFor"/>
+
+                <Button
+                    android:id="@+id/exc_add_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/constantSize"
+                    android:layout_below="@id/description_weight_edit"
+                    android:layout_marginBottom="@dimen/description_margin"
+                    android:background="?attr/colorAccent"
+                    android:text="@string/add_to_wkt"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="?android:attr/textSize"
+                    android:onClick="onDescAddClick"
+                    android:visibility="gone"
+                    tools:ignore="UsingOnClickInXml"/>
 
             </RelativeLayout>
 
@@ -88,20 +135,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description_cv"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/description_margin"
+                android:layout_margin="@dimen/description_margin"
+                android:src="@drawable/e1_0"
                 tools:ignore="ContentDescription"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/description_margin"
                 android:layout_below="@id/description_image"
                 android:foreground="?selectableItemBackground"
                 android:clickable="false"
                 android:focusable="false"
                 card_view:cardBackgroundColor="?attr/colorPrimarySurface"
-                card_view:cardCornerRadius="8sp"
-                card_view:contentPadding="4sp">
+                card_view:contentPadding="@dimen/description_margin">
 
                 <LinearLayout
                     android:layout_width="match_parent"

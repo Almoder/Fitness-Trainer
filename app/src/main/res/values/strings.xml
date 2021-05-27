@@ -16,20 +16,24 @@
     <string name="sort_az">Sort A-Z</string>
     <string name="menu_edit">Edit</string>
     <!-- Workouts -->
-    <string name="exs_count">Exercises count: </string>
+    <string name="exs_count">Exercises count:</string>
     <string name="wkt_adding">Workout adding</string>
     <string name="wkt_title">Title</string>
     <!-- Description -->
     <string name="description_steps">Steps:</string>
     <string name="description_tips">Advice:</string>
+    <string name="description_reps">Repetitions:</string>
+    <string name="description_weight">Weight:</string>
+    <string name="add_to_wkt">Add to workout</string>
+    <string name="confirm_changes">Confirm changes</string>
     <!-- Settings -->
     <string name="settings_appearance">Appearance</string>
-    <string name="settings_lang_prompt">Language</string>
+    <string name="settings_lang_text">Language:</string>
     <string-array name="settings_langs">
         <item>English</item>
         <item>Russian</item>
     </string-array>
-    <string name="settings_theme_prompt">ColorTheme</string>
+    <string name="settings_theme_text">Color theme:</string>
     <string-array name="settings_themes">
         <item>Default</item>
         <item>Dark</item>
@@ -45,4 +49,7 @@
             a student of Polotsk State University, group 17-VS.</item>
     </string-array>
     <string name="empty"> </string>
+    <!-- Toasts -->
+    <string name="title_is_empty">Title is empty!</string>
+    <string name="workout_exist">Workout with this title already exist!</string>
 </resources>

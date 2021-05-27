@@ -22,14 +22,18 @@
     <!-- Description -->
     <string name="description_steps">Этапы:</string>
     <string name="description_tips">Совет:</string>
+    <string name="description_reps">Повторений:</string>
+    <string name="description_weight">Вес:</string>
+    <string name="add_to_wkt">Добавить в тренировку</string>
+    <string name="confirm_changes">Подтвердить изменения</string>
     <!-- Settings -->
     <string name="settings_appearance">Внешний вид</string>
-    <string name="settings_lang_prompt">Язык интерфейса</string>
+    <string name="settings_lang_text">Язык интерфейса:</string>
     <string-array name="settings_langs">
         <item>Английский</item>
         <item>Русский</item>
     </string-array>
-    <string name="settings_theme_prompt">Цветовая тема</string>
+    <string name="settings_theme_text">Цветовая тема:</string>
     <string-array name="settings_themes">
         <item>По умолчанию</item>
         <item>Темная</item>
@@ -45,4 +49,7 @@
             студентом Полоцкого Государственного Университета группы 17-ВС.</item>
     </string-array>
     <string name="empty"> </string>
+    <!-- Toasts -->
+    <string name="title_is_empty">Введите название!</string>
+    <string name="workout_exist">Тренировка с таким названием уже существует!</string>
 </resources>

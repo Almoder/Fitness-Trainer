@@ -6,15 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -44,13 +42,16 @@ public class MainActivity extends AppCompatActivity implements
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    private int title;
+    private int title = R.string.undefined, wktId, excId;
+    private String m;
     private NavigationView nav;
+    private boolean excAdding = false, wktDesc = false;
 
     @Override
     protected void onCreate(Bundle sis) {
         setTheme(new SharedPreferencer(this).loadTheme());
         super.onCreate(sis);
+        if (sis != null) onRestoreInstanceState(sis);
         Configuration config = getResources().getConfiguration();
         config.setLocale(new Locale(new SharedPreferencer(this).localization()));
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
@@ -71,10 +72,8 @@ public class MainActivity extends AppCompatActivity implements
             ft.addToBackStack(String.valueOf(title)).commit();
             nav.setCheckedItem(R.id.nav_about);
         }
-        else {
-            title = sis.getInt("m", 0);
-            toolbar.setTitle(title);
-        }
+        else if (wktDesc) toolbar.setTitle(m);
+        else toolbar.setTitle(title);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
         }
         if (f != null) {
+            if (title != R.string.m1) excAdding = false;
             ft.replace(R.id.container, f);
             ft.addToBackStack(String.valueOf(title)).commit();
             toolbar.setTitle(title);
@@ -119,9 +119,12 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void exItemClicked(int id) {
+    public void exItemClicked(int id, Exercise exc) {
+        excId = id;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new DescriptionFragment(id));
+        if (wktDesc) ft.replace(R.id.container, new DescriptionFragment(id, excAdding,
+                new SharedPreferencer(this).loadWorkout(wktId).exercises().get(excId)));
+        else ft.replace(R.id.container, new DescriptionFragment(id, excAdding, exc));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack(String.valueOf(title)).commit();
     }
@@ -129,13 +132,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void wkItemClicked(int id, String title) {
         toolbar.setTitle(title);
+        m = title; wktId = id; wktDesc = true;
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container, new WktDescFragment(id));
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.addToBackStack("_" + toolbar.getTitle()).commit();
     }
 
-    public void onAddClick(View view) {
+    public void onWktAddClick(View view) {
         title = R.string.wkt_adding;
         toolbar.setTitle(title);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -144,30 +148,79 @@ public class MainActivity extends AppCompatActivity implements
         ft.addToBackStack(String.valueOf(title)).commit();
     }
 
+    public void onExcAddClick(View view) {
+        title = R.string.m1;
+        excAdding = true; wktDesc = false;
+        toolbar.setTitle(title);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, new ExercisesFragment());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(String.valueOf(title)).commit();
+    }
+
     public void onDoneClick(View view) {
         EditText editText = findViewById(R.id.adding_edit_title);
-        if (String.valueOf(editText.getText()).isEmpty())
-            Toast.makeText(this, "Title is empty!", Toast.LENGTH_SHORT).show();
+        String title = String.valueOf(editText.getText());
+        if (title.isEmpty())
+            Toast.makeText(this, R.string.title_is_empty, Toast.LENGTH_SHORT).show();
+        else if (!new SharedPreferencer(this).addWorkout(new WktData(title)))
+            Toast.makeText(this, R.string.workout_exist, Toast.LENGTH_SHORT).show();
         else {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            new SharedPreferencer(this).saveWorkout(
-                    new WktData(String.valueOf(editText.getText())));
             onBackPressed();
+        }
+    }
+
+    public void onDescAddClick(View view) {
+        Log.d("TAG", "wktId: " + wktId + ", excId: " + excId);
+        EditText ed1 = findViewById(R.id.description_reps_edit);
+        EditText ed2 = findViewById(R.id.description_weight_edit);
+        String reps = String.valueOf(ed1.getText());
+        String weight = String.valueOf(ed2.getText());
+        if (reps.equals("0") || weight.equals("0"))
+            Toast.makeText(this, "Reps or weight cannot be 0!", Toast.LENGTH_LONG).show();
+        else {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            SharedPreferencer sp = new SharedPreferencer(this);
+            sp.loadWorkouts();
+            if (excAdding) sp.workouts.get(wktId).addExercise(
+                    this, excId, Integer.parseInt(reps), Integer.parseInt(weight));
+            else {
+                sp.workouts.get(wktId).exercises().get(excId).reps(Integer.parseInt(reps));
+                sp.workouts.get(wktId).exercises().get(excId).weight(Integer.parseInt(weight));
+            }
+            excAdding = false;
+            sp.saveWorkout(sp.workouts.get(wktId), wktId);
+            toolbar.setTitle(sp.workouts.get(wktId).title());
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.container, new WktDescFragment(wktId));
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack("_" + toolbar.getTitle()).commit();
         }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("m", title);
+        if (wktDesc) outState.putString("m", m);
+        else outState.putInt("title", title);
+        outState.putInt("wktId", wktId);
+        outState.putInt("excId", excId);
+        outState.putBoolean("excAdding", excAdding);
+        outState.putBoolean("wktDesc", wktDesc);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle sis) {
         super.onRestoreInstanceState(sis);
-        title = sis.getInt("m", 0);
-        toolbar.setTitle(title);
+        title = sis.getInt("title", R.string.undefined);
+        wktId = sis.getInt("wktId", 0);
+        excId = sis.getInt("excId", 1);
+        excAdding = sis.getBoolean("excAdding", false);
+        wktDesc = sis.getBoolean("wktDesc", false);
+        m = sis.getString("m", "Error");
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -178,9 +231,14 @@ public class MainActivity extends AppCompatActivity implements
         else if (fm.getBackStackEntryCount() > 1) {
             fm.popBackStack();
             String temp = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName();
-            if (temp != null && temp.toCharArray()[0] == '_') toolbar.setTitle(temp.substring(1));
+            if (temp != null && temp.toCharArray()[0] == '_') {
+                fm.popBackStack();
+                wktDesc = true;
+                wkItemClicked(wktId, temp.substring(1));
+            }
             else {
                 title = Integer.parseInt(Objects.requireNonNull(temp));
+                wktDesc = false;
                 toolbar.setTitle(title);
                 switch (title) {
                     case R.string.m1: nav.setCheckedItem(R.id.nav_exercise); break;

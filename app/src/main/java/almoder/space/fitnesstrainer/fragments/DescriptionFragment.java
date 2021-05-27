@@ -1,34 +1,28 @@
 package almoder.space.fitnesstrainer.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Objects;
-import java.util.Scanner;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 
 public class DescriptionFragment extends Fragment {
 
-    private boolean imgCh = true;
-    private int num, reps, weight, imgRes1, imgRes2;
-    private int[] ids = { R.id.description_title, R.id.description_type, R.id.description_primer,
+    private boolean imgCh = true, excAdding = false;
+    private int num, reps = 0, weight = 0, imgRes1, imgRes2;
+    private Exercise exc = null;
+    private final int[] ids = { R.id.description_title, R.id.description_type, R.id.description_primer,
         R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
 
     public DescriptionFragment() {
@@ -39,46 +33,58 @@ public class DescriptionFragment extends Fragment {
         this.num = num;
     }
 
-    public DescriptionFragment(int num, int reps) {
-        this(num);
-        this.reps = reps;
-    }
-
-    public DescriptionFragment(int num, int reps, int weight) {
-        this(num, reps);
-        this.weight = weight;
+    public DescriptionFragment(int num, boolean excAdding, Exercise exc) {
+        this.num = num;
+        this.excAdding = excAdding;
+        this.exc = exc;
+        if (exc != null) {
+            reps = exc.reps();
+            weight = exc.weight();
+        }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle sis) {
         View view = inflater.inflate(R.layout.fragment_description, container, false);
-        if (savedInstanceState != null) num = savedInstanceState.getInt("num", num);
-        Exercise e = new Exercise(view.getContext(), num, reps, weight);
-        e.initAll();
+        if (sis != null)  {
+            num = sis.getInt("num", num);
+            reps = sis.getInt("reps", reps);
+            weight = sis.getInt("weight", weight);
+            excAdding = sis.getBoolean("excAdding", excAdding);
+        }
+        if (exc == null) exc = new Exercise(view.getContext(), num, reps, weight);
+        num = exc.num();
+        exc.initAll();
         TextView[] tvs = new TextView[6];
         for (int i = 0; i < tvs.length; i++) tvs[i] = view.findViewById(ids[i]);
-        for (int i = 0; i < e.params().length; i++) tvs[i].setText(e.params()[i]);
+        for (int i = 0; i < exc.params().length; i++) tvs[i].setText(exc.params()[i]);
         ImageView iv = view.findViewById(R.id.description_image);
-        imgRes1 = e.imgRes1();
-        imgRes2 = e.imgRes2();
-        if (e.tips() != null) {
+        imgRes1 = exc.imgRes1();
+        imgRes2 = exc.imgRes2();
+        if (exc.tips() != null) {
             tvs[4].setVisibility(View.VISIBLE);
             tvs[5].setVisibility(View.VISIBLE);
-            tvs[5].setText(e.tips());
+            tvs[5].setText(exc.tips());
         }
-        if (e.reps() != 0) {
+        EditText ed1 = view.findViewById(R.id.description_reps_edit);
+        if (exc.reps() != 0 || excAdding) {
             view.findViewById(R.id.description_cv).setVisibility(View.VISIBLE);
-            TextView tv7 = view.findViewById(R.id.description_repeats);
+            TextView tv7 = view.findViewById(R.id.description_reps);
             tv7.setVisibility(View.VISIBLE);
-            tv7.append(String.valueOf(e.reps()));
-            if (e.weight() != 0) {
-                TextView tv8 = view.findViewById(R.id.description_weight);
-                tv8.setVisibility(View.VISIBLE);
-                tv8.append(String.valueOf(e.weight()));
-            }
+            ed1.setText(String.valueOf(exc.reps()));
         }
+        if (exc.weight() != 0 || excAdding) {
+            TextView tv8 = view.findViewById(R.id.description_weight);
+            tv8.setVisibility(View.VISIBLE);
+            EditText ed2 = view.findViewById(R.id.description_weight_edit);
+            ed2.setText(String.valueOf(exc.weight()));
+            ed2.setVisibility(View.VISIBLE);
+        }
+        Button button = view.findViewById(R.id.exc_add_button);
+        button.setText(excAdding ? R.string.add_to_wkt : R.string.confirm_changes);
+        button.setVisibility(ed1.getVisibility());
         iv.setImageResource(imgRes1);
         process(view);
         return view;
@@ -88,6 +94,14 @@ public class DescriptionFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("num", num);
+        outState.putInt("reps", reps);
+        outState.putInt("weight", weight);
+        outState.putBoolean("excAdding", excAdding);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 
     private void process(View view) {

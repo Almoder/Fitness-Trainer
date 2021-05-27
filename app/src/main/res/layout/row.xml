@@ -12,7 +12,6 @@
     card_view:cardBackgroundColor="?attr/colorPrimarySurface"
     card_view:cardCornerRadius="8sp"
     card_view:contentPadding="4sp"
-    android:foreground="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
 

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimarySurface">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -25,25 +25,49 @@
                 android:id="@+id/settings_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
                 android:text="@string/settings_appearance"
                 android:textSize="@dimen/settings_text"
                 android:textColor="?attr/colorAccent"/>
 
-            <Spinner
-                android:id="@+id/lang_spinner"
-                android:prompt="@string/settings_lang_prompt"
+            <TextView
+                android:id="@+id/settings_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/settings_padding"/>
+                android:layout_marginTop="@dimen/settings_padding"
+                android:layout_below="@+id/settings_text1"
+                android:layout_alignParentStart="true"
+                android:text="@string/settings_lang_text"
+                android:textSize="@dimen/settings_text"
+                android:textColor="?android:attr/textColor"/>
+
+            <Spinner
+                android:id="@+id/lang_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/settings_text2"
+                android:layout_toEndOf="@+id/settings_text2"/>
+
+            <TextView
+                android:id="@+id/settings_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/settings_padding"
+                android:layout_below="@+id/settings_text2"
+                android:layout_alignParentStart="true"
+                android:text="@string/settings_theme_text"
+                android:textSize="@dimen/settings_text"
+                android:textColor="?android:attr/textColor"/>
 
             <Spinner
                 android:id="@+id/theme_spinner"
-                android:prompt="@string/settings_theme_prompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/settings_padding"/>
+                android:layout_alignTop="@+id/settings_text3"
+                android:layout_toEndOf="@+id/settings_text3"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 

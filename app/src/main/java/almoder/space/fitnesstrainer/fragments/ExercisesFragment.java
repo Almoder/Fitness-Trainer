@@ -2,12 +2,7 @@ package almoder.space.fitnesstrainer.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,31 +10,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.paging.PagedList;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVEAdapter;
-import almoder.space.fitnesstrainer.SharedPreferencer;
 
 public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 
     public interface ExercisesFragmentListener {
-        void exItemClicked(int id);
+        void exItemClicked(int id, Exercise exc);
     }
 
     private ExercisesFragmentListener listener;
@@ -61,15 +50,15 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
         View view = inflater.inflate(R.layout.fragment_exercises, container, false);
         RVEAdapter.ExerciseDataSource dataSource = new RVEAdapter.ExerciseDataSource(new Exercise(view.getContext()));
         if (sis != null) position = sis.getInt("pos", 0);
-        Log.d("TAG", "(onCreate(). position: " + position);
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
-                .setPrefetchDistance(16)
+                .setInitialLoadSizeHint(12)
+                .setPrefetchDistance(64)
                 .setPageSize(4)
                 .build();
         pagedList = new PagedList.Builder<>(dataSource, config)
                 .setNotifyExecutor(new RVEAdapter.MainThreadExecutor())
-                .setFetchExecutor(Executors.newFixedThreadPool(4))
+                .setFetchExecutor(Executors.newFixedThreadPool(8))
                 .setInitialKey(position)
                 .build();
         RVEAdapter adapter = new RVEAdapter(new RVEAdapter.ExerciseDiffUtilCallback(), this);
@@ -105,13 +94,13 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("pos", position);
-        Log.d("TAG", "onSave...position: " + position);
     }
 
     @Override
     public void onItemClicked(int position) {
         if (listener != null && pagedList.get(position) != null) {
-            listener.exItemClicked(Objects.requireNonNull(pagedList.get(position)).num());
+            listener.exItemClicked(Objects.requireNonNull(
+                    pagedList.get(position)).num(), null);
         }
         else Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
     }

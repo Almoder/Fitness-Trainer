@@ -23,7 +23,7 @@
             android:layout_margin="16sp"
             android:elevation="4sp"
             android:src="@drawable/ic_add"
-            android:onClick="onAddClick"
+            android:onClick="onWktAddClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="ContentDescription,UsingOnClickInXml"/>
