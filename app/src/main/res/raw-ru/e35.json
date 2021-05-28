@@ -1,22 +1,22 @@
 {
     "id": "0035",
     "name": "seated-rear-lateral-cable-raise",
-    "title": "Seated Rear Lateral Cable Raise",
-    "primer": "Tis is an exercise for shoulder strengthening.",
-    "type": "isolation",
+    "title": "Разведение рук в стороны на нижнем блоке",
+    "primer": "Упражнение на укрепление плеч.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Sit on the edge of a bench with your feet on the floor in front of you.",
-        "Rest your chest on your thighs with your back straight, grasp the cable pulleys with opposite hands.",
-        "Raise your upper arms to shoulder height. Pause at the top for a moment.",
-        "Lower your arms to the starting position in a controlled motion.",
-        "Repeat."
+        "Сядьте на край скамьи, поставив ступни на пол перед собой.",
+        "Положите грудь на бедра, спина прямая, возьмитесь за шкивы троса противоположными руками.",
+        "Поднимите руки на высоту плеч. Задержитесь на мгновение вверху.",
+        "Контролируемым движеинем опустите руки в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

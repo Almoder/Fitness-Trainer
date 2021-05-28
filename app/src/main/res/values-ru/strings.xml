@@ -29,12 +29,12 @@
     <!-- Settings -->
     <string name="settings_appearance">Внешний вид</string>
     <string name="settings_lang_text">Язык интерфейса:</string>
-    <string-array name="settings_langs">
+    <string-array name="lang_entries">
         <item>Английский</item>
         <item>Русский</item>
     </string-array>
     <string name="settings_theme_text">Цветовая тема:</string>
-    <string-array name="settings_themes">
+    <string-array name="color_theme_entries">
         <item>По умолчанию</item>
         <item>Темная</item>
     </string-array>

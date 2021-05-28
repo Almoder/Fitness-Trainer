@@ -39,7 +39,7 @@ public class SharedPreferencer {
                 editor.putInt(temp + i + "reps", e.reps());
                 editor.putInt(temp + i + "weight", e.weight());
             }
-        }
+        } else editor.putInt("w" + id + "eCount", 0);
         editor.apply();
     }
 

@@ -34,7 +34,7 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
         c = view.getContext();
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(c, android.R.layout.simple_spinner_item,
-            getResources().getStringArray(R.array.settings_langs));
+            getResources().getStringArray(R.array.lang_entries));
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner1 = view.findViewById(R.id.lang_spinner);
         spinner1.setAdapter(adapter1);
@@ -53,7 +53,7 @@ public class SettingsFragment extends Fragment {
         });
         spinner1.setSelection(new SharedPreferencer(c).localization().equals("en") ? 0 : 1);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(c, android.R.layout.simple_spinner_item,
-            getResources().getStringArray(R.array.settings_themes));
+            getResources().getStringArray(R.array.color_theme_entries));
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner2 = view.findViewById(R.id.theme_spinner);
         spinner2.setAdapter(adapter2);

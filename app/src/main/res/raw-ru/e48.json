@@ -1,27 +1,27 @@
 {
     "id": "0051",
     "name": "decline-barbell-bench-press",
-    "title": "Bench Press: Barbell (Decline)",
-    "primer": "This is an exercise for chest, triceps and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Жим штанги лежа (отрицательный наклон)",
+    "primer": "Упражнение на укрепление трицепсов, мышц груди и плеч.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "bench: decline",
-        "barbell"
+        "наклонная скамья",
+        "штанга"
     ],
     "steps": [
-        "Lie on a decline bench with your head lower than your feet.",
-        "Grasp the bar at a grip 3-6 inches wider than your shoulders.",
-        "Raise the bar above your chest, keeping your elbows close in.",
-        "Slowly and with control lower the bar straight to your lower chest.",
-        "Raise the bar back up to starting position with the bar just above your chest.",
-        "Repeat."
+        "Лягте на наклонную скамью вниз головой.",
+        "Возьмитесь за гриф хватом немного шире плеч.",
+        "Поднимите штангу над грудью, прижав локти к себе.",
+        "Медленно и контролируемым движением опустите штангу к нижней части груди.",
+        "Поднимите штангу обратно в исходное положение так, чтобы штанга находилась чуть выше груди.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

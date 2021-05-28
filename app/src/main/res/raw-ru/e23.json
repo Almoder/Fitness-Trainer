@@ -1,24 +1,24 @@
 {
     "id": "0023",
     "name": "lying-rear-lateral-raise",
-    "title": "Lying Rear Lateral Raise",
-    "primer": "This is an exercise for shoulder strengthening.",
-    "type": "isolation",
+    "title": "Разведение гантелей в положении лежа лицом вниз",
+    "primer": "Упражнение на укрепление мышц плеч.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [],
     "equipment": [
-        "flat bench",
-        "dumbbells"
+        "плоская скамья",
+        "гантели"
     ],
     "steps": [
-        "Place the dumbbells at he head of the bench.",
-        "Lie facedown on a raised bench; raised enough for your arms to move freely beneath the bench.",
-        "Place your toes on the floor in order to stabilise yourself.",
-        "Grasp the dumbbells and with a 30 degree bend in your elbows, this is the starting position.",
-        "Raise your arms to shoulder height, maintaining a controlled motion.",
-        "Return to starting position and repeat."
+        "Положите гантели в изголовьи скамьи.",
+        "Лягте на скамью лицом вниз; приподнимите скамью так, чтобы ваши руки могли свободно двигаться под ней.",
+        "Упритесь пальцами ног в пол.",
+        "Возьмитесь за гантели, согнув локти на 30 градусов. Это исходное положение.",
+        "Контролируемым движением поднимите руки на высоту плеч. Задержитесь в верхнем положении.",
+        "Опустите руки в исходное положение. Повторяйте."
     ],
     "tips": [],
     "references": []

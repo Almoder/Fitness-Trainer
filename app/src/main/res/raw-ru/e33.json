@@ -1,20 +1,20 @@
 {
     "id": "0033",
     "name": "front-dumbbell-raise",
-    "title": "Front Dumbbell Raise",
-    "primer": "This is an exercise for shoulder strengthening.",
-    "type": "isolation",
+    "title": "Подъем гантелей спереди",
+    "primer": "Упражнение на укрепление плеч.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [],
     "equipment": [
-        "dumbbells"
+        "гантели"
     ],
     "steps": [
-        "Stand with a dumbbell in each hand with an overhand grip, your feet shoulder width apart and your abs drawn in.",
-        "Keeping each arm straight raise your left arm to just above shoulder height.",
-        "Pause for a moment then in a controlled motion lower the weight to starting position and repeat with your right arm."
+        "Встаньте с гантелями в каждой руке хватом сверху, ноги на ширине плеч, пресс втянут.",
+        "Держа каждую руку прямо, поднимите левую руку чуть выше уровня плеч.",
+        "Сделайте паузу на мгновение, затем контролируемым движением опустите гантель в исходное положение и повторите упражнение правой рукой."
     ],
     "tips": [],
     "references": []

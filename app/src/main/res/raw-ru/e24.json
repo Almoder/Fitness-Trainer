@@ -1,30 +1,30 @@
 {
     "id": "0024",
     "name": "rear-deltoid-row-dumbbell",
-    "title": "Rear Deltoid Row Dumbbell",
-    "primer": "This is an exercise for deltoid, biceps and trapezius strengthening.",
-    "type": "isolation",
+    "title": "Вертикальная тяга гантели",
+    "primer": "Упражнение на укрепление дельтовидных мышц, бицепсов и трапециевидных мышц.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "biceps brachii",
-        "trapezius"
+        "бицепс",
+        "трапециевидная"
     ],
     "equipment": [
-        "dumbbell"
+        "гантель"
     ],
     "steps": [
-        "Place your right foot on the floor, rest your left knee and hand on a flat bench.",
-        "Lean forward so your body’s weight is supported by your left arm and knee.",
-        "Keeping your back flat, reach down and pick up the dumbbell with your right hand.",
-        "Raise your right arm as close to your chest as possible; while bending and bringing your elbow back as far as you can.",
-        "Pause at the top for a moment and then lower the dumbbell in a controlled manner to the starting position.",
-        "Switch arms by doing the opposite positioning.",
-        "Repeat."
+        "Поставьте правую ногу на пол, а левым коленом и рукой обопритесь на ровную скамью.",
+        "Наклонитесь вперед, чтобы вес вашего тела поддерживался левой рукой и коленом.",
+        "Держа ровную спину наклонитесь и возьмите гантель правой рукой.",
+        "Поднимите правую руку как можно ближе к груди; при этом сгибая и отводя локоть как можно дальше назад.",
+        "Задержитесь в вверху, затем опустите гантель в исходное положение.",
+        "Поменяйте руки, заняв противоположное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "maintain a good posture at all times throughout the exercise."
+        "Поддерживайте правильную осанку на протяжении всего упражнения."
     ],
     "references": []
 }

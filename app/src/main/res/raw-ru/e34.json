@@ -1,27 +1,27 @@
 {
     "id": "0034",
     "name": "internal-cable-rotation",
-    "title": "Internal Cable Rotation",
-    "primer": "This is an exercise for shoulder and biceps strengthening.",
-    "type": "compound",
+    "title": "Тяга троса внутрь",
+    "primer": "Упражнение на укрепление плеч и бицепсов.",
+    "type": "составной",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "biceps brachii"
+        "бицепс"
     ],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Sit on the floor with your body close to low cable pulley.",
-        "Grasp the pulley with your left arm and position your elbow bent at 90 degree angle.",
-        "Pull the cable towards your body and internally rotate your shoulder until your forearm is across your abs.",
-        "Return to starting position.",
-        "Repeat with right arm."
+        "Сядьте на пол так, чтобы ваше тело было близко к нижнему шкиву троса.",
+        "Возьмитесь за шкив левой рукой и согните локоть под углом 90 градусов.",
+        "Потяните трос к своему телу и поверните плечо внутрь, пока предплечье не коснется пресса.",
+        "Вернутесь в исходное положение.",
+        "Повторите с правой рукой."
     ],
     "tips": [
-        "Ensure your back is straight throughout the exercise."
+        "Следите, чтобы ваша спина была прямой на протяжении всего упражнения."
     ],
     "references": []
 }

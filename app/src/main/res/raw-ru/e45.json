@@ -1,24 +1,24 @@
 {
     "id": "0048",
     "name": "cable-crossover",
-    "title": "Cable Crossover",
-    "primer": "This is an exercise for chest and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Сведение рук в кроссовере",
+    "primer": "Упражнение на укрепление мышц груди и плеч.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "equipment": [
-        "cable"
+        "тренажер кроссовер"
     ],
     "steps": [
-        "Attach the cable pulley to shoulder height.",
-        "Grasp the pulley in both hands and stand approximately one foot in front of the weight stacks, with one foot slightly in front of the other.",
-        "With a slight bend in your elbows bring your hand together in front of your chest on downward angle.",
-        "When your hands meet at the midpoint of your chest, hold for a moment.",
-        "With a slow controlled motion return to starting position."
+        "Установите шкиф троса на уровне высоты плеча.",
+        "Возьмитесь за шкив обеими руками и встаньте примерно на одну ногу перед весами, одна ступня слегка впереди другой.",
+        "Слегка согнув локти, сведите руки перед грудью под углом вниз.",
+        "Задержитесь, когда ваши руки встретятся посередине груди.",
+        "Контролируемым движением вернитесь в исходное положение."
     ],
     "tips": [],
     "references": []

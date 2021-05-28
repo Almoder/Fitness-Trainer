@@ -5,18 +5,20 @@
     <color name="appThemePrimarySurface">#FFFFFF</color>
     <color name="appThemeAccent">#4567BB</color>
     <color name="appThemeControlActivated">#6789DD</color>
+    <color name="appThemeColorControlNormal">#FFFFFF</color>
     <color name="appThemeTextColor">#333333</color>
     <color name="appThemeTextColorPrimary">#FFFFFF</color>
     <color name="appThemeColorBackground">#FFFFFF</color>
     <color name="appThemeTabTextColor">#FFFFFF</color>
 
     <color name="darkThemePrimary">#47BB56</color>
-    <color name="darkThemePrimaryDark">#333333</color>
-    <color name="darkThemePrimarySurface">#575757</color>
+    <color name="darkThemePrimaryDark">#575757</color>
+    <color name="darkThemePrimarySurface">#666666</color>
     <color name="darkThemeAccent">#47BB56</color>
     <color name="darkThemeControlActivated">#68DD79</color>
+    <color name="darkThemeColorControlNormal">#333333</color>
     <color name="darkThemeTextColor">#FFFFFF</color>
     <color name="darkThemeTextColorPrimary">#333333</color>
-    <color name="darkThemeColorBackground">#FFFFFF</color>
+    <color name="darkThemeColorBackground">#444444</color>
     <color name="darkThemeTabTextColor">#575757</color>
 </resources>

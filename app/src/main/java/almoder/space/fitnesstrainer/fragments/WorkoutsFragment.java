@@ -47,8 +47,8 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
+                             @Nullable Bundle sis) {
+        super.onCreateView(inflater, container, sis);
         View view = inflater.inflate(R.layout.fragment_workouts, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

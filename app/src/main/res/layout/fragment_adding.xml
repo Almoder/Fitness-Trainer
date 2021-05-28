@@ -30,7 +30,6 @@
         android:textSize="@dimen/adding_edit"
         android:textColor="?android:attr/textColor"
         android:inputType="text"
-
         tools:ignore="Autofill,LabelFor"/>
 
     <ImageButton

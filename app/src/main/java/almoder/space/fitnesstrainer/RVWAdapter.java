@@ -15,7 +15,7 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
 
     private final OnItemClickListener mItemClickListener;
     private boolean edit = false;
-    private String count;
+    private final String count;
 
     public interface OnItemClickListener{
         void onItemClicked(int position);

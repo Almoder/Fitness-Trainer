@@ -20,6 +20,10 @@
     <dimen name="description_cv_text">16sp</dimen>
     <dimen name="settings_text">16sp</dimen>
     <dimen name="settings_padding">8sp</dimen>
+    <integer-array name="color_theme_values">
+        <item>@style/AppTheme</item>
+        <item>@style/DarkTheme</item>
+    </integer-array>
     <dimen name="constant_size">24sp</dimen>
     <!-- Defaults -->
     <dimen name="default_text">16sp</dimen>

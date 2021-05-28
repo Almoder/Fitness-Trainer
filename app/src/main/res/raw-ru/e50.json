@@ -1,25 +1,24 @@
 {
     "id": "0053",
     "name": "decline-dumbbell-flys",
-    "title": "Decline Dumbbell Fly's",
-    "primer": "This is an exercise for chest and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Сведение гантелей лежа (отрицательный наклон)",
+    "primer": "Упражнение на укрепление мышц груди и плеч.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "equipment": [
-        "dumbbells",
-        "bench: decline"
+        "гантели",
+        "наклонная скамья"
     ],
     "steps": [
-        "Lie on a decline bench with your head lower than your body and your feet firmly on the ground.",
-        "With dumbbells together above your shoulders and your arms straight out above you as your starting position.",
-        "Keeping your arms straight and with a slight bend in your elbows lower the dumbbells down towards the floor in an arc, up until just above your shoulders.",
-        "Return to the starting position in a slow controlled manner.",
-        "Repeat."
+        "Лягте на наклонную скамью вниз головой и упритесь ступнями в пол.",
+        "Возьмите гантели в каждую руку и выпрямьте руки над собой. Это исходное положение.",
+        "Держа руки прямыми и слегка согнув руки в локтях, опустите гантели вниз по дуге до уровня чуть выше плеч.",
+        "Медленно вернитесь в исходное положение. Повторяйте."
     ],
     "tips": [],
     "references": []

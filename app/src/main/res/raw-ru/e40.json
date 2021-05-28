@@ -1,30 +1,28 @@
 {
     "id": "0042",
     "name": "bench-press",
-    "title": "Bench Press: Barbell",
-    "primer": "This is an exercise for the chest.",
-    "type": "compound",
+    "title": "Жим штанги лежа",
+    "primer": "Одно из лучших упражнений для мышц груди.",
+    "type": "составной",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoideus (clavicula)"
+        "трицепс",
+        "дельтовидная (ключица)"
     ],
     "equipment": [
-        "bench",
-        "barbell"
+        "лавка",
+        "штанга"
     ],
     "steps": [
-        "Lie on a flat bench with your feet flat on the floor, keep your back flat on the bench.",
-        "Grasp the bar a little wider than shoulder width apart.",
-        "Raise the barbell above your body and move it over the middle of your chest, this is your starting position.",
-        "Lower the bar down so it just touches your chest.",
-        "Raise the bar till your arms are fully extended and your elbows are locked.",
-        "Return to starting position."
+        "Лягте на ровную скамью, поставив ступни на пол, держите спину ровно на скамейке.",
+        "Возьмитесь за перекладину чуть шире плеч.",
+        "Поднимите штангу над телом и переместите ее через середину груди, это ваше исходное положение.",
+        "Опустите штангу так, чтобы она касалась вашей груди.",
+        "Поднимайте штангу до тех пор, пока руки полностью не вытянуты, а локти не сомкнуты.",
+        "Вернитесь в исходное положение."
     ],
     "tips": [],
-    "references": [
-        "https://youtu.be/LnhpKTXeIeg"
-    ]
+    "references": []
 }

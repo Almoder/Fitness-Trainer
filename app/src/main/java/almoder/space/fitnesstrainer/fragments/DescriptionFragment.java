@@ -22,6 +22,7 @@ public class DescriptionFragment extends Fragment {
     private boolean imgCh = true, excAdding = false;
     private int num, reps = 0, weight = 0, imgRes1, imgRes2;
     private Exercise exc = null;
+    private View view;
     private final int[] ids = { R.id.description_title, R.id.description_type, R.id.description_primer,
         R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
 
@@ -47,7 +48,7 @@ public class DescriptionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle sis) {
-        View view = inflater.inflate(R.layout.fragment_description, container, false);
+        view = inflater.inflate(R.layout.fragment_description, container, false);
         if (sis != null)  {
             num = sis.getInt("num", num);
             reps = sis.getInt("reps", reps);
@@ -68,6 +69,15 @@ public class DescriptionFragment extends Fragment {
             tvs[5].setVisibility(View.VISIBLE);
             tvs[5].setText(exc.tips());
         }
+        onResume();
+        iv.setImageResource(imgRes1);
+        process(view);
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         EditText ed1 = view.findViewById(R.id.description_reps_edit);
         if (exc.reps() != 0 || excAdding) {
             view.findViewById(R.id.description_cv).setVisibility(View.VISIBLE);
@@ -85,9 +95,6 @@ public class DescriptionFragment extends Fragment {
         Button button = view.findViewById(R.id.exc_add_button);
         button.setText(excAdding ? R.string.add_to_wkt : R.string.confirm_changes);
         button.setVisibility(ed1.getVisibility());
-        iv.setImageResource(imgRes1);
-        process(view);
-        return view;
     }
 
     @Override

@@ -6,7 +6,7 @@
         <item name="colorPrimarySurface">@color/appThemePrimarySurface</item>
         <item name="colorAccent">@color/appThemeAccent</item>
         <item name="colorControlActivated">@color/appThemeControlActivated</item>
-        <item name="colorControlNormal">@color/appThemePrimarySurface</item>
+        <item name="colorControlNormal">@color/appThemeColorControlNormal</item>
         <item name="android:textColor">@color/appThemeTextColor</item>
         <item name="android:textColorPrimary">@color/appThemeTextColorPrimary</item>
         <item name="android:editTextColor">@color/appThemeColorBackground</item>
@@ -23,10 +23,11 @@
         <item name="colorPrimarySurface">@color/darkThemePrimarySurface</item>
         <item name="colorAccent">@color/darkThemeAccent</item>
         <item name="colorControlActivated">@color/darkThemeControlActivated</item>
+        <item name="colorControlNormal">@color/darkThemeColorControlNormal</item>
         <item name="android:textColor">@color/darkThemeTextColor</item>
         <item name="android:textColorPrimary">@color/darkThemeTextColorPrimary</item>
-        <item name="android:editTextColor">@color/darkThemeColorBackground</item>
-        <item name="android:colorBackground">@color/darkThemeTabTextColor</item>
+        <item name="android:editTextColor">@color/darkThemeTextColor</item>
+        <item name="android:colorBackground">@color/darkThemeColorBackground</item>
         <item name="android:textSize">@dimen/default_text</item>
         <item name="android:keyTextSize">@dimen/default_key_text</item>
         <item name="android:constantSize">@dimen/constant_size</item>

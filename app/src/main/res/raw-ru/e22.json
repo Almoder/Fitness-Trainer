@@ -1,31 +1,31 @@
 {
     "id": "0022",
     "name": "smith-machine-rear-deltoid-row",
-    "title": "Smith Machine Rear Deltoid Row",
-    "primer": "A exercise for the rear deltoid",
-    "type": "isolation",
+    "title": "Тяга штанги в тренажере Смита",
+    "primer": "Упражнение для укрепления задних дельтовидных мышц, плеч, бицепсов и спины.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [
-        "back",
-        "biceps brachii"
+        "широчайшая мышца спины",
+        "бицепс"
     ],
     "equipment": [
-        "smith machine"
+        "штанга",
+        "тренажер Смита"
     ],
     "steps": [
-        "This is an exercise for rear deltoid,shoulder, biceps and back strengthening.",
-        " Set the bar to the lowest setting.",
-        "Place your feet shoulder width apart with a slight bend in the knees.",
-        "Bend at the waist while keeping your back straight and chest parallel to the floor.",
-        "Grasp the bar slightly wider than your shoulders with an overhand grasp and your arms straight with a slight bend in the elbows.",
-        "Raise the bar with a controlled motion to the lower part of your chest by bending and elevating your elbows.",
-        "Hold for a moment and then lower to the starting position.",
-        "Repeat."
+        "Установите минимальную планку для штанги.",
+        "Поставьте ноги на ширине плеч, ноги слегка согнуты в коленях.",
+        "Согнитесь в талии, сохраняя при этом прямую спину. Параллельна грудь параллельна полу.",
+        "Возьмитесь за перекладину чуть шире плеч верхним хватом, руки прямые с легким сгибанием в локтях.",
+        "Контролируемым движением поднимите штангу к нижней части груди, сгибая и приподнимая руки в локтях.",
+        "Задержитесь на мгновение, а затем опустите штангу в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Ensure you back is straight and that you maintain a good posture throughout this exercise."
+        "Убедитесь, что ваша спина прямая. Сохраняйте правильную осанку на протяжении всего упражнения."
     ],
     "references": []
 }

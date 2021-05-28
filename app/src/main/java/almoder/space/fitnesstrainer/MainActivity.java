@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -25,7 +24,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
-import java.util.Objects;
 
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
 import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements
     private DrawerLayout drawer;
     private int title = R.string.undefined, wktId, excId;
     private String m;
-    private NavigationView nav;
     private boolean excAdding = false, wktDesc = false;
 
     @Override
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
-        nav = findViewById(R.id.nav_view);
+        NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.nav_drawer_open, R.string.nav_drawer_close);
@@ -67,9 +64,7 @@ public class MainActivity extends AppCompatActivity implements
         toggle.syncState();
         if (sis == null) {
             title = R.string.app_name;
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, new AboutFragment());
-            ft.addToBackStack(String.valueOf(title)).commit();
+            new Fragmentary(getSupportFragmentManager()).replace(new AboutFragment(), title);
             nav.setCheckedItem(R.id.nav_about);
         }
         else if (wktDesc) toolbar.setTitle(m);
@@ -79,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment f = null;
         switch (item.getItemId()) {
             case R.id.nav_exercise:
@@ -108,54 +102,46 @@ public class MainActivity extends AppCompatActivity implements
                 title = R.string.m6;
                 break;
         }
-        if (f != null) {
-            if (title != R.string.m1) excAdding = false;
-            ft.replace(R.id.container, f);
-            ft.addToBackStack(String.valueOf(title)).commit();
+        if (!toolbar.getTitle().equals(getString(title))) {
+            excAdding = false;
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+            new Fragmentary(getSupportFragmentManager()).replace(f, title);
             toolbar.setTitle(title);
-            drawer.closeDrawer(GravityCompat.START);
         }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
     public void exItemClicked(int id, Exercise exc) {
         excId = id;
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (wktDesc) ft.replace(R.id.container, new DescriptionFragment(id, excAdding,
-                new SharedPreferencer(this).loadWorkout(wktId).exercises().get(excId)));
-        else ft.replace(R.id.container, new DescriptionFragment(id, excAdding, exc));
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(title)).commit();
+        title = R.string.m1;
+        toolbar.setTitle(title);
+        Fragmentary f = new Fragmentary(getSupportFragmentManager());
+        if (wktDesc) f.replace(new DescriptionFragment(id, excAdding,
+                new SharedPreferencer(this).loadWorkout(wktId).exercises().get(excId)), title);
+        else f.replace(new DescriptionFragment(id, excAdding, exc), title);
     }
 
     @Override
     public void wkItemClicked(int id, String title) {
-        toolbar.setTitle(title);
-        m = title; wktId = id; wktDesc = true;
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new WktDescFragment(id));
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack("_" + toolbar.getTitle()).commit();
+        toolbar.setTitle(title); m = title; wktId = id; wktDesc = true;
+        new Fragmentary(getSupportFragmentManager())
+                .replace(new WktDescFragment(id), "_" + toolbar.getTitle());
     }
 
     public void onWktAddClick(View view) {
         title = R.string.wkt_adding;
         toolbar.setTitle(title);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new WktAddingFragment());
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(title)).commit();
+        new Fragmentary(getSupportFragmentManager()).replace(new WktAddingFragment(), title);
     }
 
     public void onExcAddClick(View view) {
         title = R.string.m1;
         excAdding = true; wktDesc = false;
         toolbar.setTitle(title);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new ExercisesFragment());
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.addToBackStack(String.valueOf(title)).commit();
+        new Fragmentary(getSupportFragmentManager()).replace(new ExercisesFragment(), title);
     }
 
     public void onDoneClick(View view) {
@@ -173,11 +159,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void onDescAddClick(View view) {
-        Log.d("TAG", "wktId: " + wktId + ", excId: " + excId);
         EditText ed1 = findViewById(R.id.description_reps_edit);
         EditText ed2 = findViewById(R.id.description_weight_edit);
-        String reps = String.valueOf(ed1.getText());
-        String weight = String.valueOf(ed2.getText());
+        String reps = String.valueOf(ed1.getText()), weight = String.valueOf(ed2.getText());
         if (reps.equals("0") || weight.equals("0"))
             Toast.makeText(this, "Reps or weight cannot be 0!", Toast.LENGTH_LONG).show();
         else {
@@ -186,18 +170,16 @@ public class MainActivity extends AppCompatActivity implements
             SharedPreferencer sp = new SharedPreferencer(this);
             sp.loadWorkouts();
             if (excAdding) sp.workouts.get(wktId).addExercise(
-                    this, excId, Integer.parseInt(reps), Integer.parseInt(weight));
-            else {
+                        this, excId, Integer.parseInt(reps), Integer.parseInt(weight));
+            else if (sp.workouts.get(wktId).count() != 0 && excId < sp.workouts.get(wktId).count()) {
                 sp.workouts.get(wktId).exercises().get(excId).reps(Integer.parseInt(reps));
                 sp.workouts.get(wktId).exercises().get(excId).weight(Integer.parseInt(weight));
             }
             excAdding = false;
             sp.saveWorkout(sp.workouts.get(wktId), wktId);
             toolbar.setTitle(sp.workouts.get(wktId).title());
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, new WktDescFragment(wktId));
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.addToBackStack("_" + toolbar.getTitle()).commit();
+            new Fragmentary(getSupportFragmentManager())
+                    .replace(new WktDescFragment(wktId), "_" + toolbar.getTitle());
         }
     }
 
@@ -228,27 +210,21 @@ public class MainActivity extends AppCompatActivity implements
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
+        else if (!toolbar.getTitle().equals(getString(title))) {
+            title = R.string.m2;
+            new Fragmentary(getSupportFragmentManager()).replace(new WorkoutsFragment(), title);
+            toolbar.setTitle(title);
+        }
         else if (fm.getBackStackEntryCount() > 1) {
-            fm.popBackStack();
-            String temp = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName();
-            if (temp != null && temp.toCharArray()[0] == '_') {
-                fm.popBackStack();
-                wktDesc = true;
-                wkItemClicked(wktId, temp.substring(1));
-            }
-            else {
-                title = Integer.parseInt(Objects.requireNonNull(temp));
-                wktDesc = false;
-                toolbar.setTitle(title);
-                switch (title) {
-                    case R.string.m1: nav.setCheckedItem(R.id.nav_exercise); break;
-                    case R.string.m2: nav.setCheckedItem(R.id.nav_workouts); break;
-                    case R.string.m3: nav.setCheckedItem(R.id.nav_another); break;
-                    case R.string.m4: nav.setCheckedItem(R.id.nav_config); break;
-                    case R.string.m5: nav.setCheckedItem(R.id.nav_share); break;
-                    default: nav.setCheckedItem(R.id.nav_about); break;
+            Fragmentary f = new Fragmentary(getSupportFragmentManager());
+            if (f.isTempNull()) {
+                if (f.popBackStack()) toolbar.setTitle(f.title());
+                else {
+                    title = f.titleResId();
+                    toolbar.setTitle(title);
                 }
             }
+            else f.popBackStack();
         }
     }
 }

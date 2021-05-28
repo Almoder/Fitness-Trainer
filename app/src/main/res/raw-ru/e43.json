@@ -1,27 +1,27 @@
 {
     "id": "0045",
     "name": "bent-arm-pullover",
-    "title": "Bent Arm Pullover",
-    "primer": "This is an exercise for chest, triceps, shoulders and lats strengthening.",
-    "type": "isolation",
+    "title": "Пуловер со штангой",
+    "primer": "Упражнение на укрепление груди.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "latissimus dorsi",
-        "deltoid",
-        "triceps brachii"
+        "широчайшая мышца спины",
+        "дельтовидная",
+        "трицепс"
     ],
     "equipment": [
-        "barbell",
-        "flat bench"
+        "штанга",
+        "плоская скамья"
     ],
     "steps": [
-        "Lie flat on a bench with your head hanging slightly over the end and your feet flat on the floor.",
-        "Hold a barbell with a close grip (approximately 14”), keep your elbows in throughout the exercise.",
-        "Starting with your arms fully extended over your chest, slowly lower the bar in an arc over your head and towards the floor.",
-        "Pull the bar back up to chest height in a slow controlled manner and return to starting position.",
-        "Repeat."
+        "Лягте на скамью, слегка свесив голову за край, ступни поставьте на пол.",
+        "Держите штангу плотным хватом (примерно 14 дюймов), держите локти в напряжении на протяжении всего упражнения.",
+        "Начиная с полностью вытянутых рук на груди, медленно опускайте штангу по дуге над головой к полу.",
+        "Медленно контролируемым движением подтяните штангу до уровня груди и вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

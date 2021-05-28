@@ -1,27 +1,27 @@
 {
     "id": "0027",
     "name": "stationary-abdominal-draw-in",
-    "title": "Stationary Abdominal Draw In",
-    "primer": "This is an exercise for abdominal and core strengthening which are vital in supporting the spine.",
-    "type": "isometric",
+    "title": "Стационарное втягивание живота",
+    "primer": "Упражнение для укрепления живота и кора, которое жизненно важно для поддержки позвоночника.",
+    "type": "изометрический",
     "primary": [
-        "abdominals"
+        "брюшной пресс"
     ],
     "secondary": [
-        "core"
+        "основной пресс"
     ],
     "equipment": [
-        "body"
+        "тело"
     ],
     "steps": [
-        "Get down on a mat on your hands and knees, forming a four point rectangle or square shape.",
-        "Keep your back straight and your hips and pelvis in a neutral position.",
-        "Draw your abs in, crunching your abs while keeping your back still.",
-        "Hold for a moment and then release returning to the starting position.",
-        "Repeat."
+        "Встаньте на коврик на четвереньках, опираясь на ладони и колени.",
+        "Держите спину прямо, бедра и таз в нейтральном положении.",
+        "Втяните живот, напрягая пресс и сохраняя спину в неподвижном положении.",
+        "Задержитесь на мгновение, затем вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "For this exercise to be maximally effective your back should not move at all through out the contraction and relaxation."
+        "Чтобы это упражнение было максимально эффективным, ваша спина не должна двигаться во время сокращения и расслабления."
     ],
     "references": []
 }

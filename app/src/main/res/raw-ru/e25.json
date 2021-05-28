@@ -1,28 +1,28 @@
 {
     "id": "0025",
     "name": "seated-cable-rows",
-    "title": "Seated Cable Rows",
-    "primer": "This is an exercise for middle back, biceps and lower back strengthening.",
-    "type": "compound",
+    "title": "Тяга троса к телу в положении сидя",
+    "primer": "Упражнение для укрепления средней части спины, бицепса и поясницы.",
+    "type": "составной",
     "primary": [
-        "latissimus dorsi"
+        "широчайшаямышца спины"
     ],
     "secondary": [
-        "biceps brachii",
-        "erector spinae"
+        "бицепс",
+        "мышца, выпрямляющая позвоночник"
     ],
     "equipment": [
-        "cable"
+        "трос"
     ],
     "steps": [
-        "Sit at a low pulley machine with your feet resting against the footrests and your knees slightly bent.",
-        "With your abs drawn in and your back straight lean forward slightly to grasp the pulleys with an overhand grip (palms face downwards).",
-        "Slowly bring the pulleys back towards your abs while sitting upright, keep your elbows in close to your chest.",
-        "Pause for a moment then return slowly return the pulleys to the starting position.",
-        "Repeat."
+        "Сядьте за тренажер с низким шкивом, положив ступни на подножки, а колени слегка согнуты.",
+        "С втянутым прессом и прямой спиной слегка наклонитесь вперед, чтобы захватить шкивы верхним хватом (ладони смотрят вниз).",
+        "Медленно подтяните шкив к прессу, сидя прямо, прижмите локти к груди.",
+        "Задержитесь на мгновение, затем медленно верните шкивы в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Ensure that your back is straight at all times and do not lock your knees when rowing back."
+        "Держите правильную осанку на протяжении всего упражнения."
     ],
     "references": []
 }

@@ -1,25 +1,25 @@
 {
     "id": "0052",
     "name": "decline-dumbbell-bench-press",
-    "title": "Bench Press: Dumbbell (Decline)",
-    "primer": "This is an exercise for chest, shoulder and triceps strengthening.",
-    "type": "isolation",
+    "title": "Жим гантелей лежа (отрицательный наклон)",
+    "primer": "упражнение на укрепление трицепсов, мышц груди и плеч.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "dumbbells",
-        "bench: decline"
+        "гантели",
+        "наклонная скамья"
     ],
     "steps": [
-        "Grasp the dumbbells your hands and lie on a decline bench with your head lower than your feet.",
-        "Raise the dumbbells above your chest, bringing your elbows close in, this is your starting position.",
-        "Slowly and with control lower the dumbbells to either side of your lower chest.",
-        "Raise the dumbbells back up to starting position."
+        "Возьмите по гантели в каждую руку и лягте на наклонную скамью вниз головой.",
+        "Поднимите гантели над грудью, сведя локти, это ваше исходное положение.",
+        "Медленно контролируемым движением опустите гантели по обе стороны от нижней части груди.",
+        "Поднимите гантели обратно в исходное положение."
     ],
     "tips": [],
     "references": []

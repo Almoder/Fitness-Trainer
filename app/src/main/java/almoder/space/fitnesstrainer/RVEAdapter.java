@@ -63,8 +63,8 @@ public class RVEAdapter extends PagedListAdapter<Exercise, RVEAdapter.ExerciseVi
 
     public static class ExerciseDataSource extends PositionalDataSource<Exercise> {
 
-        private Exercise storage;
-        private List<Exercise> store = null;
+        public Exercise storage;
+        public List<Exercise> store = null;
 
         public ExerciseDataSource(Exercise storage) {
             this.storage = storage;

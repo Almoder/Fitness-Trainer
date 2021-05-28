@@ -1,25 +1,25 @@
 {
     "id": "0044",
     "name": "incline-bench-press-with-bands",
-    "title": "Bench Press: Bands (Incline)",
-    "primer": "This is an exercise for chest and biceps strengthening.",
-    "type": "isolation",
+    "title": "Жим ленты лежа (наклон)",
+    "primer": "Упражнение на укрепление груди и бицепса.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "biceps brachii"
+        "бицепс"
     ],
     "equipment": [
-        "exercise band",
-        "bench: incline"
+        "тросовый тренажер/эластичная лента",
+        "наклонная скамья"
     ],
     "steps": [
-        "Securely fasten the band under the leg of a flat bench, near your head.",
-        "Lie flat on the bench with your feet flat on the floor in order to stabilise your movements.",
-        "Grasp one end of the band in each hand and starting with your hands at chest level.",
-        "Press upwards so your arms are fully extended.",
-        "With a slow controlled motion return to starting position."
+        "Надежно закрепите ленту под ножкой плоской скамейки, возле головы.",
+        "Лягте на скамейку, поставив ступни на пол, чтобы ваши движения стабилизировались.",
+        "Возьмите по одному концу ленты в каждую руку, начиная с уровня груди.",
+        "Надавите вверх, чтобы руки были полностью вытянуты.",
+        "Медленным управляемым движением вернитесь в исходное положение."
     ],
     "tips": [],
     "references": []

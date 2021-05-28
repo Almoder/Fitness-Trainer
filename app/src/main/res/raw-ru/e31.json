@@ -1,21 +1,21 @@
 {
     "id": "0031",
     "name": "incline-shoulder-press-dumbbell",
-    "title": "Incline Shoulder Press Dumbbell",
-    "primer": "This is an exercise for shoulder strengthening.",
-    "type": "isolation",
+    "title": "Жим гантелей на наклонной скамье",
+    "primer": "Упражнение на укрепление мышц плеч.",
+    "type": "изоляция",
     "primary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "secondary": [],
     "equipment": [
-        "dumbbell"
+        "гантель"
     ],
     "steps": [
-        "Lie down on an incline bench with your feet flat on the floor and grasp the dumbbells.",
-        "With your elbows bent raise your arms up until in line with your shoulders this is your starting position.",
-        "With your abs drawn in, raise the dumbbells as high as you are able above your shoulders.",
-        "Lower the dumbbells in a slow controlled manner to starting position."
+        "Лягте на наклонную скамью, поставив ступни на пол. Возьмите в руки гантели.",
+        "С согнутыми локтями держите руки на одном уровне с плечами. Это исходное положение.",
+        "Втянув пресс, поднимите гантели как можно выше над плечами.",
+        "Медленно опустите гантели в исходное положение."
     ],
     "tips": [],
     "references": []

@@ -1,29 +1,28 @@
 {
     "id": "0043",
     "name": "incline-bench-press",
-    "title": "Bench Press: Barbell (Incline)",
-    "primer": "This is an exercise for chest and triceps strengthening.",
-    "type": "isolation",
+    "title": "Жим штанги лежа (наклон)",
+    "primer": "Упражнение на укрепдение мышц груди и трицепсов.",
+    "type": "изоляция",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii"
+        "трицепс"
     ],
     "equipment": [
-        "bench: incline",
-        "barbell"
+        "наклонная скамья",
+        "штанга"
     ],
     "steps": [
-        "Lie flat on an incline bench set at a 45 degree angle, with your feet shoulder width apart.",
-        "Grasp the bar a little wider than shoulder width apart.",
-        "Raise the barbell above your body and move it over the middle of your chest, this is your starting position.",
-        "Lower the bar down so it just touches your chest.",
-        "Raise the bar straight up till your arms are fully extended and your elbows are locked.",
-        "Return to starting position."
+        "Лягте на наклонной скамье под углом 45 градусов, расставив ноги на ширине плеч.",
+        "Возьмитесь за перекладину чуть шире плеч и держите штангу на уровне груди. Это изначальное положение.",
+        "Опустите штангу так, чтобы она касалась вашей груди.",
+        "Поднимите штангу прямо вверх, пока полностью не выпрямите руки.",
+        "Вернуться в исходное положение."
     ],
     "tips": [
-        "Do not bounce the bar off your chest always maintain a controlled motion."
+        "Не отталкивайте штангу от груди. Всегда контролируйте движения."
     ],
     "references": []
 }

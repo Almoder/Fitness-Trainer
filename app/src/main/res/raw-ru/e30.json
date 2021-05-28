@@ -1,26 +1,25 @@
 {
     "id": "0030",
     "name": "barbell-shrugs",
-    "title": "Barbell Shrugs",
-    "primer": "This is an exercise for trapezius strengthening.",
-    "type": "isolation",
+    "title": "Пожимания плечами со штангой",
+    "primer": "Упражнение на укрепление трапециевидных мышц.",
+    "type": "изоляция",
     "primary": [
-        "trapezius"
+        "трапециевидная"
     ],
     "secondary": [],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Stand on the floor with your abs drawn in and your back straight.",
-        "Grasp a barbell with a grip a little wider than shoulder width at arms length.",
-        "Drop your shoulders as much as possible to start.",
-        "Raise your shoulder as high as possible.",
-        "Pause for a moment at the top and then return to starting position in a controlled motion.",
-        "Repeat."
+        "Встаньте на пол, напрягите пресс и выпрямите спину.",
+        "Возьмитесь за штангу хватом немного шире плеч на расстоянии вытянутой руки.",
+        "Максимально опустите плечи, затем поднимите их как можно выше.",
+        "Задержитесь на мгновение вверху, а затем вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Do not arch your back at all during the exercise."
+        "Ни в коем случае не выгибайте спину выполняя это упражнение!"
     ],
     "references": []
 }

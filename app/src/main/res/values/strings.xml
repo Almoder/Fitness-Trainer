@@ -26,15 +26,19 @@
     <string name="description_weight">Weight:</string>
     <string name="add_to_wkt">Add to workout</string>
     <string name="confirm_changes">Confirm changes</string>
-    <!-- Settings -->
+    <!-- Preferences -->
     <string name="settings_appearance">Appearance</string>
     <string name="settings_lang_text">Language:</string>
-    <string-array name="settings_langs">
+    <string-array name="lang_entries">
         <item>English</item>
         <item>Russian</item>
     </string-array>
+    <string-array name="lang_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
     <string name="settings_theme_text">Color theme:</string>
-    <string-array name="settings_themes">
+    <string-array name="color_theme_entries">
         <item>Default</item>
         <item>Dark</item>
     </string-array>
