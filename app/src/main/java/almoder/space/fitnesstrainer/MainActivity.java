@@ -19,7 +19,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -126,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void wkItemClicked(int id, String title) {
+        this.title = 0;
         toolbar.setTitle(title); m = title; wktId = id; wktDesc = true;
         new Fragmentary(getSupportFragmentManager())
                 .replace(new WktDescFragment(id), "_" + toolbar.getTitle());
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else if (!toolbar.getTitle().equals(getString(title))) {
+        else if (title == 0) {
             title = R.string.m2;
             new Fragmentary(getSupportFragmentManager()).replace(new WorkoutsFragment(), title);
             toolbar.setTitle(title);
@@ -218,7 +218,10 @@ public class MainActivity extends AppCompatActivity implements
         else if (fm.getBackStackEntryCount() > 1) {
             Fragmentary f = new Fragmentary(getSupportFragmentManager());
             if (f.isTempNull()) {
-                if (f.popBackStack()) toolbar.setTitle(f.title());
+                if (f.popBackStack()) {
+                    title = 0;
+                    toolbar.setTitle(f.title());
+                }
                 else {
                     title = f.titleResId();
                     toolbar.setTitle(title);
