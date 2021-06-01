@@ -94,23 +94,45 @@ public class SharedPreferencer {
         return sPref.getInt("wktCount", 0);
     }
 
-    public void localization(String str) {
+    public boolean hasChanges() {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        sPref.edit().putString("localization", str).apply();
+        return sPref.getBoolean("hasChanges", false);
     }
 
-    public String localization() {
+    public void hasChanges(boolean val) {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        sPref.edit().putBoolean("hasChanges", val).apply();
+    }
+
+    public void locale(String str) {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        if (locale().equals(str)) return;
+        sPref.edit().putString("localization", str).apply();
+        hasChanges(true);
+    }
+
+    public String locale() {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
         return sPref.getString("localization", "en");
     }
 
-    public void saveTheme(int resId) {
-        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        sPref.edit().putInt("usedTheme", resId).apply();
+    public int localeResId() {
+        return locale().equals("en") ? R.string.lang_eng : R.string.lang_rus;
     }
 
-    public int loadTheme() {
+    public void theme(int resId) {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        if (theme() == resId) return;
+        sPref.edit().putInt("usedTheme", resId).apply();
+        hasChanges(true);
+    }
+
+    public int theme() {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
         return sPref.getInt("usedTheme", R.style.AppTheme);
+    }
+
+    public int themeResId() {
+        return theme() == R.style.AppTheme ? R.string.theme_default : R.string.theme_dark;
     }
 }

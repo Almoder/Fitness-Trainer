@@ -27,20 +27,24 @@
     <string name="add_to_wkt">Add to workout</string>
     <string name="confirm_changes">Confirm changes</string>
     <!-- Preferences -->
-    <string name="settings_appearance">Appearance</string>
-    <string name="settings_lang_text">Language:</string>
+    <string name="appearance">Appearance</string>
+    <string name="lang">Language</string>
+    <string name="lang_eng">English</string>
+    <string name="lang_rus">Russian</string>
+    <string name="theme">Color theme</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_dark">Dark</string>
     <string-array name="lang_entries">
-        <item>English</item>
-        <item>Russian</item>
+        <item>@string/lang_eng</item>
+        <item>@string/lang_rus</item>
     </string-array>
     <string-array name="lang_values">
         <item>en</item>
         <item>ru</item>
     </string-array>
-    <string name="settings_theme_text">Color theme:</string>
-    <string-array name="color_theme_entries">
-        <item>Default</item>
-        <item>Dark</item>
+    <string-array name="theme_entries">
+        <item>@string/theme_default</item>
+        <item>@string/theme_dark</item>
     </string-array>
     <!-- About -->
     <string-array name="about_text">

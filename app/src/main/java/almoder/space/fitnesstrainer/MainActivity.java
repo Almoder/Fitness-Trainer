@@ -5,12 +5,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -35,38 +40,48 @@ import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         ExercisesFragment.ExercisesFragmentListener,
-        WorkoutsFragment.WorkoutsFragmentListener {
+        WorkoutsFragment.WorkoutsFragmentListener,
+        AdapterView.OnItemClickListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private int title = R.string.undefined, wktId, excId;
     private String m;
     private boolean excAdding = false, wktDesc = false;
+    private AlertDialog ad;
 
     @Override
     protected void onCreate(Bundle sis) {
-        setTheme(new SharedPreferencer(this).loadTheme());
+        Log.d("TAG", "onCreate() theme:" + new SharedPreferencer(this).theme());
+        setTheme(new SharedPreferencer(this).theme());
         super.onCreate(sis);
         if (sis != null) onRestoreInstanceState(sis);
         Configuration config = getResources().getConfiguration();
-        config.setLocale(new Locale(new SharedPreferencer(this).localization()));
+        config.setLocale(new Locale(new SharedPreferencer(this).locale()));
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
         setContentView(R.layout.activity_main);
+        new SharedPreferencer(this).hasChanges(false);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
         NavigationView nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.nav_drawer_open, R.string.nav_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        if (sis == null) {
+        if (getIntent().hasExtra("flag")) {
+            getIntent().removeExtra("flag");
+            title = R.string.m4;
+            new Fragmentary(getSupportFragmentManager()).replace(new SettingsFragment(), title);
+            nav.setCheckedItem(R.id.nav_config);
+        }
+        else if (sis == null) {
             title = R.string.app_name;
             new Fragmentary(getSupportFragmentManager()).replace(new AboutFragment(), title);
             nav.setCheckedItem(R.id.nav_about);
         }
-        else if (wktDesc) toolbar.setTitle(m);
+        if (wktDesc) toolbar.setTitle(m);
         else toolbar.setTitle(title);
     }
 
@@ -175,8 +190,8 @@ public class MainActivity extends AppCompatActivity implements
                 sp.workouts.get(wktId).exercises().get(excId).reps(Integer.parseInt(reps));
                 sp.workouts.get(wktId).exercises().get(excId).weight(Integer.parseInt(weight));
             }
-            excAdding = false;
             sp.saveWorkout(sp.workouts.get(wktId), wktId);
+            excAdding = false;
             toolbar.setTitle(sp.workouts.get(wktId).title());
             new Fragmentary(getSupportFragmentManager())
                     .replace(new WktDescFragment(wktId), "_" + toolbar.getTitle());
@@ -208,8 +223,10 @@ public class MainActivity extends AppCompatActivity implements
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onBackPressed() {
+        Log.d("TAG", "onBackPressed");
         FragmentManager fm = getSupportFragmentManager();
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
+        else if (ad != null && ad.isShowing()) ad.cancel();
         else if (title == 0) {
             title = R.string.m2;
             new Fragmentary(getSupportFragmentManager()).replace(new WorkoutsFragment(), title);
@@ -217,17 +234,37 @@ public class MainActivity extends AppCompatActivity implements
         }
         else if (fm.getBackStackEntryCount() > 1) {
             Fragmentary f = new Fragmentary(getSupportFragmentManager());
-            if (f.isTempNull()) {
-                if (f.popBackStack()) {
-                    title = 0;
-                    toolbar.setTitle(f.title());
-                }
-                else {
-                    title = f.titleResId();
-                    toolbar.setTitle(title);
+            if (f.popBackStack()) {
+                title = 0;
+                toolbar.setTitle(f.title());
+            }
+            else {
+                title = f.titleResId();
+                toolbar.setTitle(title);
+            }
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        switch(i) {
+            case 0: ad = new Dialoger(this).langDialog(); break;
+            case 1: break;
+            default: ad = new Dialoger(this).themeDialog(); break;
+        }
+        ad.show();
+        Intent intent = new Intent(this, MainActivity.class)
+                .putExtra("flag", true);
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (ad.isShowing()) h.postDelayed(this, 1);
+                else if (new SharedPreferencer(getApplicationContext()).hasChanges()) {
+                    Log.d("TAG", "Runnable()");
+                    startActivity(intent);
                 }
             }
-            else f.popBackStack();
-        }
+        }, 1);
     }
 }

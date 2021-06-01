@@ -11,9 +11,10 @@
         <item name="android:textColorPrimary">@color/appThemeTextColorPrimary</item>
         <item name="android:editTextColor">@color/appThemeColorBackground</item>
         <item name="android:colorBackground">@color/appThemeTabTextColor</item>
+        <item name="android:constantSize">@dimen/constant_size</item>
         <item name="android:textSize">@dimen/default_text</item>
         <item name="android:keyTextSize">@dimen/default_key_text</item>
-        <item name="android:constantSize">@dimen/constant_size</item>
+        <item name="android:labelTextSize">@dimen/default_label_text</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -37,14 +38,17 @@
     <style name="DefaultText">
         <item name="android:textSize">@dimen/default_text</item>
         <item name="android:keyTextSize">@dimen/default_key_text</item>
+        <item name="android:labelTextSize">@dimen/default_label_text</item>
     </style>
     <style name="SmallText">
         <item name="android:textSize">@dimen/small_text</item>
         <item name="android:keyTextSize">@dimen/small_key_text</item>
+        <item name="android:labelTextSize">@dimen/small_label_text</item>
     </style>
     <style name="LargeText">
         <item name="android:textSize">@dimen/large_text</item>
         <item name="android:keyTextSize">@dimen/large_key_text</item>
+        <item name="android:labelTextSize">@dimen/large_label_text</item>
     </style>
     <style name="ShapeAppearanceOverlay.MyApp.Button.Rounded" parent="">
         <item name="cornerFamily">rounded</item>

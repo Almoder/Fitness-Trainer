@@ -8,7 +8,6 @@ import java.util.Objects;
 public class Fragmentary {
 
     private final FragmentManager manager;
-    private Fragment temp = null;
     private int titleResId = R.string.undefined;
     private String title = "Undefined";
 
@@ -50,5 +49,4 @@ public class Fragmentary {
     public String title() { return title; }
     public void titleResId(int titleResId) { this.titleResId = titleResId; }
     public int titleResId() { return titleResId; }
-    public boolean isTempNull() { return temp == null; }
 }

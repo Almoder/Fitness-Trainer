@@ -12,8 +12,8 @@
     <color name="appThemeTabTextColor">#FFFFFF</color>
 
     <color name="darkThemePrimary">#47BB56</color>
-    <color name="darkThemePrimaryDark">#575757</color>
-    <color name="darkThemePrimarySurface">#666666</color>
+    <color name="darkThemePrimaryDark">#333433</color>
+    <color name="darkThemePrimarySurface">#575757</color>
     <color name="darkThemeAccent">#47BB56</color>
     <color name="darkThemeControlActivated">#68DD79</color>
     <color name="darkThemeColorControlNormal">#333333</color>

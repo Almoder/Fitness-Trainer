@@ -147,7 +147,8 @@
                 android:clickable="false"
                 android:focusable="false"
                 card_view:cardBackgroundColor="?attr/colorPrimarySurface"
-                card_view:contentPadding="@dimen/description_margin">
+                card_view:contentPadding="@dimen/description_margin"
+                card_view:cardCornerRadius="0sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
