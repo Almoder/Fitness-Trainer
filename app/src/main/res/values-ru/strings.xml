@@ -7,7 +7,7 @@
     <string name="nav_drawer_close">Закрыть панель навигации</string>
     <string name="m1">Упражнения</string>
     <string name="m2">Тренировки</string>
-    <string name="m3">Другое</string>
+    <string name="m3">Статьи</string>
     <string name="m4">Настройки</string>
     <string name="m5">Поделиться</string>
     <string name="m6">О программе</string>
@@ -34,6 +34,14 @@
     <string name="theme">Цветовая тема</string>
     <string name="theme_default">По умолчанию</string>
     <string name="theme_dark">Темная</string>
+    <string name="text_size">Размер текста</string>
+    <string name="text_small">Мелкий</string>
+    <string name="text_default">Нормальный</string>
+    <string name="text_large">Крупный</string>
+    <!-- Articles -->
+    <string name="isometric">Изометрические упражнения</string>
+    <string name="isolation">Изолирующие упражнения</string>
+    <string name="compound">Комплексные упражнения</string>
     <!-- About -->
     <string-array name="about_text">
         <item>Программа "Fitness Trainer" предназначена для помощи при занятиях физической активностью.</item>
@@ -41,7 +49,7 @@
         <item>- быстро узнать подходящие или просто новые упражнения</item>
         <item>- составить и удобно использовать подробный план тренировок</item>
         <item>- узнать что-то новое о фитнесе и многое другое</item>
-        <item>данная программа была разработана в качестве дипломного проекта
+        <item>Данная программа была разработана в качестве дипломного проекта
             студентом Полоцкого Государственного Университета группы 17-ВС.</item>
     </string-array>
     <string name="empty"> </string>

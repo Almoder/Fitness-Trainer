@@ -23,8 +23,9 @@ public class DescriptionFragment extends Fragment {
     private int num, reps = 0, weight = 0, imgRes1, imgRes2;
     private Exercise exc = null;
     private View view;
-    private final int[] ids = { R.id.description_title, R.id.description_type, R.id.description_primer,
-        R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
+    private final int[] ids = {
+            R.id.description_title, R.id.description_type, R.id.description_primer,
+            R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
 
     public DescriptionFragment() {
         this(0);

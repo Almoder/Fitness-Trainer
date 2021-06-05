@@ -1,26 +1,26 @@
 {
     "id": "0059",
     "name": "hammer-grip-incline-bench-press",
-    "title": "Bench Press: Dumbbell (Incline, Hammer Grip)",
-    "primer": "This is an advanced exercise for strengthening the chest, triceps and shoulders.",
-    "type": "isolation",
+    "title": "Жим гантелей на наклонной скамье (хват молотом)",
+    "primer": "Сложное упражнение для укрепления трицепсов, мышц груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid",
-        "triceps brachii"
+        "дельтовидная",
+        "трицепс"
     ],
     "equipment": [
-        "dumbbells",
-        "bench: incline"
+        "гантели",
+        "наклонная скамья"
     ],
     "steps": [
-        "Grasp a dumbbell in each hand and lay on an incline bench set at a 45 degree angle.",
-        "Keep your feet flat on the floor and your back against the bench at all times.",
-        "Using a hammer grip (with your palms facing each other), lift the weights to shoulder height on either side of your chest.",
-        "Extend your arms fully and press the dumbbells up.",
-        "Slowly return the dumbbells to the starting position at the sides of your chest."
+        "Возьмите по гантели в каждую руку и лягте на наклонную скамью под углом 45 градусов.",
+        "Всё время упирайтесь спиной на скамейку а ногами в пол.",
+        "Держа гантели молотковым хватом (ладони напротив друг друга) поднимите гантели на высоту плеч.",
+        "Полностью вытяните руки вверх, подняв гантели над головой.",
+        "Медленно вернитесь в исходное положение. Повторяйте."
     ],
     "tips": [],
     "references": []

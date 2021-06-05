@@ -38,7 +38,8 @@
             android:layout_marginStart="8sp"
             android:layout_toEndOf="@+id/wkt_image"
             android:text="@string/undefined"
-            android:textSize="@dimen/wkt_title"/>
+            android:textColor="?android:attr/textColor"
+            android:textSize="?android:attr/labelTextSize"/>
 
         <TextView
             android:id="@+id/wkt_count"
@@ -47,7 +48,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@id/wkt_image"
             android:text="@string/exs_count"
-            android:textSize="@dimen/wkt_text"/>
+            android:textColor="?android:attr/textColor"
+            android:textSize="?android:attr/textSize"/>
 
     </RelativeLayout>
 

@@ -11,8 +11,8 @@
         <item android:id="@+id/nav_workouts"
             android:icon="@drawable/ic_workouts"
             android:title="@string/m2"/>
-        <item android:id="@+id/nav_another"
-            android:icon="@drawable/ic_another"
+        <item android:id="@+id/nav_articles"
+            android:icon="@drawable/ic_article"
             android:title="@string/m3"/>
         <item android:id="@+id/nav_config"
             android:icon="@drawable/ic_settings"

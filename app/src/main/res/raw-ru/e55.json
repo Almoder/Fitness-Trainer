@@ -1,25 +1,25 @@
 {
     "id": "0058",
     "name": "barbell-front-raise-pullover",
-    "title": "Barbell Front Raise and Pullover",
-    "primer": "This is an exercise for chest, triceps and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Подъем штанги вверх с пуловером",
+    "primer": "Упражнение на укрепление трицепсов, мышц груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "barbell",
-        "flat bench"
+        "штанга",
+        "плоская скамья"
     ],
     "steps": [
-        "Lie on a flat bench and grasp a barbell using a medium grip (about 15” apart).",
-        "Place the barbell on your upper thighs and lock your arms straight with a slight bend in your elbows.",
-        "Draw your abs in and keeping your back flat on the bench, raise your arms up in an arc over and behind your head (as if you were performing a reverse pullover).",
-        "Slowly return the barbell to the starting position on your thighs."
+        "Лягте на плоскую скамью и возьмитесь за штангу средним хватом (расстояние между ладонями 15 дюймов).",
+        "Положите штангу на верхнюю часть бедра и держите руки прямо, слегка согнув руки в локтях.",
+        "Втяните пресс и держите спину ровно на скамье. Поднимите штангу вверх по дуге над головой и позади нее.",
+        "Медленно верните штангу в исходное положение на бедрах."
     ],
     "tips": [],
     "references": []

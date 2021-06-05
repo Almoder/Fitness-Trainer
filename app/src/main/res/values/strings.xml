@@ -7,7 +7,7 @@
     <string name="nav_drawer_close">Close navigation drawer</string>
     <string name="m1">Exercises</string>
     <string name="m2">Workouts</string>
-    <string name="m3">Another</string>
+    <string name="m3">Articles</string>
     <string name="m4">Settings</string>
     <string name="m5">Share</string>
     <string name="m6">About</string>
@@ -34,18 +34,14 @@
     <string name="theme">Color theme</string>
     <string name="theme_default">Default</string>
     <string name="theme_dark">Dark</string>
-    <string-array name="lang_entries">
-        <item>@string/lang_eng</item>
-        <item>@string/lang_rus</item>
-    </string-array>
-    <string-array name="lang_values">
-        <item>en</item>
-        <item>ru</item>
-    </string-array>
-    <string-array name="theme_entries">
-        <item>@string/theme_default</item>
-        <item>@string/theme_dark</item>
-    </string-array>
+    <string name="text_size">Text size</string>
+    <string name="text_small">Small</string>
+    <string name="text_default">Default</string>
+    <string name="text_large">Large</string>
+    <!-- Articles -->
+    <string name="isometric">Isometric exercises</string>
+    <string name="isolation">Isolation exercises</string>
+    <string name="compound">Compound exercises</string>
     <!-- About -->
     <string-array name="about_text">
         <item>The fitness trainer program is designed to help with physical activity.</item>
@@ -60,4 +56,32 @@
     <!-- Toasts -->
     <string name="title_is_empty">Title is empty!</string>
     <string name="workout_exist">Workout with this title already exist!</string>
+    <!-- Arrays -->
+    <array name="lang_entries">
+        <item>@string/lang_eng</item>
+        <item>@string/lang_rus</item>
+    </array>
+    <string-array name="lang_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
+    <string-array name="theme_entries">
+        <item>@string/theme_default</item>
+        <item>@string/theme_dark</item>
+    </string-array>
+    <string-array name="text_size_entries">
+        <item>@string/text_small</item>
+        <item>@string/text_default</item>
+        <item>@string/text_large</item>
+    </string-array>
+    <string-array name="appearance_items">
+        <item>@string/lang</item>
+        <item>@string/theme</item>
+        <item>@string/text_size</item>
+    </string-array>
+    <string-array name="articles">
+        <item>@string/isometric</item>
+        <item>@string/isolation</item>
+        <item>@string/compound</item>
+    </string-array>
 </resources>

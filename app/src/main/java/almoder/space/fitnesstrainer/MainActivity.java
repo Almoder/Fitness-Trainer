@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -30,6 +31,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
 import almoder.space.fitnesstrainer.fragments.AboutFragment;
+import almoder.space.fitnesstrainer.fragments.Article;
+import almoder.space.fitnesstrainer.fragments.ArticlesFragment;
 import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
 import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
 import almoder.space.fitnesstrainer.fragments.SettingsFragment;
@@ -49,22 +52,23 @@ public class MainActivity extends AppCompatActivity implements
     private String m;
     private boolean excAdding = false, wktDesc = false;
     private AlertDialog ad;
+    private NavigationView nav;
 
     @Override
     protected void onCreate(Bundle sis) {
-        Log.d("TAG", "onCreate() theme:" + new SharedPreferencer(this).theme());
-        setTheme(new SharedPreferencer(this).theme());
+        SharedPreferencer sp = new SharedPreferencer(this);
+        setTheme(sp.theme());
         super.onCreate(sis);
         if (sis != null) onRestoreInstanceState(sis);
         Configuration config = getResources().getConfiguration();
-        config.setLocale(new Locale(new SharedPreferencer(this).locale()));
+        config.setLocale(new Locale(sp.locale()));
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
         setContentView(R.layout.activity_main);
-        new SharedPreferencer(this).hasChanges(false);
+        sp.hasChanges(false);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
-        NavigationView nav = findViewById(R.id.nav_view);
+        nav = findViewById(R.id.nav_view);
         nav.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
@@ -98,11 +102,10 @@ public class MainActivity extends AppCompatActivity implements
                 f = new WorkoutsFragment();
                 title = R.string.m2;
                 break;
-            case R.id.nav_another:
-                Toast.makeText(this, getString(R.string.m3), Toast.LENGTH_SHORT).show();
+            case R.id.nav_articles:
+                f = new ArticlesFragment();
                 title = R.string.m3;
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
+                break;
             case R.id.nav_config:
                 f = new SettingsFragment();
                 title = R.string.m4;
@@ -186,16 +189,31 @@ public class MainActivity extends AppCompatActivity implements
             sp.loadWorkouts();
             if (excAdding) sp.workouts.get(wktId).addExercise(
                         this, excId, Integer.parseInt(reps), Integer.parseInt(weight));
-            else if (sp.workouts.get(wktId).count() != 0 && excId < sp.workouts.get(wktId).count()) {
+            else {
                 sp.workouts.get(wktId).exercises().get(excId).reps(Integer.parseInt(reps));
                 sp.workouts.get(wktId).exercises().get(excId).weight(Integer.parseInt(weight));
             }
             sp.saveWorkout(sp.workouts.get(wktId), wktId);
             excAdding = false;
             toolbar.setTitle(sp.workouts.get(wktId).title());
+            title = 0;
             new Fragmentary(getSupportFragmentManager())
                     .replace(new WktDescFragment(wktId), "_" + toolbar.getTitle());
         }
+    }
+
+    public void onTypeClick(View view) {
+        TextView b = (TextView)view;
+        if (wktDesc || excAdding) return;
+        if (b.getText().equals("isometric") || b.getText().equals("изометрический"))
+            new Fragmentary(getSupportFragmentManager()).replace(new Article(0), title);
+        else if (b.getText().equals("isolation") || b.getText().equals("изолирующий"))
+            new Fragmentary(getSupportFragmentManager()).replace(new Article(1), title);
+        else if (b.getText().equals("compound") || b.getText().equals("комплексный"))
+            new Fragmentary(getSupportFragmentManager()).replace(new Article(2), title);
+        else return;
+        title = R.string.m3;
+        toolbar.setTitle(title);
     }
 
     @Override
@@ -237,24 +255,39 @@ public class MainActivity extends AppCompatActivity implements
             if (f.popBackStack()) {
                 title = 0;
                 toolbar.setTitle(f.title());
+                new Fragmentary(getSupportFragmentManager())
+                        .replace(new WktDescFragment(wktId), "_" + f.title());
             }
             else {
                 title = f.titleResId();
                 toolbar.setTitle(title);
             }
         }
+        switch (title) {
+            case R.string.m1: nav.setCheckedItem(R.id.nav_exercise); break;
+            case R.string.m3: nav.setCheckedItem(R.id.nav_articles); break;
+            case R.string.m4: nav.setCheckedItem(R.id.nav_config); break;
+            case R.string.m5: nav.setCheckedItem(R.id.nav_share); break;
+            case R.string.m6:
+            case R.string.app_name: nav.setCheckedItem(R.id.nav_about); break;
+            case R.string.m2:
+            default: nav.setCheckedItem(R.id.nav_workouts); break;
+        }
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (title == R.string.m3) {
+            new Fragmentary(getSupportFragmentManager()).replace(new Article(i), title);
+            return;
+        }
         switch(i) {
-            case 0: ad = new Dialoger(this).langDialog(); break;
-            case 1: break;
-            default: ad = new Dialoger(this).themeDialog(); break;
+            case 0: ad = new Dialogue(this).langDialog(); break;
+            case 1: ad = new Dialogue(this).themeDialog(); break;
+            default: ad = new Dialogue(this).textSizeDialog(); break;
         }
         ad.show();
-        Intent intent = new Intent(this, MainActivity.class)
-                .putExtra("flag", true);
+        Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override

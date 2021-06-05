@@ -29,8 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/exs_count"
-                android:textSize="?android:attr/textSize"
-                android:textColor="?android:attr/textColor"/>
+                android:textColor="?android:attr/textColor"
+                android:textSize="?android:attr/textSize"/>
 
         </LinearLayout>
 

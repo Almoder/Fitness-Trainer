@@ -116,23 +116,46 @@ public class SharedPreferencer {
         return sPref.getString("localization", "en");
     }
 
-    public int localeResId() {
-        return locale().equals("en") ? R.string.lang_eng : R.string.lang_rus;
-    }
+    public int localeResId() { return locale().equals("en") ? R.string.lang_eng : R.string.lang_rus; }
 
-    public void theme(int resId) {
+    public String localeString() { return c.getString(localeResId()); }
+
+    public void theme(int themeId, int textSizeId) {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        if (theme() == resId) return;
-        sPref.edit().putInt("usedTheme", resId).apply();
-        hasChanges(true);
+        if (themeId() != themeId || textSizeId() != textSizeId) {
+            sPref.edit().putInt("themeId", themeId).putInt("textSizeId", textSizeId).apply();
+            hasChanges(true);
+        }
     }
 
     public int theme() {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        return sPref.getInt("usedTheme", R.style.AppTheme);
+        if (themeId() == 0) return new int[]{
+                R.style.AppTheme_SmallText,
+                R.style.AppTheme_DefaultText,
+                R.style.AppTheme_LargeText}[textSizeId()];
+        else return new int[]{
+                R.style.DarkTheme_SmallText,
+                R.style.DarkTheme_DefaultText,
+                R.style.DarkTheme_LargeText}[textSizeId()];
     }
 
-    public int themeResId() {
-        return theme() == R.style.AppTheme ? R.string.theme_default : R.string.theme_dark;
+    public int themeId() {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        return sPref.getInt("themeId", 0);
+    }
+
+    public int textSizeId() {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        return sPref.getInt("textSizeId", 1);
+    }
+
+    public String themeString() {
+        if (themeId() == 0) return c.getString(R.string.theme_default);
+        else return c.getString(R.string.theme_dark);
+    }
+
+    public String textSizeString() {
+        return c.getResources().getStringArray(R.array.text_size_entries)[textSizeId()];
     }
 }

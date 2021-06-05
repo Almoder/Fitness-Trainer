@@ -19,7 +19,7 @@
         android:gravity="center_vertical"
         android:text="@string/wkt_title"
         android:textAlignment="gravity"
-        android:textSize="@dimen/adding_text"/>
+        android:textSize="?android:attr/textSize"/>
 
     <EditText
         android:id="@+id/adding_edit_title"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/adding_title"
-        android:textSize="@dimen/adding_edit"
+        android:textSize="?android:attr/keyTextSize"
         android:textColor="?android:attr/textColor"
         android:inputType="text"
         tools:ignore="Autofill,LabelFor"/>

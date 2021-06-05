@@ -3,24 +3,14 @@
     <dimen name="menu_title_text">32sp</dimen>
     <dimen name="row_margin">6sp</dimen>
     <dimen name="row_image">72sp</dimen>
-    <dimen name="row_title">20sp</dimen>
-    <dimen name="row_type">16sp</dimen>
     <dimen name="wkt_add">64sp</dimen>
     <dimen name="wkt_image">36sp</dimen>
-    <dimen name="wkt_title">20sp</dimen>
-    <dimen name="wkt_text">16sp</dimen>
-    <dimen name="adding_text">16sp</dimen>
-    <dimen name="adding_edit">17sp</dimen>
-    <dimen name="description_title">20sp</dimen>
-    <dimen name="description_type">16sp</dimen>
-    <dimen name="description_primer">16sp</dimen>
     <dimen name="description_margin">4sp</dimen>
-    <dimen name="description_steps">16sp</dimen>
-    <dimen name="description_tips">16sp</dimen>
-    <dimen name="description_cv_text">16sp</dimen>
-    <dimen name="settings_text">16sp</dimen>
+    <!-- Article -->
+    <dimen name="article_padding">8sp</dimen>
+    <!-- Settings -->
     <dimen name="settings_padding">8sp</dimen>
-    <dimen name="constant_size">24sp</dimen>
+    <dimen name="constant_size">32sp</dimen>
     <!-- Default -->
     <dimen name="default_text">16sp</dimen>
     <dimen name="default_key_text">17sp</dimen>
@@ -28,9 +18,9 @@
     <!-- Small -->
     <dimen name="small_text">12sp</dimen>
     <dimen name="small_key_text">12.5sp</dimen>
-    <dimen name="small_label_text">15</dimen>
+    <dimen name="small_label_text">15sp</dimen>
     <!-- Large -->
     <dimen name="large_text">20sp</dimen>
     <dimen name="large_key_text">21.5sp</dimen>
-    <dimen name="large_label_text">25</dimen>
+    <dimen name="large_label_text">25sp</dimen>
 </resources>

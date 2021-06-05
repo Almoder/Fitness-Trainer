@@ -1,26 +1,24 @@
 {
     "id": "0061",
-    "name": "dumbbell-incline-bench-press",
-    "title": "Bench Press: Dumbbell (Incline)",
-    "primer": "This is an advanced exercise for building and sculpting the chest as well as your triceps and shoulders.",
-    "type": "isolation",
+    "name": "smith-machine-incline-bench-press",
+    "title": "Жим штанги лежа в тренажере Смита (наклон)",
+    "primer": "Упражнение на укрепление трицепса и мышц груди.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс"
     ],
     "equipment": [
-        "dumbbells",
-        "bench: incline"
+        "тренажер Смита"
     ],
     "steps": [
-        "Lie on an incline bench which has been set to an incline of 45 degrees.",
-        "Start with the dumbbells at shoulder height, your arms wide and elbows pointing down to the floor.",
-        "Grasp the dumbbells with a grip so your palms face each other.",
-        "Raise your arms up over your chest bringing the dumbbells closer together as they meet over your chest, as if you were clapping.",
-        "Slowly return the dumbbells to starting position."
+        "Установите наклонную скамью под углом 45 градусов по центру тренажера Смита.",
+        "Выровняйте скамью так, чтобы гриф штанги проходил над верхней частью груди.",
+        "Возьмитесь за перекладину хватом на ширине плеч.",
+        "Разблокируйте штангу и медленно опустите вес на грудь; не отталкивайте штангу на груди.",
+        "Медленными контролируемыми движениями поднимите штангу в исходное положение. Повторяйте."
     ],
     "tips": [],
     "references": []

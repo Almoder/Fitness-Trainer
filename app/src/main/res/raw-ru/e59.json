@@ -1,27 +1,27 @@
 {
     "id": "0062",
     "name": "incline-dumbbell-flys",
-    "title": "Incline Dumbbell Fly's",
-    "primer": "This is an exercise for chest sculpting and strengthening.",
-    "type": "isolation",
+    "title": "Сведение гантелей лежа на наклонной скамье",
+    "primer": "Упражнение для скульптурирования и укрепления мышц груди.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "equipment": [
-        "bench: incline",
-        "dumbbells"
+        "наклонная скамья",
+        "гантели"
     ],
     "steps": [
-        "Lie on an incline bench set a 45 degree angle with a dumbbell in each hand and your feet firmly on the ground.",
-        "Lift the dumbbells over your chest extending your arms fully and your palms facing each other.",
-        "Keeping a slight bend in your elbows, lower the dumbbells towards the floor in and arc like motion.",
-        "Slowly return to starting position."
+        "Лягте на наклонную скамью под углом 45 градусов с гантелями в каждой руке и упритесь ногами в пол.",
+        "Поднимите гантели над грудью, полностью выпрямив руки. Это ваше исходное положение.",
+        "Слегка согнув руки в локтях, опустите гантели на пол по дуге.",
+        "Контролируемым движением вернитесь в исходное положение. Повторяйте."
     ],
     "tips": [
-        "Ensure your hips and back remain in contact with the bench throughout the exercise."
+        "Убедитесь, что ваша спина и берда контактируют со скамьёй на протяжении всего упражнения."
     ],
     "references": []
 }

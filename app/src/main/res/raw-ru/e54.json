@@ -1,27 +1,28 @@
 {
     "id": "0057",
     "name": "flat-bench-cable-flys",
-    "title": "Flat Bench Cable Flys",
-    "primer": "This is an exercise for chest and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Сведение рук на нижнем блоке лежа",
+    "primer": "Упражнение на укрепление мышц груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid"
+        "дельтовидная"
     ],
     "equipment": [
-        "flat bench",
-        "cable"
+        "плоская скамья",
+        "тренажер кроссовер"
     ],
     "steps": [
-        "Lie on flat bench between two cable towers and your feet firmly on the ground.",
-        "Grasp a pulley in each hand with your palms facing up.",
-        "With a slight bend in your elbows, squeeze your chest and pull the cables together meeting in the middle of your chest.",
-        "Hold for a moment and then slowly lower your hands back to starting position at bench height."
+        "Лягте на плоскую скамью между двумя канатными мачтами. Упритесь ногами в пол.",
+        "Возьмите по рукояти в каждую руку ладонями вверх.",
+        "Слегка согнув руки в локтях сведите их над грудью.",
+        "Задержитесь на мгновение, затем медленно вернитесь в исходное положение (руки на высоте скамьи).",
+        "Повторяйте."
     ],
     "tips": [
-        "Ensure your back and hips stay in contact with the bench at all times during this exercise."
+        "Убедитесь, что ваша спина и бедра контактируют со скамьей на протяжении всего упражнения."
     ],
     "references": []
 }

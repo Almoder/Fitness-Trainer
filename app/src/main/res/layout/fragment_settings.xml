@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimarySurface">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -24,20 +24,17 @@
                 android:id="@+id/settings_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/settings_padding"
                 android:text="@string/appearance"
-                android:textSize="@dimen/settings_text"
+                android:textSize="?android:attr/textSize"
                 android:textColor="?attr/colorAccent"/>
 
             <ListView
-                android:id="@+id/settings"
+                android:id="@+id/appearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/settings_text1"/>
+                android:layout_height="wrap_content"/>
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

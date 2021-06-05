@@ -22,10 +22,10 @@ public class WktAddingFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_adding, container, false);
-        if (savedInstanceState != null) {
-            EditText editText = view.findViewById(R.id.adding_edit_title);
+        EditText editText = view.findViewById(R.id.adding_edit_title);
+        if (savedInstanceState != null)
             editText.setText(savedInstanceState.getString("titleEdit", "Error"));
-        }
+        editText.setFocusable(true);
         return view;
     }
 

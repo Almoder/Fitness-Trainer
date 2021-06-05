@@ -1,29 +1,26 @@
 {
     "id": "0054",
     "name": "chest-dips",
-    "title": "Chest Dips",
-    "primer": "This is an exercise for chest, triceps and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Отжимания на брусьях",
+    "primer": "Упражнение на укрепление трицепсов, мышц груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "body",
-        "parallel bars"
+        "тело",
+        "брусья"
     ],
     "steps": [
-        "Stand in between the parallel bars.",
-        "Grip the handles of the parallel bars and push yourself up to the starting position with straightened arms.",
-        "With your elbows close to your body keep your hips straight, lower your body forward by bending your elbows so your chest is leading as you go down.",
-        "Raise yourself back up to the starting position and repeat.",
-        "Repeat."
+        "Встяньте между брусьями.",
+        "Возьмитесь за ручки брусьев и поднимитесь в исходное положение на выпрямленных руках.",
+        "Держите бедра прямыми. Прижав локти к телу и сгибая руки опускайте тело вниз.",
+        "Поднимитесь обратно в исходное положение. Повторяйте."
     ],
-    "tips": [
-        "Ensure not to lock your elbows once you have raised yourself up."
-    ],
+    "tips": [],
     "references": []
 }
