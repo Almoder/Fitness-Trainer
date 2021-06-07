@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:text="@string/undefined"
+                android:text="@string/title"
                 android:textColor="?android:attr/textColor"
                 android:textSize="?android:attr/labelTextSize"/>
 
@@ -50,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:text="@string/undefined"
+                android:text="@string/type"
+                android:textAlignment="textEnd"
                 android:textColor="?attr/colorPrimary"
                 android:textSize="?android:attr/textSize"
                 android:textStyle="bold"/>

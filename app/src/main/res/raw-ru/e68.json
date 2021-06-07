@@ -1,28 +1,28 @@
 {
     "id": "0072",
     "name": "one-armed-biased-push-up",
-    "title": "One Armed Biased Push Up",
-    "primer": "This is an exercise for chest strengthening but also strengthens ones core, shoulders, biceps and triceps.",
-    "type": "isolation",
+    "title": "Отжимание со смещением одной руки",
+    "primer": "Упражнение для укрепления груди, но также укрепляет мышцы преса, плеч, бицепсы и трицепсы.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "bicpes",
-        "deltoid",
-        "core"
+        "трицепс",
+        "бицепс",
+        "дельтовидный",
+        "пресс"
     ],
     "equipment": [
-        "bosu ball"
+        "мяч-полусфера"
     ],
     "steps": [
-        "Arrange the ball so that as you begin the exercise, one hand on the Bosu ball and the other on the floor.",
-        "Place the ball flat side down on the floor.",
-        "Kneel on the floor with your arms fully extended on the dome, and body straight.",
-        "Keeping your abs drawn in and your body straight, lower your chest to the ball.",
-        "Pause for a moment and then return to starting position.",
-        "Repeat."
+        "Расположите мяч-полусферу так, чтобы одна рука лежала на нем, а другая на полу.",
+        "Положите мяч на пол плоской стороной вниз.",
+        "Упор лежа, руки на ширине плеч, тело прямое.",
+        "Держа пресс втянутым, а тело прямым, опустите грудь к мячу.",
+        "Ненадолго задержитесь, затем вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

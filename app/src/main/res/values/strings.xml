@@ -26,6 +26,10 @@
     <string name="description_weight">Weight:</string>
     <string name="add_to_wkt">Add to workout</string>
     <string name="confirm_changes">Confirm changes</string>
+    <!-- Design -->
+    <string name="title">Title</string>
+    <string name="type">type</string>
+    <string name="primary">primary</string>
     <!-- Preferences -->
     <string name="appearance">Appearance</string>
     <string name="lang">Language</string>

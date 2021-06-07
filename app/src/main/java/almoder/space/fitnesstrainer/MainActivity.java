@@ -247,16 +247,18 @@ public class MainActivity extends AppCompatActivity implements
         else if (ad != null && ad.isShowing()) ad.cancel();
         else if (title == 0) {
             title = R.string.m2;
-            new Fragmentary(getSupportFragmentManager()).replace(new WorkoutsFragment(), title);
+            new Fragmentary(fm).replace(new WorkoutsFragment(), title);
             toolbar.setTitle(title);
         }
+        else if (title == R.string.m2 && new SharedPreferencer(this).count() == 0) return;
         else if (fm.getBackStackEntryCount() > 1) {
-            Fragmentary f = new Fragmentary(getSupportFragmentManager());
+            Fragmentary f = new Fragmentary(fm);
             if (f.popBackStack()) {
                 title = 0;
                 toolbar.setTitle(f.title());
-                new Fragmentary(getSupportFragmentManager())
+                new Fragmentary(fm)
                         .replace(new WktDescFragment(wktId), "_" + f.title());
+                excAdding = false;
             }
             else {
                 title = f.titleResId();

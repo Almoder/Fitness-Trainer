@@ -1,30 +1,29 @@
 {
     "id": "0069",
     "name": "bosu-ball-push-up",
-    "title": "Push Up: Bosu Ball",
-    "primer": "This is an exercise for chest, core, shoulders and triceps strengthening with the use of a Bosu ball.",
-    "type": "isolation",
+    "title": "Отжимания: мяч-полусфера",
+    "primer": "Вариация отжимания для укрепление груди, преса, плеч и трицепсов.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid",
-        "core",
-        "triceps brachii"
+        "дельтовидная",
+        "пресс",
+        "трицепс"
     ],
     "equipment": [
-        "bosu ball"
+        "мяч-полусфера"
     ],
     "steps": [
-        "Place the Bosu ball flat side down on the floor.",
-        "Kneel on the floor with your arms fully extended on the ball, and body straight.",
-        "Keeping your abs drawn in and your body straight, by bending your elbows lower your chest to the ball.",
-        "Pause for a moment and then return to starting position.",
-        "Repeat."
+        "Положите мяч-полусферу на пол плоской стороной вниз.",
+        "Упор лежа, руки на ширине плеч, ладони разместите по краям мяча.",
+        "Держа пресс втянутым а тело прямым, согните руки в локтях и опустите грудь к мячу.",
+        "Задержитесь на несколько секунд, затем вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Ensure your elbows remain close to your body while lowering your chest to the ball.",
-        "Beginners may want to start on your knees with your feet off the ground so you are rocking into the Push Up."
+        "Убедитесь, что ваши локти прижаты к телу во время выполнения упражнения."
     ],
     "references": []
 }

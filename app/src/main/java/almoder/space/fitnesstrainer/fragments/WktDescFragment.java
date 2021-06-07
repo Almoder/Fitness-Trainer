@@ -103,12 +103,6 @@ public class WktDescFragment extends Fragment implements RVEAdapter.OnItemClickL
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        onSaveInstanceState(new Bundle());
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         edit = false;

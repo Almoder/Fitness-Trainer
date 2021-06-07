@@ -29,8 +29,6 @@ public class Exercise {
         num(num);
         imgRes1(res.getIdentifier(
                 "e" + num + "_0", "drawable", c.getPackageName()));
-        imgRes2(res.getIdentifier(
-                "e" + num + "_1", "drawable", c.getPackageName()));
         Scanner s = new Scanner(res.openRawResource(res.getIdentifier(
                 "e" + num, "raw", Objects.requireNonNull(c.getPackageName()))));
         StringBuilder builder = new StringBuilder();
@@ -40,7 +38,6 @@ public class Exercise {
             JSONObject obj = new JSONObject(this.builder);
             title(obj.getString("title"));
             type(obj.getString("type"));
-            primer(obj.getString("primer"));
         } catch (JSONException e) { e.printStackTrace(); }
     }
 
@@ -55,8 +52,11 @@ public class Exercise {
     }
 
     public void initAll() {
+        imgRes2(c.getResources().getIdentifier(
+                "e" + num + "_1", "drawable", c.getPackageName()));
         try {
             JSONObject obj = new JSONObject(builder);
+            primer(obj.getString("primer"));
             JSONArray a1 = obj.getJSONArray("primary");
             primary(a1.getString(0));
             for (int i = 1; i < a1.length(); i++) primary(primary.concat("\n" + a1.getString(i)));

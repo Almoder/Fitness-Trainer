@@ -2,6 +2,7 @@ package almoder.space.fitnesstrainer.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +43,7 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
         setHasOptionsMenu(true);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("WrongThread")
     @Nullable
     @Override
@@ -53,12 +56,12 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
                 .setInitialLoadSizeHint(12)
-                .setPrefetchDistance(64)
+                .setPrefetchDistance(16)
                 .setPageSize(4)
                 .build();
         pagedList = new PagedList.Builder<>(dataSource, config)
                 .setNotifyExecutor(new RVEAdapter.MainThreadExecutor())
-                .setFetchExecutor(Executors.newFixedThreadPool(8))
+                .setFetchExecutor(Executors.newWorkStealingPool())
                 .setInitialKey(position)
                 .build();
         RVEAdapter adapter = new RVEAdapter(new RVEAdapter.ExerciseDiffUtilCallback(), this);
@@ -115,10 +118,10 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.search:
-                Toast.makeText(getContext(), "Search", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.search, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sort:
-                Toast.makeText(getContext(), "Sort", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.sort_az, Toast.LENGTH_SHORT).show();
                 break;
             default:
                 return super.onOptionsItemSelected(item);

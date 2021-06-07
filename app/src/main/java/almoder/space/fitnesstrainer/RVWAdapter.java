@@ -43,8 +43,8 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
 
     private LinkedList<WktData> content;
 
-    public void addItem(WktData item) {
-        content.add(item);
+    public void removeItem(int position) {
+        content.remove(position);
         notifyDataSetChanged();
     }
 

@@ -28,7 +28,7 @@ public class DescriptionFragment extends Fragment {
             R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
 
     public DescriptionFragment() {
-        this(0);
+        this(1);
     }
 
     public DescriptionFragment(int num) {

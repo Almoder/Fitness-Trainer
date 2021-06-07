@@ -37,7 +37,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8sp"
             android:layout_toEndOf="@+id/wkt_image"
-            android:text="@string/undefined"
+            android:text="@string/title"
             android:textColor="?android:attr/textColor"
             android:textSize="?android:attr/labelTextSize"/>
 

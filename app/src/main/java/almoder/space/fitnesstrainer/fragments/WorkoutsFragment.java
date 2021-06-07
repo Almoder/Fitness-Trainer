@@ -3,6 +3,7 @@ package almoder.space.fitnesstrainer.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -74,12 +75,13 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
 
     @Override
     public void onItemClicked(int position) {
-        if (!edit) listener.wkItemClicked(position, sp.workouts.get(position).title());
-        else {
+        if (edit) {
+            Log.d("TAG", "Removing. position:" + position);
             sp.removeWorkout(position);
             adapter.notifyDataSetChanged();
             if (sp.workouts.size() == 0) onOptionsItemSelected(editItem);
         }
+        else listener.wkItemClicked(position, sp.workouts.get(position).title());
     }
 
     @Override

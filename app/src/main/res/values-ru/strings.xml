@@ -21,11 +21,15 @@
     <string name="wkt_title">Название</string>
     <!-- Description -->
     <string name="description_steps">Этапы:</string>
-    <string name="description_tips">Совет:</string>
+    <string name="description_tips">Советы:</string>
     <string name="description_reps">Повторений:</string>
     <string name="description_weight">Вес:</string>
     <string name="add_to_wkt">Добавить в тренировку</string>
     <string name="confirm_changes">Подтвердить изменения</string>
+    <!-- Design -->
+    <string name="title">Название</string>
+    <string name="type">тип</string>
+    <string name="primary">краткое описание</string>
     <!-- Settings -->
     <string name="appearance">Внешний вид</string>
     <string name="lang">Язык интерфейса</string>

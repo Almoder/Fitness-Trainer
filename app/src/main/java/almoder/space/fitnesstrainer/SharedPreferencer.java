@@ -12,9 +12,7 @@ public class SharedPreferencer {
     private final Context c;
     public LinkedList<WktData> workouts = new LinkedList<>();
 
-    public SharedPreferencer(Context c) {
-        this.c = c;
-    }
+    public SharedPreferencer(Context c) { this.c = c; }
 
     public boolean addWorkout(WktData wktData) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
@@ -45,15 +43,17 @@ public class SharedPreferencer {
 
     public void saveWorkouts() {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        for (int i = 0; i < count(); i++) saveWorkout(workouts.get(i), i);
+        sPref.edit().clear().apply();
+        for (int i = 0; i < workouts.size(); i++) saveWorkout(workouts.get(i), i);
+        sPref.edit().putInt("wktCount", workouts.size()).apply();
     }
 
     public void removeWorkout(int id) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         if (count() != workouts.size()) loadWorkouts();
         if (workouts.remove(id) != null) {
-            saveWorkouts();
-            sPref.edit().putInt("wktCount", workouts.size()).apply();
+            if (workouts.size() != 0) saveWorkouts();
+            else sPref.edit().clear().putInt("wktCount", 0).apply();
         }
     }
 
@@ -67,7 +67,6 @@ public class SharedPreferencer {
                     sPref.getInt(temp + i + "reps", 1),
                     sPref.getInt(temp + i + "weight", 1));
         }
-        Log.d("SharedPreferencer", "id: " + id + ", title: " + ret.title());
         return ret;
     }
 
@@ -89,9 +88,11 @@ public class SharedPreferencer {
         Log.d("SharedPreferencer", "Count: " + count());
     }
 
-    private int count() {
+    public int count() {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        return sPref.getInt("wktCount", 0);
+        int ret = sPref.getInt("wktCount", 0);
+        Log.d("TAG", "wktCount:" + ret);
+        return ret;
     }
 
     public boolean hasChanges() {

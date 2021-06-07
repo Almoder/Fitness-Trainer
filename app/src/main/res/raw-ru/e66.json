@@ -1,24 +1,24 @@
 {
     "id": "0070",
     "name": "one-arm-barbell-floor-press",
-    "title": "One Arm Barbell Floor Press",
-    "primer": "This is an exercise for chest and triceps strengthening.",
-    "type": "isolation",
+    "title": "Жим штанги одной рукой лежа на спине",
+    "primer": "Упражнение для укрепления и скульптурирования мышц груди и трицепсов.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii"
+        "трицепс"
     ],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Lie flat on your back with your knees bent and your feet firmly on the floor.",
-        "Draw in your abs and contract your lats, and glutes.",
-        "Have your partner hand you the bar and with your bicep parallel to the floor lift and extend your arm fully so it is straight.",
-        "Return to the starting position.",
-        "Complete reps and switch arms."
+        "Лягте на спину, согнув колени и поставив ступни на пол.",
+        "Втяните пресс и напрягите шировайшие мышцы спины и ягодицы.",
+        "Пусть ваш партнер подаст вам штангу так, чтобы вы держали её ладонью в центре грифа.",
+        "Выпрямив руку поднимите штангу над собой. Ненадолго задержитесь, затем вернитесь в исходное положение.",
+        "Поменяйте руку после достаточного количества повторений."
     ],
     "tips": [],
     "references": []

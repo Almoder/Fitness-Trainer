@@ -1,24 +1,24 @@
 {
     "id": "0066",
     "name": "machine-bench-press",
-    "title": "Bench Press: Machine",
-    "primer": "This is an exercise for chest, biceps and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Жим лежа: тренажер",
+    "primer": "Упражнение на укрепление бицепсов, груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "machine: bench press"
+        "тренажер \"жим от груди\""
     ],
     "steps": [
-        "Adjust the machine so that you are sitting with the bars at chest height.",
-        "Place your hands on the bars and place your feet on the foot rest.",
-        "Press out, extending your arms as far as possible in a steady motion.",
-        "Pause for a moment and then return slowly to starting position."
+        "Отрегулируйте тренажер так, чтобы вы сидели со штангой на уровне груди.",
+        "Положите руки на перекладины, ступнями упритесь в пол или подставки.",
+        "Надавите на перекладины, полностью выпрямив руки. Задержитесь на несколько секунд.",
+        "Контролируемым движением вернитесь в исходное положение."
     ],
     "tips": [],
     "references": []

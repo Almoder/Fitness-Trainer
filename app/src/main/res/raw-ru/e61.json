@@ -1,25 +1,24 @@
 {
     "id": "0064",
     "name": "wide-grip-decline-barbell-pullover",
-    "title": "Wide Grip Decline Barbell Pullover",
-    "primer": "This is an advanced strengthening exercise which targets the pectoral or chest muscles.",
-    "type": "isolation",
+    "title": "Пуловер со штангой широким хватом (отрицательный наклон)",
+    "primer": "Продвинутое упражнение для укрепления грудных мышц.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [],
     "equipment": [
-        "bench: decline",
-        "barbell"
+        "наклонная скамья",
+        "штанга"
     ],
     "steps": [
-        "Lie on a decline bench with your feet higher than your head and your feet firmly on the ground.",
-        "Grasp the barbell with an extra wide grip (your hands near the plates) and starting at you’re your upper thighs raise the barbell in an arc over your head towards the floor.",
-        "Slowly return the barbell to starting position on your thighs.",
-        "Repeat."
+        "Лягте на наклонную скамью, колени выше головы.",
+        "Возьмитесь за штангу очень широким хватом (руки почти около дисков) и, начиная с верхней части бедра, поднимите штангу по дуге над головой и опустите на пол.",
+        "Медленно верните штангу в исхоное положение на бедрах. Повторяйте."
     ],
     "tips": [
-        "Ensure your back and hips remain in contact with the bench at all times."
+        "Убедитесь, что ваша спина и бедра всегда находятся в контакте со скамьей."
     ],
     "references": []
 }
