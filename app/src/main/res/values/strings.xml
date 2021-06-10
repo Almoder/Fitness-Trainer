@@ -46,6 +46,9 @@
     <string name="isometric">Isometric exercises</string>
     <string name="isolation">Isolation exercises</string>
     <string name="compound">Compound exercises</string>
+    <string name="exc_type1">isometric</string>
+    <string name="exc_type2">isolation</string>
+    <string name="exc_type3">compound</string>
     <!-- About -->
     <string-array name="about_text">
         <item>The fitness trainer program is designed to help with physical activity.</item>
@@ -60,6 +63,8 @@
     <!-- Toasts -->
     <string name="title_is_empty">Title is empty!</string>
     <string name="workout_exist">Workout with this title already exist!</string>
+    <string name="reps_or_weight_exc1">Reps or weight cannot be 0!</string>
+    <string name="reps_or_weight_exc2">Reps or weight cannot be empty!</string>
     <!-- Arrays -->
     <array name="lang_entries">
         <item>@string/lang_eng</item>
@@ -87,5 +92,10 @@
         <item>@string/isometric</item>
         <item>@string/isolation</item>
         <item>@string/compound</item>
+    </string-array>
+    <string-array name="exc_types">
+        <item>@string/exc_type1</item>
+        <item>@string/exc_type2</item>
+        <item>@string/exc_type3</item>
     </string-array>
 </resources>
