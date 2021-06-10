@@ -1,27 +1,24 @@
 {
     "id": "0080",
     "name": "incline-dumbbell-press",
-    "title": "Incline Dumbbell Press",
-    "primer": "This exercises is for mainly chest strengthening but also strengthens your triceps and shoulders.",
-    "type": "isolation",
+    "title": "Подтягивание фитбола",
+    "primer": "Упражнение для укрепления нижних мышц живота.",
+    "type": "комплексный",
     "primary": [
-        "pectoralis major"
+        "брюшной пресс"
     ],
-    "secondary": [
-        "triceps brachii",
-        "deltoid"
-    ],
+    "secondary": [],
     "equipment": [
-        "dumbbells",
-        "bench: incline"
+        "тело"
     ],
     "steps": [
-        "Set and incline bench at a 45 degree angle.",
-        "Start with the dumbbells at shoulder height, your arms wide and elbows pointing down to the floor.",
-        "Raise your arms up over your chest bringing the dumbbells closer together as they meet over your chest.",
-        "Slowly return the dumbbells to starting position.",
-        "Repeat."
+        "Примите упор лежа, как если бы вы отжимались.",
+        "Положите ступни и голени на фитбол.",
+        "Держа спину прямо и опираясь на руки, подтяните колени к груди, чтобы мяч катился вперед под вашими лодыжками.",
+        "Сожмите пресс, а затем перекатите мяч в исходное положение, выпрямив ног."
     ],
-    "tips": [],
+    "tips": [
+        "Старайтесь держать спину прямо на протыжении всего упражнения"
+    ],
     "references": []
 }
