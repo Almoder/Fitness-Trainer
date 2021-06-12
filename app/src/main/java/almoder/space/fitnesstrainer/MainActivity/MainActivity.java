@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,17 +28,14 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
+import almoder.space.fitnesstrainer.Dialogue;
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.Fragmentary;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.SharedPreferencer;
 import almoder.space.fitnesstrainer.WktData;
-import almoder.space.fitnesstrainer.fragments.Article;
-import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
-import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
-import almoder.space.fitnesstrainer.fragments.WktAddingFragment;
-import almoder.space.fitnesstrainer.fragments.WktDescFragment;
-import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
+import almoder.space.fitnesstrainer.fragments.*;
+import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements
         WorkoutsFragment.WorkoutsFragmentListener,
         AdapterView.OnItemClickListener {
 
-    private final Expressions exp = new Expressions();
     private Logic logic;
     private Fragmentary fragmentary;
     private SharedPreferencer sp;
@@ -103,9 +99,8 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
         title = logic.getTitleById(item.getItemId());
-        if (exp.isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
+        if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
         excAdding = false;
-        hideKeyboard();
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
         toolbar.setTitle(title);
         drawer.closeDrawer(GravityCompat.START);
@@ -216,8 +211,8 @@ public class MainActivity extends AppCompatActivity implements
             title(R.string.m2);
             fragmentary.replace(new WorkoutsFragment(), title);
         }
-        else if (exp.isWorkoutsEmptyOnBackPress(title, sp.count())) return;
-        else if (exp.isBackStackHasEntries(fm.getBackStackEntryCount())) {
+        else if (isWorkoutsEmptyOnBackPress(title, sp.count())) return;
+        else if (isBackStackHasEntries(fm.getBackStackEntryCount())) {
             if (fragmentary.popBackStack()) {
                 excAdding = false;
                 title(0, fragmentary.title());
@@ -225,12 +220,18 @@ public class MainActivity extends AppCompatActivity implements
             }
             else title(fragmentary.titleResId());
         }
+        else {
+            new Dialogue(this).confirmExitDialog((di, i) -> {
+                if (i == DialogInterface.BUTTON_POSITIVE) finish(); else di.dismiss();
+            }).show();
+            return;
+        }
         nav.setCheckedItem(logic.getItemIdByTitleRes(title));
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (exp.isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
+        if (isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
         ad = logic.getDialogById(i);
         ad.show();
         Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);

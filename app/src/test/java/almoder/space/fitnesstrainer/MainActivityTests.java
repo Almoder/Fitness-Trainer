@@ -3,18 +3,13 @@ package almoder.space.fitnesstrainer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import almoder.space.fitnesstrainer.MainActivity.Expressions;
 import almoder.space.fitnesstrainer.MainActivity.Logic;
-import almoder.space.fitnesstrainer.fragments.AboutFragment;
-import almoder.space.fitnesstrainer.fragments.ArticlesFragment;
-import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
-import almoder.space.fitnesstrainer.fragments.SettingsFragment;
-import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
+import almoder.space.fitnesstrainer.fragments.*;
+import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
 public class MainActivityTests {
 
     private final Logic logic = new Logic();
-    private final Expressions exp = new Expressions();
 
     @Test
     public void getTitleByIdTest() {
@@ -123,7 +118,7 @@ public class MainActivityTests {
         };
         boolean[] expecteds = { false, false, true, false, false };
         boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = exp.isArticlesOpened(args[i]);
+        for (int i = 0; i < actuals.length; i++) actuals[i] = isArticlesOpened(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
@@ -136,7 +131,7 @@ public class MainActivityTests {
         boolean[] expecteds = { true, false, false, false, false };
         boolean[] actuals = new boolean[args.length];
         for (int i = 0; i < actuals.length; i++)
-            actuals[i] = exp.isWorkoutsEmptyOnBackPress(args[i][0], args[i][1]);
+            actuals[i] = isWorkoutsEmptyOnBackPress(args[i][0], args[i][1]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
@@ -145,7 +140,7 @@ public class MainActivityTests {
         int[] args = { 0, 1, 100, -1, -100, Integer.MIN_VALUE, Integer.MAX_VALUE };
         boolean[] expecteds = { false, false, true, false, false, false, true };
         boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = exp.isBackStackHasEntries(args[i]);
+        for (int i = 0; i < actuals.length; i++) actuals[i] = isBackStackHasEntries(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
 }
