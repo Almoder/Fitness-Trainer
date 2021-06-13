@@ -21,6 +21,7 @@ public class Logic {
     private static final String repsIsNull = "reps is null!",
                                 weightIsNull = "weight is null!";
 
+
     public Logic() { /* ehh */ }
     public Logic(Context c) {
         this.c = c;

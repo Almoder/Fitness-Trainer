@@ -1,27 +1,27 @@
 {
     "id": "0079",
     "name": "straight-arm-dumbbell-pullover",
-    "title": "Straight Arm Dumbbell Pullover",
-    "primer": "This is an exercise for chest and shoulder strengthening which mainly targets the rotator cuff muscles.",
-    "type": "isolation",
+    "title": "Пуловер с гантелями прямыми руками",
+    "primer": "Упражнение для укрепления мышц груди, плеч и вращающей манжеты плеча.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "latissimus dorsi",
-        "deltoid"
+        "трицепс",
+        "широчайшая мышца спины",
+        "дельтовидная"
     ],
     "equipment": [
-        "flat bench",
-        "dumbbell"
+        "плоская скамья",
+        "гантель"
     ],
     "steps": [
-        "Lie on a flat bench with your feet flat on the floor and your head at the end of the bench.",
-        "Grasp a dumbbell and raise it over your chest.",
-        "Keeping your elbows as straight as possible, lower the weight in an arc over your head and as low to the ground as possible with out any pain.",
-        "Return to starting position.",
-        "Repeat."
+        "Лягте на плоскую скамью, голова на краю скамьи, ногами упритесь в пол.",
+        "Возьмите гантель обеими руками и поднимите её над грудью.",
+        "Держа руки как можно более прямыми, опустите вес по дуге над головой и как можно ниже к полу.",
+        "Задержавшись на несколько секунд вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

@@ -1,27 +1,27 @@
 {
     "id": "0083",
     "name": "wide-grip-decline-bench-press",
-    "title": "Bench Press: Barbell (Decline, Wide Grip)",
-    "primer": "This is an exercise for chest, triceps and shoulder strengthening.",
-    "type": "isolation",
+    "title": "Жим штанги лежа (отрицательный наклон, широкий хват)",
+    "primer": "Упражнение на укрепление трицепсов, мышц груди и плеч.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "triceps brachii",
-        "deltoid"
+        "трицепс",
+        "дельтовидная"
     ],
     "equipment": [
-        "barbell",
-        "bench: decline"
+        "штанга",
+        "наклонная скамья"
     ],
     "steps": [
-        "Lie on a decline bench with your head lower than your feet.",
-        "Place your hands wider than shoulder width apart on the bar and lift it off the rack.",
-        "Bring the bar over your chest and lower it till it is just above the lower portion of your chest, this is starting position.",
-        "Extend your arms upward and raise the bar straight up.",
-        "Pause for a moment and then lower the bar to starting position.",
-        "Repeat."
+        "Лягте на наклонную скамью вниз головой.",
+        "Возьмитесь за перекладину широким хватом (ладони почти у дисков).",
+        "Поднесите штангу к груди. Это исходное положение.",
+        "Выпрямив руки поднимите штангу вверх как можно выше.",
+        "Задержитесь на мгновение, затем контролируемым движением верните штангу в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

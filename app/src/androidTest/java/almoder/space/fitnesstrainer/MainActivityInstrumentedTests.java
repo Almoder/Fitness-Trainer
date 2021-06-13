@@ -55,7 +55,7 @@ public class MainActivityInstrumentedTests {
         for (int i = 0; i < actuals.length; i++) actuals[i] = editTextIsVisible(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
-
+  
     /*@Test
     public void getDialogByIdTest() {
         int[] args = { 0, 1, 2 };

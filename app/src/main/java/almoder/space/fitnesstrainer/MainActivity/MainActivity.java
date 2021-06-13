@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements
         title = logic.getTitleById(item.getItemId());
         if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
         excAdding = false;
+        hideKeyboard();
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
         toolbar.setTitle(title);
         drawer.closeDrawer(GravityCompat.START);
@@ -245,6 +248,6 @@ public class MainActivity extends AppCompatActivity implements
     private void title(int resId, String title) { this.title = resId; toolbar.setTitle(title); }
     private void showToast(String text) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show(); }
     private boolean showToast(int resId) {
-        if (resId != 0) return true; else { showToast(getString(resId)); return false; }
+        if (resId == 0) return true; else { showToast(getString(resId)); return false; }
     }
 }

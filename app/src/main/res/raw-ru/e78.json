@@ -1,23 +1,24 @@
 {
     "id": "0085",
     "name": "decline-chest-press",
-    "title": "Decline Chest Press",
-    "primer": "This is an exercise for the strengthening of the lower chest or pectoral muscles and is preferred by beginners as it provides support and stability.",
-    "type": "isolation",
+    "title": "Жим лежа: тренажер (наклон)",
+    "primer": "Вариация жима в тренажере для укрепления и скульптурирования бицепсов и мышц груди.",
+    "type": "изолирующий",
     "primary": [
-        "pectoralis major"
+        "большая грудная мышца"
     ],
     "secondary": [
-        "deltoid",
-        "triceps brachii"
+        "дельтовидная",
+        "трицепс"
     ],
     "equipment": [
-        "machine: chest"
+        "тренажер \"жим от груди\""
     ],
     "steps": [
-        "Adjust the seat of the machine so that the handles are near the lower portion of your chest.",
-        "Slowly press the handles forward until your hands are fully extended, do not lock your elbows.",
-        "Pause for a moment and then with a controlled movement lower your hands back to starting position."
+        "Отрегулируйте тренажер так, чтобы ручки находились у нижней части груди.",
+        "Медленно давите на ручки, пока полностью не вытяните руки.",
+        "Задержитесь на мгновение, затем контролируемым движением вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []
