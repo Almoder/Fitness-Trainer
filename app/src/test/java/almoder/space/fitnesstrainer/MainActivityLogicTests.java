@@ -5,9 +5,8 @@ import org.junit.Test;
 
 import almoder.space.fitnesstrainer.MainActivity.Logic;
 import almoder.space.fitnesstrainer.fragments.*;
-import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
-public class MainActivityTests {
+public class MainActivityLogicTests {
 
     private final Logic logic = new Logic();
 
@@ -61,12 +60,8 @@ public class MainActivityTests {
 
     @Test
     public void getOnCreateItemIdTest() {
-        boolean[][] args = {
-                { false, true }, { true, false }, { true, true }
-        };
-        int[] expecteds = {
-                R.id.nav_aboutapp, R.id.nav_settings, R.id.nav_settings
-        };
+        boolean[][] args = {{ false, true }, { true, false }, { true, true }};
+        int[] expecteds = { R.id.nav_aboutapp, R.id.nav_settings, R.id.nav_settings };
         int[] actuals = new int[args.length];
         for (int i = 0; i < actuals.length; i++)
             actuals[i] = logic.getOnCreateItemId(args[i][0], args[i][1]);
@@ -74,18 +69,12 @@ public class MainActivityTests {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getOnCreateItemIdExceptionTest() {
-        logic.getOnCreateItemId(false, false);
-    }
+    public void getOnCreateItemIdExceptionTest() { logic.getOnCreateItemId(false, false); }
 
     @Test
     public void getOnCreateTitleTest() {
-        boolean[][] args = {
-                { false, false }, { false, true }, { true, false }, { true, true }
-        };
-        int[] expecteds = {
-                R.string.undefined, R.string.app_name, R.string.m4, R.string.m4
-        };
+        boolean[][] args = {{ false, false }, { false, true }, { true, false }, { true, true }};
+        int[] expecteds = { R.string.undefined, R.string.app_name, R.string.m4, R.string.m4 };
         int[] actuals = new int[args.length];
         for (int i = 0; i < actuals.length; i++)
             actuals[i] = logic.getOnCreateTitle(args[i][0], args[i][1]);
@@ -94,9 +83,7 @@ public class MainActivityTests {
 
     @Test
     public void getOnCreateFragmentTest() {
-        boolean[][] args = {
-                { false, true }, { true, false }, { true, true }
-        };
+        boolean[][] args = {{ false, true }, { true, false }, { true, true }};
         Object[] expecteds = {
                 AboutFragment.class, SettingsFragment.class, SettingsFragment.class
         };
@@ -107,40 +94,40 @@ public class MainActivityTests {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getOnCreateFragmentExceptionTest() {
-        logic.getOnCreateFragment(false, false);
-    }
+    public void getOnCreateFragmentExceptionTest() { logic.getOnCreateFragment(false, false); }
 
     @Test
-    public void isArticleOpenedTest() {
-        int[] args = {
-                R.string.m1, R.string.m2, R.string.m3, Integer.MIN_VALUE, Integer.MAX_VALUE
-        };
-        boolean[] expecteds = { false, false, true, false, false };
-        boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = isArticlesOpened(args[i]);
-        Assert.assertArrayEquals(expecteds, actuals);
-    }
-
-    @Test
-    public void isWorkoutsEmptyOnBackPressTest() {
-        int[][] args = {
-                { 0, 0 }, { 0, Integer.MIN_VALUE }, { Integer.MAX_VALUE, 0 },
-                { Integer.MIN_VALUE, Integer.MIN_VALUE }, { Integer.MAX_VALUE, Integer.MAX_VALUE }
-        };
-        boolean[] expecteds = { true, false, false, false, false };
-        boolean[] actuals = new boolean[args.length];
+    public void getOnDescAddClickToastTest1() {
+        String[] args = { "", "0", "1" };
+        int[] expecteds = { R.string.reps_not_empty, R.string.reps_not_zero, 0 },
+                actuals = new int[args.length];
         for (int i = 0; i < actuals.length; i++)
-            actuals[i] = isWorkoutsEmptyOnBackPress(args[i][0], args[i][1]);
+            actuals[i] = logic.getOnDescAddClickToast(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
     @Test
-    public void isBackStackHasEntriesTest() {
-        int[] args = { 0, 1, 100, -1, -100, Integer.MIN_VALUE, Integer.MAX_VALUE };
-        boolean[] expecteds = { false, false, true, false, false, false, true };
-        boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = isBackStackHasEntries(args[i]);
+    public void getOnDescAddClickToastTest2() {
+        String[][] args = {{ "", "" }, { "0", "0" }, {"", "1"},
+                {"0", "1"}, { "1", ""}, { "1", "0" }, { "1", "1" }};
+        int[] expecteds = { R.string.reps_weight_not_empty, R.string.reps_weight_not_zero,
+                R.string.reps_not_empty, R.string.reps_not_zero,
+                R.string.weight_not_empty, R.string.weight_not_zero, 0 },
+        actuals = new int[args.length];
+        for (int i = 0; i < actuals.length; i++)
+            actuals[i] = logic.getOnDescAddClickToast(args[i][0], args[i][1]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void getOnDescAddClickToastExceptionTest1() { logic.getOnDescAddClickToast(null); }
+
+    @Test(expected = NullPointerException.class)
+    public void getOnDescAddClickToastExceptionTest2() { logic.getOnDescAddClickToast("1", null); }
+
+    @Test(expected = NullPointerException.class)
+    public void getOnDescAddClickToastExceptionTest3() { logic.getOnDescAddClickToast(null, "1"); }
+
+    @Test(expected = NullPointerException.class)
+    public void getOnDescAddClickToastExceptionTest4() { logic.getOnDescAddClickToast(null, null); }
 }

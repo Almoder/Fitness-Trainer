@@ -1,17 +1,13 @@
 package almoder.space.fitnesstrainer.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.LinkedList;
-
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVWAdapter;
 import almoder.space.fitnesstrainer.SharedPreferencer;
-import almoder.space.fitnesstrainer.WktData;
+
+import static almoder.space.fitnesstrainer.fragments.Expressions.thereIsNoWorkouts;
 
 public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClickListener {
 
@@ -76,10 +71,9 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
     @Override
     public void onItemClicked(int position) {
         if (edit) {
-            Log.d("TAG", "Removing. position:" + position);
             sp.removeWorkout(position);
             adapter.notifyDataSetChanged();
-            if (sp.workouts.size() == 0) onOptionsItemSelected(editItem);
+            if (thereIsNoWorkouts(sp.workouts.size())) onOptionsItemSelected(editItem);
         }
         else listener.wkItemClicked(position, sp.workouts.get(position).title());
     }

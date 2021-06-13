@@ -74,8 +74,8 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                position = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager()))
-                        .findFirstVisibleItemPosition();
+                position = ((LinearLayoutManager) Objects.requireNonNull(
+                        recyclerView.getLayoutManager())).findFirstVisibleItemPosition();
             }
         });
         return view;

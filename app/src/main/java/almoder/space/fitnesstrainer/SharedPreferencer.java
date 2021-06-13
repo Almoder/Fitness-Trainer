@@ -130,7 +130,6 @@ public class SharedPreferencer {
     }
 
     public int theme() {
-        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
         if (themeId() == 0) return new int[]{
                 R.style.AppTheme_SmallText,
                 R.style.AppTheme_DefaultText,

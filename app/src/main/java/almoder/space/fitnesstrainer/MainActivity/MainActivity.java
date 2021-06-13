@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
-import almoder.space.fitnesstrainer.Dialogue;
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.Fragmentary;
 import almoder.space.fitnesstrainer.R;
@@ -154,9 +152,8 @@ public class MainActivity extends AppCompatActivity implements
         EditText ed1 = findViewById(R.id.description_reps_edit);
         EditText ed2 = findViewById(R.id.description_weight_edit);
         String reps = String.valueOf(ed1.getText()), weight = String.valueOf(ed2.getText());
-        if (reps.equals("0") || weight.equals("0")) showToast(R.string.reps_or_weight_exc1);
-        else if (reps.isEmpty() || weight.isEmpty()) showToast(R.string.reps_or_weight_exc2);
-        else {
+        if (!editTextIsVisible(ed2) && showToast(logic.getOnDescAddClickToast(reps)) ||
+                showToast(logic.getOnDescAddClickToast(reps, weight))) {
             hideKeyboard();
             sp.loadWorkouts();
             if (excAdding) sp.workouts.get(wktId).addExercise(
@@ -182,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (wktDesc) outState.putString("m", m);
+        if (title == 0) outState.putString("m", m);
         else outState.putInt("title", title);
         outState.putInt("wktId", wktId);
         outState.putInt("excId", excId);
@@ -220,12 +217,6 @@ public class MainActivity extends AppCompatActivity implements
             }
             else title(fragmentary.titleResId());
         }
-        else {
-            new Dialogue(this).confirmExitDialog((di, i) -> {
-                if (i == DialogInterface.BUTTON_POSITIVE) finish(); else di.dismiss();
-            }).show();
-            return;
-        }
         nav.setCheckedItem(logic.getItemIdByTitleRes(title));
     }
 
@@ -253,5 +244,7 @@ public class MainActivity extends AppCompatActivity implements
     private void title(int resId) { title(resId, getString(resId)); }
     private void title(int resId, String title) { this.title = resId; toolbar.setTitle(title); }
     private void showToast(String text) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show(); }
-    private void showToast(int resId) { showToast(getString(resId)); }
+    private boolean showToast(int resId) {
+        if (resId != 0) return true; else { showToast(getString(resId)); return false; }
+    }
 }
