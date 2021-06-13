@@ -104,8 +104,10 @@ public class Exercise {
     public int imgRes2() { return imgRes2; }
     public void imgRes2(int imgRes2) { this.imgRes2 = imgRes2; }
     public int reps() { return reps; }
+    public boolean hasReps() { return reps != 0; }
     public void reps(int reps) { this.reps = reps; }
     public int weight() { return weight; }
+    public boolean hasWeight() { return weight != 0; }
     public void weight(int weight) { this.weight = weight; }
     public String title() { return title; }
     public void title(String title) { this.title = title; }

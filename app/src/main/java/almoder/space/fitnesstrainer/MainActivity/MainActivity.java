@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,12 +34,8 @@ import almoder.space.fitnesstrainer.Fragmentary;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.SharedPreferencer;
 import almoder.space.fitnesstrainer.WktData;
-import almoder.space.fitnesstrainer.fragments.Article;
-import almoder.space.fitnesstrainer.fragments.DescriptionFragment;
-import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
-import almoder.space.fitnesstrainer.fragments.WktAddingFragment;
-import almoder.space.fitnesstrainer.fragments.WktDescFragment;
-import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
+import almoder.space.fitnesstrainer.fragments.*;
+import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements
         WorkoutsFragment.WorkoutsFragmentListener,
         AdapterView.OnItemClickListener {
 
-    private final Expressions exp = new Expressions();
     private Logic logic;
     private Fragmentary fragmentary;
     private SharedPreferencer sp;
@@ -103,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
         title = logic.getTitleById(item.getItemId());
-        if (exp.isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
+        if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
         excAdding = false;
         hideKeyboard();
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
@@ -159,9 +155,8 @@ public class MainActivity extends AppCompatActivity implements
         EditText ed1 = findViewById(R.id.description_reps_edit);
         EditText ed2 = findViewById(R.id.description_weight_edit);
         String reps = String.valueOf(ed1.getText()), weight = String.valueOf(ed2.getText());
-        if (reps.equals("0") || weight.equals("0")) showToast(R.string.reps_or_weight_exc1);
-        else if (reps.isEmpty() || weight.isEmpty()) showToast(R.string.reps_or_weight_exc2);
-        else {
+        if (!editTextIsVisible(ed2) && showToast(logic.getOnDescAddClickToast(reps)) ||
+                showToast(logic.getOnDescAddClickToast(reps, weight))) {
             hideKeyboard();
             sp.loadWorkouts();
             if (excAdding) sp.workouts.get(wktId).addExercise(
@@ -187,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (wktDesc) outState.putString("m", m);
+        if (title == 0) outState.putString("m", m);
         else outState.putInt("title", title);
         outState.putInt("wktId", wktId);
         outState.putInt("excId", excId);
@@ -216,8 +211,8 @@ public class MainActivity extends AppCompatActivity implements
             title(R.string.m2);
             fragmentary.replace(new WorkoutsFragment(), title);
         }
-        else if (exp.isWorkoutsEmptyOnBackPress(title, sp.count())) return;
-        else if (exp.isBackStackHasEntries(fm.getBackStackEntryCount())) {
+        else if (isWorkoutsEmptyOnBackPress(title, sp.count())) return;
+        else if (isBackStackHasEntries(fm.getBackStackEntryCount())) {
             if (fragmentary.popBackStack()) {
                 excAdding = false;
                 title(0, fragmentary.title());
@@ -230,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (exp.isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
+        if (isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
         ad = logic.getDialogById(i);
         ad.show();
         Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);
@@ -252,5 +247,7 @@ public class MainActivity extends AppCompatActivity implements
     private void title(int resId) { title(resId, getString(resId)); }
     private void title(int resId, String title) { this.title = resId; toolbar.setTitle(title); }
     private void showToast(String text) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show(); }
-    private void showToast(int resId) { showToast(getString(resId)); }
+    private boolean showToast(int resId) {
+        if (resId == 0) return true; else { showToast(getString(resId)); return false; }
+    }
 }

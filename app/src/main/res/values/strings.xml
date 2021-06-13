@@ -63,8 +63,12 @@
     <!-- Toasts -->
     <string name="title_is_empty">Title is empty!</string>
     <string name="workout_exist">Workout with this title already exist!</string>
-    <string name="reps_or_weight_exc1">Reps or weight cannot be 0!</string>
-    <string name="reps_or_weight_exc2">Reps or weight cannot be empty!</string>
+    <string name="reps_not_zero">Reps cannot be 0!</string>
+    <string name="reps_not_empty">Reps cannot be empty!</string>
+    <string name="weight_not_zero">Weight cannot be 0!</string>
+    <string name="weight_not_empty">Weight cannot be empty!</string>
+    <string name="reps_weight_not_zero">Reps and weight cannot be 0!</string>
+    <string name="reps_weight_not_empty">Reps and weight cannot be empty!</string>
     <!-- Arrays -->
     <array name="lang_entries">
         <item>@string/lang_eng</item>

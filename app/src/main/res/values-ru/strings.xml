@@ -63,6 +63,10 @@
     <!-- Toasts -->
     <string name="title_is_empty">Введите название!</string>
     <string name="workout_exist">Тренировка с таким названием уже существует!</string>
-    <string name="reps_or_weight_exc1">Кол-во повторений или вес не могут быть равны 0!</string>
-    <string name="reps_or_weight_exc2">Кол-во повторений или вес не могут быть пустыми!</string>
+    <string name="reps_not_zero">Кол-во повторений не может быть 0!</string>
+    <string name="reps_not_empty">Кол-во повторений не может быть пустым!</string>
+    <string name="weight_not_zero">Вес не может быть 0!</string>
+    <string name="weight_not_empty">Вес не может быть пустым!</string>
+    <string name="reps_weight_not_zero">Повторения и вес не могут быть 0!</string>
+    <string name="reps_weight_not_empty">Повторения и вес не могут быть пустыми!</string>
 </resources>

@@ -18,6 +18,9 @@ public class Logic {
 
     private Context c;
     private String[] exc_types;
+    private static final String repsIsNull = "reps is null!",
+                                weightIsNull = "weight is null!";
+
 
     public Logic() { /* ehh */ }
     public Logic(Context c) {
@@ -95,5 +98,24 @@ public class Logic {
         if (intentHasExtra) return new SettingsFragment();
         if (sisIsNull) return new AboutFragment();
         throw new IllegalArgumentException();
+    }
+
+    public int getOnDescAddClickToast(String reps) {
+        if (reps == null) throw new NullPointerException(repsIsNull);
+        if (reps.equals("0")) return R.string.reps_not_zero;
+        if (reps.isEmpty()) return R.string.reps_not_empty;
+        return 0;
+    }
+
+    public int getOnDescAddClickToast(String reps, String weight) {
+        if (reps == null) throw new NullPointerException(repsIsNull);
+        if (weight == null) throw new NullPointerException(weightIsNull);
+        if (reps.equals("0") && weight.equals("0")) return R.string.reps_weight_not_zero;
+        if (reps.isEmpty() && weight.isEmpty()) return R.string.reps_weight_not_empty;
+        if (reps.equals("0")) return R.string.reps_not_zero;
+        if (reps.isEmpty()) return R.string.reps_not_empty;
+        if (weight.equals("0")) return R.string.weight_not_zero;
+        if (weight.isEmpty()) return R.string.weight_not_empty;
+        return 0;
     }
 }
