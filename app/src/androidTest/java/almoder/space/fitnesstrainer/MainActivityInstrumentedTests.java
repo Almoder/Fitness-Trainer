@@ -19,7 +19,6 @@ public class MainActivityInstrumentedTests {
 
     private final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
     private final Logic logic = new Logic(context);
-    //private final Dialogue dialogue = new Dialogue(context);
 
     @Test(expected = IllegalArgumentException.class)
     public void getDialogByIdExceptionTest1() { logic.getDialogById(-1); }
@@ -55,18 +54,4 @@ public class MainActivityInstrumentedTests {
         for (int i = 0; i < actuals.length; i++) actuals[i] = editTextIsVisible(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
-  
-    /*@Test
-    public void getDialogByIdTest() {
-        int[] args = { 0, 1, 2 };
-        Object[] expecteds = {
-                dialogue.langDialog().getClass(),
-                dialogue.themeDialog().getClass(),
-                dialogue.textSizeDialog().getClass()
-        };
-        Object[] actuals = new Object[args.length];
-        for (int i = 0; i < actuals.length; i++)
-            actuals[i] = logic.getDialogById(args[i]).getClass();
-        Assert.assertArrayEquals(expecteds, actuals);
-    }*/
 }

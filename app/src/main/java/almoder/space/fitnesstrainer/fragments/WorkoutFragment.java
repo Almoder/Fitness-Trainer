@@ -26,20 +26,20 @@ import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.RVEAdapter;
 import almoder.space.fitnesstrainer.SharedPreferencer;
-import almoder.space.fitnesstrainer.WktData;
+import almoder.space.fitnesstrainer.Workout;
 
-public class WktDescFragment extends Fragment implements RVEAdapter.OnItemClickListener {
+public class WorkoutFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 
     private int id, position = 0;
     private boolean edit = false;
-    private WktData wkt = null;
+    private Workout wkt = null;
     private ExercisesFragment.ExercisesFragmentListener listener;
     private MenuItem menuItem;
     private View view;
 
-    public WktDescFragment() { this.id = -1; position = 0; }
+    public WorkoutFragment() { this.id = -1; position = 0; }
 
-    public WktDescFragment(int id) {
+    public WorkoutFragment(int id) {
         this.id = id;
     }
 

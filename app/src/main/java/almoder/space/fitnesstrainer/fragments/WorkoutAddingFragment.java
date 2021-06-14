@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import almoder.space.fitnesstrainer.R;
 
-public class WktAddingFragment extends Fragment {
+public class WorkoutAddingFragment extends Fragment {
 
     private View view;
 

@@ -130,7 +130,7 @@
                     android:text="@string/add_to_wkt"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="?android:attr/textSize"
-                    android:onClick="onDescAddClick"
+                    android:onClick="onExcDoneClick"
                     android:visibility="gone"
                     tools:ignore="UsingOnClickInXml"/>
 

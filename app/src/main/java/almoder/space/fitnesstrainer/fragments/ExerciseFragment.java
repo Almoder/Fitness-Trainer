@@ -18,7 +18,7 @@ import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
 import static almoder.space.fitnesstrainer.fragments.Expressions.*;
 
-public class DescriptionFragment extends Fragment {
+public class ExerciseFragment extends Fragment {
 
     private boolean imgCh = true, excAdding = false;
     private int num;
@@ -28,15 +28,15 @@ public class DescriptionFragment extends Fragment {
             R.id.description_title, R.id.description_type, R.id.description_primer,
             R.id.description_steps, R.id.description_tips, R.id.description_tips_text };
 
-    public DescriptionFragment() {
+    public ExerciseFragment() {
         this(1);
     }
 
-    public DescriptionFragment(int num) {
+    public ExerciseFragment(int num) {
         this.num = num;
     }
 
-    public DescriptionFragment(int num, boolean excAdding, Exercise exc) {
+    public ExerciseFragment(int num, boolean excAdding, Exercise exc) {
         this.num = num;
         this.excAdding = excAdding;
         this.exc = exc;
@@ -49,16 +49,17 @@ public class DescriptionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_description, container, false);
         ed1 = view.findViewById(R.id.description_reps_edit);
         ed2 = view.findViewById(R.id.description_weight_edit);
+        String reps = "", weight = "";
         if (sis != null)  {
             num = sis.getInt("num", num);
-            exc = new Exercise(view.getContext(), sis.getInt("num", 1));
+            exc = new Exercise(getContext(), sis.getInt("num", 1));
             exc.reps(sis.getInt("reps", 0));
             exc.weight(sis.getInt("weight", 0));
             excAdding = sis.getBoolean("excAdding", excAdding);
-            if (exc.hasReps()) ed1.setText(sis.getString("repsEditText", ""));
-            if (exc.hasWeight()) ed2.setText(sis.getString("weightEditText", ""));
-        }
-        if (exc == null) exc = new Exercise(view.getContext(), num);
+            reps = sis.getString("repsEditText", "");
+            weight = sis.getString("weightEditText", "");
+        } else if (exc != null) num = exc.num();
+        else exc = new Exercise(getContext(), num);
         exc.initAll();
         TextView[] tvs = new TextView[6];
         for (int i = 0; i < tvs.length; i++) tvs[i] = view.findViewById(ids[i]);
@@ -69,19 +70,22 @@ public class DescriptionFragment extends Fragment {
             tvs[5].setVisibility(View.VISIBLE);
             tvs[5].setText(exc.tips());
         }
-        if (exc.reps() != 0 || excAdding) {
+        if (exc.hasReps() || excAdding) {
             view.findViewById(R.id.description_cv).setVisibility(View.VISIBLE);
-            TextView tv7 = view.findViewById(R.id.description_reps);
-            tv7.setVisibility(View.VISIBLE);
+            ed1.setText(reps.equals("") ? String.valueOf(exc.reps()) : reps);
+
         }
-        if (exc.weight() != 0 || excAdding) {
-            TextView tv8 = view.findViewById(R.id.description_weight);
-            tv8.setVisibility(View.VISIBLE);
+        if (exc.hasWeight() || excAdding) {
+            TextView tv7 = view.findViewById(R.id.description_weight);
+            tv7.setVisibility(View.VISIBLE);
             ed2.setVisibility(View.VISIBLE);
+            ed2.setText(weight.equals("") ? String.valueOf(exc.weight()) : weight);
         }
         Button button = view.findViewById(R.id.exc_add_button);
         button.setText(excAdding ? R.string.add_to_wkt : R.string.confirm_changes);
         button.setVisibility(ed1.getVisibility());
+        iv.setImageResource(exc.imgRes1());
+        process(view);
         iv.setImageResource(exc.imgRes1());
         process(view);
         return view;

@@ -10,29 +10,35 @@ public class SharedPreferencer {
 
     private SharedPreferences sPref;
     private final Context c;
-    public LinkedList<WktData> workouts = new LinkedList<>();
+    public LinkedList<Workout> workouts = new LinkedList<>();
 
     public SharedPreferencer(Context c) { this.c = c; }
 
-    public boolean addWorkout(WktData wktData) {
+    public boolean addWorkout(Workout workout) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         if (count() != workouts.size()) loadWorkouts();
-        for (WktData wd : workouts) if (wktData.title().equals(wd.title())) return false;
-        workouts.add(wktData);
-        saveWorkout(wktData, count());
+        for (Workout wd : workouts) if (workout.title().equals(wd.title())) return false;
+        workouts.add(workout);
+        saveWorkout(workout, count());
         sPref.edit().putInt("wktCount", count() + 1).apply();
         return true;
     }
 
-    public void saveWorkout(WktData wktData, int id) {
+    public Workout getWorkout(int id) {
+        if (id < 0 || id >= workouts.size()) return null;
+        return workouts.get(id);
+    }
+
+    public void saveWorkout(Workout workout, int id) {
+        if (workout == null) return;
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
-        editor.putString("w" + id, wktData.title());
-        if (wktData.count() != 0) {
+        editor.putString("w" + id, workout.title());
+        if (workout.count() != 0) {
             String temp = "w" + id + "e";
-            editor.putInt(temp + "Count", wktData.count());
-            if (wktData.exercises() != null) for (int i = 0; i < wktData.exercises().size(); i++) {
-                Exercise e = wktData.exercises().get(i);
+            editor.putInt(temp + "Count", workout.count());
+            if (workout.exercises() != null) for (int i = 0; i < workout.exercises().size(); i++) {
+                Exercise e = workout.exercises().get(i);
                 editor.putInt(temp + i + "num", e.num());
                 editor.putInt(temp + i + "reps", e.reps());
                 editor.putInt(temp + i + "weight", e.weight());
@@ -57,9 +63,9 @@ public class SharedPreferencer {
         }
     }
 
-    public WktData loadWorkout(int id) {
+    public Workout loadWorkout(int id) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        WktData ret = new WktData(sPref.getString("w" + id, ""));
+        Workout ret = new Workout(sPref.getString("w" + id, ""));
         if (ret.title().isEmpty()) return ret;
         String temp = "w" + id + "e";
         for (int i = 0; i < sPref.getInt(temp + "Count", 0); i++) {
@@ -77,7 +83,7 @@ public class SharedPreferencer {
             String title = sPref.getString("w" + i, "");
             if (title.equals("")) continue;
             String temp = "w" + i + "e";
-            workouts.add(new WktData(sPref.getString("w" + i, "")));
+            workouts.add(new Workout(sPref.getString("w" + i, "")));
             for (int j = 0; j < sPref.getInt(temp + "Count", 0); j++) {
                 workouts.get(i).addExercise(c, sPref.getInt(temp + j + "num", 1),
                         sPref.getInt(temp + j + "reps", 1),
@@ -90,9 +96,7 @@ public class SharedPreferencer {
 
     public int count() {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        int ret = sPref.getInt("wktCount", 0);
-        Log.d("TAG", "wktCount:" + ret);
-        return ret;
+        return sPref.getInt("wktCount", 0);
     }
 
     public boolean hasChanges() {

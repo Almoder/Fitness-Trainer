@@ -41,12 +41,7 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
         }
     }
 
-    private LinkedList<WktData> content;
-
-    public void removeItem(int position) {
-        content.remove(position);
-        notifyDataSetChanged();
-    }
+    private LinkedList<Workout> content;
 
     public void editMode() {
         edit = !edit;
@@ -59,7 +54,7 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
         this.count = count;
     }
 
-    public RVWAdapter(OnItemClickListener itemClickListener, LinkedList<WktData> content, String count) {
+    public RVWAdapter(OnItemClickListener itemClickListener, LinkedList<Workout> content, String count) {
         this(itemClickListener, count);
         this.content = content;
     }

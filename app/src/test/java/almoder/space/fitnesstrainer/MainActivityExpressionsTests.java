@@ -3,13 +3,6 @@ package almoder.space.fitnesstrainer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import almoder.space.fitnesstrainer.MainActivity.Logic;
-import almoder.space.fitnesstrainer.fragments.AboutFragment;
-import almoder.space.fitnesstrainer.fragments.ArticlesFragment;
-import almoder.space.fitnesstrainer.fragments.ExercisesFragment;
-import almoder.space.fitnesstrainer.fragments.SettingsFragment;
-import almoder.space.fitnesstrainer.fragments.WorkoutsFragment;
-
 import static almoder.space.fitnesstrainer.MainActivity.Expressions.editTextIsVisible;
 import static almoder.space.fitnesstrainer.MainActivity.Expressions.isArticlesOpened;
 import static almoder.space.fitnesstrainer.MainActivity.Expressions.isBackStackHasEntries;

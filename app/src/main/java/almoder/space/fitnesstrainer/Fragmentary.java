@@ -11,8 +11,6 @@ public class Fragmentary {
     private int titleResId = R.string.undefined;
     private String title = "Undefined";
 
-    public Fragmentary() { manager = null; }
-
     public Fragmentary(FragmentManager manager) {
         this.manager = manager;
     }

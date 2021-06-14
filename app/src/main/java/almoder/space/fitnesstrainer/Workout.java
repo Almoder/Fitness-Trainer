@@ -4,16 +4,16 @@ import android.content.Context;
 
 import java.util.LinkedList;
 
-public class WktData {
+public class Workout {
 
     private String title;
     private LinkedList<Exercise> exes = new LinkedList<>();
 
-    public WktData(String title) {
+    public Workout(String title) {
         this.title = title;
     }
 
-    public WktData(String title, LinkedList<Exercise> exercises) {
+    public Workout(String title, LinkedList<Exercise> exercises) {
         this.title = title;
         this.exes = exercises;
     }

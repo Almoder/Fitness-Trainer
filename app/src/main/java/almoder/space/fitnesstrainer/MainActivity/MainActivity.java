@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -33,7 +31,7 @@ import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.Fragmentary;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.SharedPreferencer;
-import almoder.space.fitnesstrainer.WktData;
+import almoder.space.fitnesstrainer.Workout;
 import almoder.space.fitnesstrainer.fragments.*;
 import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
@@ -48,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements
     private SharedPreferencer sp;
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    private int title = R.string.undefined, wktId, excId;
-    private String m;
-    private boolean excAdding = false, wktDesc = false;
-    private AlertDialog ad;
+    private int title = R.string.undefined, workoutId, exerciseId;
+    private String titleString;
+    private boolean exerciseAdding = false, isWorkout = false;
+    private AlertDialog alertDialog;
     private NavigationView nav;
 
     @Override
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements
             fragmentary.replace(logic.getOnCreateFragment(intentHasExtra, sisIsNull), title);
             nav.setCheckedItem(logic.getOnCreateItemId(intentHasExtra, sisIsNull));
         }
-        if (wktDesc) toolbar.setTitle(m);
+        if (isWorkout) toolbar.setTitle(titleString);
         else toolbar.setTitle(title);
     }
 
@@ -94,14 +92,16 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_share) {
-            showToast(getString(R.string.m5));
+            showToast(R.string.m5);
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
         title = logic.getTitleById(item.getItemId());
         if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
-        excAdding = false;
+        exerciseAdding = false;
         hideKeyboard();
+        if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
+        exerciseAdding = false;
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
         toolbar.setTitle(title);
         drawer.closeDrawer(GravityCompat.START);
@@ -110,30 +110,30 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void exItemClicked(int id, Exercise exc) {
-        excId = id;
+        exerciseId = id;
         title(R.string.m1);
-        if (wktDesc) fragmentary.replace(new DescriptionFragment(id, excAdding,
-                sp.loadWorkout(wktId).exercises().get(excId)), title);
-        else fragmentary.replace(new DescriptionFragment(id, excAdding, exc), title);
+        if (isWorkout) fragmentary.replace(new ExerciseFragment(id, exerciseAdding,
+                sp.loadWorkout(workoutId).exercises().get(exerciseId)), title);
+        else fragmentary.replace(new ExerciseFragment(id, exerciseAdding, exc), title);
     }
 
     @Override
     public void wkItemClicked(int id, String title) {
         title(0, title);
-        m = title;
-        wktId = id;
-        wktDesc = true;
-        fragmentary.replace(new WktDescFragment(id), "_" + title);
+        titleString = title;
+        workoutId = id;
+        isWorkout = true;
+        fragmentary.replace(new WorkoutFragment(id), "_" + title);
     }
 
     public void onWktAddClick(View view) {
         title(R.string.wkt_adding);
-        fragmentary.replace(new WktAddingFragment(), title);
+        fragmentary.replace(new WorkoutAddingFragment(), title);
     }
 
     public void onExcAddClick(View view) {
-        excAdding = true;
-        wktDesc = false;
+        exerciseAdding = true;
+        isWorkout = false;
         title(R.string.m1);
         fragmentary.replace(new ExercisesFragment(), title);
     }
@@ -141,17 +141,12 @@ public class MainActivity extends AppCompatActivity implements
     public void onDoneClick(View view) {
         EditText editText = findViewById(R.id.adding_edit_title);
         String title = String.valueOf(editText.getText());
-        if (title.isEmpty())
-            Toast.makeText(this, R.string.title_is_empty, Toast.LENGTH_SHORT).show();
-        else if (!sp.addWorkout(new WktData(title)))
-            Toast.makeText(this, R.string.workout_exist, Toast.LENGTH_SHORT).show();
-        else {
-            hideKeyboard();
-            onBackPressed();
-        }
+        if (title.isEmpty()) showToast(R.string.title_is_empty);
+        else if (!sp.addWorkout(new Workout(title))) showToast(R.string.workout_exist);
+        else { hideKeyboard(); onBackPressed(); }
     }
 
-    public void onDescAddClick(View view) {
+    public void onExcDoneClick(View view) {
         EditText ed1 = findViewById(R.id.description_reps_edit);
         EditText ed2 = findViewById(R.id.description_weight_edit);
         String reps = String.valueOf(ed1.getText()), weight = String.valueOf(ed2.getText());
@@ -159,22 +154,22 @@ public class MainActivity extends AppCompatActivity implements
                 showToast(logic.getOnDescAddClickToast(reps, weight))) {
             hideKeyboard();
             sp.loadWorkouts();
-            if (excAdding) sp.workouts.get(wktId).addExercise(
-                    this, excId, Integer.parseInt(reps), Integer.parseInt(weight));
+            if (exerciseAdding) sp.getWorkout(workoutId).addExercise(
+                    this, exerciseId, Integer.parseInt(reps), Integer.parseInt(weight));
             else {
-                sp.workouts.get(wktId).exercises().get(excId).reps(Integer.parseInt(reps));
-                sp.workouts.get(wktId).exercises().get(excId).weight(Integer.parseInt(weight));
+                sp.getWorkout(workoutId).exercises().get(exerciseId).reps(Integer.parseInt(reps));
+                sp.getWorkout(workoutId).exercises().get(exerciseId).weight(Integer.parseInt(weight));
             }
-            sp.saveWorkout(sp.workouts.get(wktId), wktId);
-            excAdding = false;
-            title(0, sp.workouts.get(wktId).title());
-            fragmentary.replace(new WktDescFragment(wktId), "_" + toolbar.getTitle());
+            sp.saveWorkout(sp.workouts.get(workoutId), workoutId);
+            exerciseAdding = false;
+            title(0, sp.workouts.get(workoutId).title());
+            fragmentary.replace(new WorkoutFragment(workoutId), "_" + toolbar.getTitle());
         }
     }
 
     public void onTypeClick(View view) {
         TextView b = (TextView)view;
-        if (wktDesc || excAdding) return;
+        if (isWorkout || exerciseAdding) return;
         fragmentary.replace(new Article(logic.getArticleIdByType(b.getText())), title);
         title(R.string.m3);
     }
@@ -182,23 +177,23 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (title == 0) outState.putString("m", m);
+        if (title == 0) outState.putString("m", titleString);
         else outState.putInt("title", title);
-        outState.putInt("wktId", wktId);
-        outState.putInt("excId", excId);
-        outState.putBoolean("excAdding", excAdding);
-        outState.putBoolean("wktDesc", wktDesc);
+        outState.putInt("wktId", workoutId);
+        outState.putInt("excId", exerciseId);
+        outState.putBoolean("excAdding", exerciseAdding);
+        outState.putBoolean("wktDesc", isWorkout);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle sis) {
         super.onRestoreInstanceState(sis);
         title = sis.getInt("title", R.string.undefined);
-        wktId = sis.getInt("wktId", 0);
-        excId = sis.getInt("excId", 1);
-        excAdding = sis.getBoolean("excAdding", false);
-        wktDesc = sis.getBoolean("wktDesc", false);
-        m = sis.getString("m", "Error");
+        workoutId = sis.getInt("wktId", 0);
+        exerciseId = sis.getInt("excId", 1);
+        exerciseAdding = sis.getBoolean("excAdding", false);
+        isWorkout = sis.getBoolean("wktDesc", false);
+        titleString = sis.getString("m", "Error");
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -206,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else if (ad != null && ad.isShowing()) ad.cancel();
+        else if (alertDialog != null && alertDialog.isShowing()) alertDialog.cancel();
         else if (title == 0) {
             title(R.string.m2);
             fragmentary.replace(new WorkoutsFragment(), title);
@@ -214,9 +209,9 @@ public class MainActivity extends AppCompatActivity implements
         else if (isWorkoutsEmptyOnBackPress(title, sp.count())) return;
         else if (isBackStackHasEntries(fm.getBackStackEntryCount())) {
             if (fragmentary.popBackStack()) {
-                excAdding = false;
+                exerciseAdding = false;
                 title(0, fragmentary.title());
-                fragmentary.replace(new WktDescFragment(wktId), "_" + fragmentary.title());
+                fragmentary.replace(new WorkoutFragment(workoutId), "_" + fragmentary.title());
             }
             else title(fragmentary.titleResId());
         }
@@ -226,14 +221,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if (isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
-        ad = logic.getDialogById(i);
-        ad.show();
+        alertDialog = logic.getDialogById(i);
+        alertDialog.show();
         Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (ad.isShowing()) h.postDelayed(this, 1);
+                if (alertDialog.isShowing()) h.postDelayed(this, 1);
                 else if (sp.hasChanges()) startActivity(intent);
             }
         }, 1);
