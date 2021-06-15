@@ -25,7 +25,10 @@ import java.util.concurrent.Executors;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
-import almoder.space.fitnesstrainer.RVEAdapter;
+import almoder.space.fitnesstrainer.RVEAdapter.ExerciseDataSource;
+import almoder.space.fitnesstrainer.RVEAdapter.ExerciseDiffUtilCallback;
+import almoder.space.fitnesstrainer.RVEAdapter.MainThreadExecutor;
+import almoder.space.fitnesstrainer.RVEAdapter.RVEAdapter;
 
 public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClickListener {
 
@@ -51,7 +54,7 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
                              @Nullable ViewGroup container,
                              @Nullable Bundle sis) {
         View view = inflater.inflate(R.layout.fragment_exercises, container, false);
-        RVEAdapter.ExerciseDataSource dataSource = new RVEAdapter.ExerciseDataSource(new Exercise(view.getContext()));
+        ExerciseDataSource dataSource = new ExerciseDataSource(new Exercise(view.getContext()));
         if (sis != null) position = sis.getInt("pos", 0);
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -60,11 +63,11 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
                 .setPageSize(4)
                 .build();
         pagedList = new PagedList.Builder<>(dataSource, config)
-                .setNotifyExecutor(new RVEAdapter.MainThreadExecutor())
+                .setNotifyExecutor(new MainThreadExecutor())
                 .setFetchExecutor(Executors.newWorkStealingPool())
                 .setInitialKey(position)
                 .build();
-        RVEAdapter adapter = new RVEAdapter(new RVEAdapter.ExerciseDiffUtilCallback(), this);
+        RVEAdapter adapter = new RVEAdapter(new ExerciseDiffUtilCallback(), this);
         adapter.submitList(pagedList);
         adapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);

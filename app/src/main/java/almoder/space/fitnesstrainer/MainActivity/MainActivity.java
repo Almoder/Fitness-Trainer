@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements
         }
         else {
             isWorkout = sis.getBoolean("wktDesc", false);
+            title = sis.getInt("title", R.string.undefined);
             titleString = sis.getString("m", "Error");
         }
         if (isWorkout) toolbar.setTitle(titleString);

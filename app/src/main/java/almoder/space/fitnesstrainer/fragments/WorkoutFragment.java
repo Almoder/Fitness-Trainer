@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
-import almoder.space.fitnesstrainer.RVEAdapter;
+import almoder.space.fitnesstrainer.RVEAdapter.RVEAdapter;
 import almoder.space.fitnesstrainer.SharedPreferencer;
 import almoder.space.fitnesstrainer.Workout;
 
