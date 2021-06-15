@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Fitness Trainer</string>
     <string name="undefined">Undefined</string>
+    <string name="empty"> </string>
     <!-- Menu Items -->
     <string name="nav_drawer_open">Open navigation drawer</string>
     <string name="nav_drawer_close">Close navigation drawer</string>
@@ -59,7 +60,11 @@
         <item>This program was developed as a graduation project by
             a student of Polotsk State University, group 17-VS.</item>
     </string-array>
-    <string name="empty"> </string>
+    <!-- ConfirmExitDialog -->
+    <string name="exit_dialog_title">Confirm exit</string>
+    <string name="exit_dialog_message">Are you sure you want to exit?</string>
+    <string name="exit_dialog_positive">Yes</string>
+    <string name="exit_dialog_negative">No</string>
     <!-- Toasts -->
     <string name="title_is_empty">Title is empty!</string>
     <string name="workout_exist">Workout with this title already exist!</string>

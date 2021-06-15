@@ -8,7 +8,7 @@ import almoder.space.fitnesstrainer.fragments.*;
 
 public class MainActivityLogicTests {
 
-    private final Logic logic = new Logic();
+    private final Logic logic = new Logic(null);
 
     @Test
     public void getTitleByIdTest() {

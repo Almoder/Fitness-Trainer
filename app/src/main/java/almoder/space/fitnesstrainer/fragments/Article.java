@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,12 +77,6 @@ public class Article extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("id", id);
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle sis) {
-        super.onViewStateRestored(sis);
-        if (sis != null) id = sis.getInt("id", 0);
     }
 
     @SuppressLint("ResourceType")

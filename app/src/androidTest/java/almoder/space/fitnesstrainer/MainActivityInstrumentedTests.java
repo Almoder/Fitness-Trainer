@@ -24,7 +24,7 @@ public class MainActivityInstrumentedTests {
     public void getDialogByIdExceptionTest1() { logic.getDialogById(-1); }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getDialogByIdExceptionTest2() { new Logic().getDialogById(0); }
+    public void getDialogByIdExceptionTest2() { new Logic(null).getDialogById(0); }
 
     @Test
     public void getArticleIdByType() {
@@ -39,7 +39,7 @@ public class MainActivityInstrumentedTests {
     public void getArticleIdByTypeExceptionTest1() { logic.getArticleIdByType("test"); }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getArticleIdByTypeExceptionTest2() { new Logic().getArticleIdByType("test"); }
+    public void getArticleIdByTypeExceptionTest2() { new Logic(null).getArticleIdByType("test"); }
 
     @Test
     public void editTextIsVisibleTest() {

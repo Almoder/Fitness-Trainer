@@ -88,12 +88,6 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        onSaveInstanceState(new Bundle());
-    }
-
-    @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("pos", position);

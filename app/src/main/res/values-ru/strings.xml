@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Фитнесс Тренер</string>
     <string name="undefined">Undefined</string>
+    <string name="empty"> </string>
     <!-- Menu Items -->
     <string name="nav_drawer_open">Открыть панель навигации</string>
     <string name="nav_drawer_close">Закрыть панель навигации</string>
@@ -58,8 +59,11 @@
         <item>- узнать что-то новое о фитнесе и многое другое</item>
         <item>Данная программа была разработана в качестве дипломного проекта
             студентом Полоцкого Государственного Университета группы 17-ВС.</item>
-    </string-array>
-    <string name="empty"> </string>
+    </string-array><!-- ConfirmExitDialog -->
+    <string name="exit_dialog_title">Подтверждение выхода</string>
+    <string name="exit_dialog_message">Вы точно хотите выйти?</string>
+    <string name="exit_dialog_positive">Да</string>
+    <string name="exit_dialog_negative">Нет</string>
     <!-- Toasts -->
     <string name="title_is_empty">Введите название!</string>
     <string name="workout_exist">Тренировка с таким названием уже существует!</string>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
+import almoder.space.fitnesstrainer.Dialogue;
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.Fragmentary;
 import almoder.space.fitnesstrainer.R;
@@ -77,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements
             fragmentary.replace(logic.getOnCreateFragment(intentHasExtra, sisIsNull), title);
             nav.setCheckedItem(logic.getOnCreateItemId(intentHasExtra, sisIsNull));
         }
+        else {
+            isWorkout = sis.getBoolean("wktDesc", false);
+            titleString = sis.getString("m", "Error");
+        }
         if (isWorkout) toolbar.setTitle(titleString);
         else toolbar.setTitle(title);
     }
@@ -97,11 +103,12 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
         title = logic.getTitleById(item.getItemId());
-        if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
+        if (isFragmentOpened(toolbar.getTitle(), getString(title))) {
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
         exerciseAdding = false;
         hideKeyboard();
-        if (isFragmentOpened(toolbar.getTitle(), getString(title))) return true;
-        exerciseAdding = false;
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
         toolbar.setTitle(title);
         drawer.closeDrawer(GravityCompat.START);
@@ -177,11 +184,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (title == 0) outState.putString("m", titleString);
+        if (isWorkout) outState.putString("m", titleString);
         else outState.putInt("title", title);
         outState.putInt("wktId", workoutId);
         outState.putInt("excId", exerciseId);
-        outState.putBoolean("excAdding", exerciseAdding);
+        outState.putBoolean("isWorkout", exerciseAdding);
         outState.putBoolean("wktDesc", isWorkout);
     }
 
@@ -215,12 +222,20 @@ public class MainActivity extends AppCompatActivity implements
             }
             else title(fragmentary.titleResId());
         }
+        else new Dialogue(this).confirmExitDialog((di, i) -> {
+                if (i == DialogInterface.BUTTON_POSITIVE) finishAndRemoveTask();
+                else di.dismiss();
+            }).show();
         nav.setCheckedItem(logic.getItemIdByTitleRes(title));
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (isArticlesOpened(title)) { fragmentary.replace(new Article(i), title); return; }
+        if (isArticlesOpened(title)) {
+            title = R.string.m3;
+            fragmentary.replace(new Article(i), title);
+            return;
+        }
         alertDialog = logic.getDialogById(i);
         alertDialog.show();
         Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);
@@ -229,7 +244,10 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 if (alertDialog.isShowing()) h.postDelayed(this, 1);
-                else if (sp.hasChanges()) startActivity(intent);
+                else if (sp.hasChanges()) {
+                    startActivity(intent);
+                    finish();
+                }
             }
         }, 1);
     }

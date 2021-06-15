@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolder> {
 
-    private final OnItemClickListener mItemClickListener;
+    private final OnItemClickListener listener;
     private boolean edit = false;
     private final String count;
 
@@ -50,7 +50,7 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
 
     public RVWAdapter(OnItemClickListener itemClickListener, String count) {
         content = new LinkedList<>();
-        this.mItemClickListener = itemClickListener;
+        this.listener = itemClickListener;
         this.count = count;
     }
 
@@ -68,7 +68,7 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
     @Override
     public ContentViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.wkt, viewGroup, false);
-        return new ContentViewHolder(v, mItemClickListener);
+        return new ContentViewHolder(v, listener);
     }
 
     @Override
@@ -77,10 +77,5 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
         String temp = count + " " + content.get(i).count();
         cvh.wktCount.setText(temp);
         cvh.wktImage.setImageResource(edit ? R.drawable.ic_remove : R.drawable.ic_workouts);
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView rv) {
-        super.onAttachedToRecyclerView(rv);
     }
 }

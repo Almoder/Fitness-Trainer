@@ -86,8 +86,6 @@ public class ExerciseFragment extends Fragment {
         button.setVisibility(ed1.getVisibility());
         iv.setImageResource(exc.imgRes1());
         process(view);
-        iv.setImageResource(exc.imgRes1());
-        process(view);
         return view;
     }
 
