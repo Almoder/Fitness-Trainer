@@ -43,6 +43,12 @@
     <string name="text_small">Мелкий</string>
     <string name="text_default">Нормальный</string>
     <string name="text_large">Крупный</string>
+    <string name="general">Общие</string>
+    <string name="kilogram">Килограмм</string>
+    <string name="pound">Фунт</string>
+    <string name="unit">Единица измерения веса</string>
+    <string name="unit_kg">Кг</string>
+    <string name="unit_lb">Lbs</string>
     <!-- Articles -->
     <string name="isometric">Изометрические упражнения</string>
     <string name="isolation">Изолирующие упражнения</string>

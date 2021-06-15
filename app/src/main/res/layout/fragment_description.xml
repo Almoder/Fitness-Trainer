@@ -120,6 +120,17 @@
                     android:visibility="gone"
                     tools:ignore="Autofill,LabelFor"/>
 
+                <TextView
+                    android:id="@+id/description_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/description_weight_edit"
+                    android:layout_toEndOf="@id/description_weight_edit"
+                    android:text="@string/unit_kg"
+                    android:textColor="?android:attr/textColor"
+                    android:textSize="?android:attr/textSize"
+                    android:visibility="gone"/>
+
                 <Button
                     android:id="@+id/exc_add_button"
                     android:layout_width="match_parent"

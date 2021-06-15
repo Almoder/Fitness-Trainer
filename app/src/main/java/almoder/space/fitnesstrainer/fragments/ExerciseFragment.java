@@ -2,6 +2,8 @@ package almoder.space.fitnesstrainer.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,8 @@ import androidx.fragment.app.Fragment;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
+import almoder.space.fitnesstrainer.SharedPreferencer;
+
 import static almoder.space.fitnesstrainer.fragments.Expressions.*;
 
 public class ExerciseFragment extends Fragment {
@@ -73,13 +77,15 @@ public class ExerciseFragment extends Fragment {
         if (exc.hasReps() || excAdding) {
             view.findViewById(R.id.description_cv).setVisibility(View.VISIBLE);
             ed1.setText(reps.equals("") ? String.valueOf(exc.reps()) : reps);
-
         }
         if (exc.hasWeight() || excAdding) {
-            TextView tv7 = view.findViewById(R.id.description_weight);
-            tv7.setVisibility(View.VISIBLE);
+            view.findViewById(R.id.description_weight).setVisibility(View.VISIBLE);
             ed2.setVisibility(View.VISIBLE);
             ed2.setText(weight.equals("") ? String.valueOf(exc.weight()) : weight);
+            ed2.addTextChangedListener(watcher);
+            TextView unit = view.findViewById(R.id.description_unit);
+            unit.setVisibility(View.VISIBLE);
+            unit.setText(new SharedPreferencer(getContext()).weightUnit());
         }
         Button button = view.findViewById(R.id.exc_add_button);
         button.setText(excAdding ? R.string.add_to_wkt : R.string.confirm_changes);
@@ -115,4 +121,22 @@ public class ExerciseFragment extends Fragment {
            }
         });
     }
+
+    private final TextWatcher watcher = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                int v = new SharedPreferencer(getContext())
+                        .weightUnit() == R.string.unit_kg ? 200 : 400;
+                if (Integer.parseInt(charSequence.toString()) > v) ed2.setText(String.valueOf(v));
+            } catch (NumberFormatException e) { System.out.println(e.getMessage()); }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) { }
+    };
 }

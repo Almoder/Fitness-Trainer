@@ -48,7 +48,7 @@ public class Exercise {
 
     public Exercise(Context c, int num, int reps, int weight) {
         this(c, num, reps);
-        weight(weight);
+        weightUnit(weight);
     }
 
     public void initAll() {
@@ -108,7 +108,13 @@ public class Exercise {
     public void reps(int reps) { this.reps = reps; }
     public int weight() { return weight; }
     public boolean hasWeight() { return weight != 0; }
-    public void weight(int weight) { this.weight = weight; }
+    public void weight(int weight) {
+        boolean r = new SharedPreferencer(c).weightUnit() == R.string.unit_kg;
+        this.weight = r ? weight : (int)(weight * 0.45); }
+    private void weightUnit(int weight) {
+        boolean r = new SharedPreferencer(c).weightUnit() == R.string.unit_kg;
+        this.weight = r ? weight : (int)(weight / 0.45);
+    }
     public String title() { return title; }
     public void title(String title) { this.title = title; }
     public String type() { return type; }

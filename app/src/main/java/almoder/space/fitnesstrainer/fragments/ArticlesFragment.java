@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import almoder.space.fitnesstrainer.MainActivity.MainActivity;
 import almoder.space.fitnesstrainer.R;
 
 public class ArticlesFragment extends Fragment {
@@ -36,6 +37,7 @@ public class ArticlesFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        listener = (AdapterView.OnItemClickListener)context;
+        MainActivity activity = (MainActivity)context;
+        listener = activity.articleListener;
     }
 }

@@ -162,4 +162,18 @@ public class SharedPreferencer {
     public String textSizeString() {
         return c.getResources().getStringArray(R.array.text_size_entries)[textSizeId()];
     }
+
+    public void weightUnit(int unitResId) {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        if (unitResId == weightUnit()) return;
+        sPref.edit().putInt("weightUnit", unitResId).apply();
+        hasChanges(true);
+    }
+
+    public int weightUnit() {
+        sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
+        return sPref.getInt("weightUnit", R.string.unit_kg);
+    }
+
+    public String weightUnitString() { return c.getString(weightUnit()); }
 }

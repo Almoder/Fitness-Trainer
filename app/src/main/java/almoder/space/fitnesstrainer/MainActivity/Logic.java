@@ -70,6 +70,7 @@ public class Logic {
         if (id == 0) return new Dialogue(c).langDialog();
         if (id == 1) return new Dialogue(c).themeDialog();
         if (id == 2) return new Dialogue(c).textSizeDialog();
+        if (id == 3) return new Dialogue(c).weightUnitDialog();
         throw new IllegalArgumentException();
     }
 

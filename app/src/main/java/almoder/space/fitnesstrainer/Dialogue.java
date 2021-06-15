@@ -39,6 +39,17 @@ public class Dialogue {
                 .create();
     }
 
+    public AlertDialog weightUnitDialog() {
+        return new AlertDialog.Builder(c)
+                .setTitle(R.string.unit)
+                .setItems(R.array.unit_entries, (di, i) -> {
+                    int[] a = { R.string.unit_kg, R.string.unit_lb };
+                    if (a[i] != sp.weightUnit()) sp.weightUnit(a[i]);
+                    di.dismiss();
+                })
+                .create();
+    }
+
     public AlertDialog confirmExitDialog(DialogInterface.OnClickListener listener) {
         return new AlertDialog.Builder(c)
                 .setTitle(R.string.exit_dialog_title)

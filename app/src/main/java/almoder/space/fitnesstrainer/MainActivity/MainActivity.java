@@ -40,8 +40,7 @@ import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         ExercisesFragment.ExercisesFragmentListener,
-        WorkoutsFragment.WorkoutsFragmentListener,
-        AdapterView.OnItemClickListener {
+        WorkoutsFragment.WorkoutsFragmentListener {
 
     private Logic logic;
     private Fragmentary fragmentary;
@@ -229,28 +228,44 @@ public class MainActivity extends AppCompatActivity implements
         nav.setCheckedItem(logic.getItemIdByTitleRes(title));
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (isArticlesOpened(title)) {
+    public final AdapterView.OnItemClickListener articleListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             title = R.string.m3;
             fragmentary.replace(new Article(i), title);
-            return;
         }
-        alertDialog = logic.getDialogById(i);
-        alertDialog.show();
-        Intent intent = new Intent(this, MainActivity.class).putExtra("flag", true);
-        Handler h = new Handler();
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (alertDialog.isShowing()) h.postDelayed(this, 1);
-                else if (sp.hasChanges()) {
-                    startActivity(intent);
-                    finish();
-                }
+    };
+
+    public final AdapterView.OnItemClickListener configListener1 = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            alertDialog = logic.getDialogById(i);
+            alertDialog.show();
+            Handler h = new Handler();
+            h.postDelayed(reloadWaiter, 1);
+        }
+    }, configListener2 = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            int temp = getResources().getStringArray(R.array.appearance_items).length;
+            alertDialog = logic.getDialogById(i + temp);
+            alertDialog.show();
+            Handler h = new Handler();
+            h.postDelayed(reloadWaiter, 1);
+        }
+    };
+
+    private final Runnable reloadWaiter = new Runnable() {
+        @Override
+        public void run() {
+            if (alertDialog.isShowing()) new Handler().postDelayed(this, 1);
+            else if (sp.hasChanges()) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class)
+                        .putExtra("flag", true));
+                finish();
             }
-        }, 1);
-    }
+        }
+    };
 
     private void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

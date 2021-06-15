@@ -17,12 +17,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import almoder.space.fitnesstrainer.MainActivity.MainActivity;
 import almoder.space.fitnesstrainer.R;
 import almoder.space.fitnesstrainer.SharedPreferencer;
 
 public class SettingsFragment extends Fragment {
 
-    private AdapterView.OnItemClickListener listener;
+    private AdapterView.OnItemClickListener listener1, listener2;
 
     @Nullable
     @Override
@@ -30,28 +31,41 @@ public class SettingsFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        ListView settings = view.findViewById(R.id.appearance);
+        ListView appearance = view.findViewById(R.id.appearance),
+                 general = view.findViewById(R.id.general);
         SharedPreferencer sp = new SharedPreferencer(getContext());
         String[] from = { "s1", "s2" };
-        String[][][] strings = new String[][][]{
+        int[] to = { R.id.item_text1, R.id.item_text2 };
+        String[][][] strings1 = new String[][][]{
                 {{ "s1", getString(R.string.lang) }, { "s2", sp.localeString() }},
                 {{ "s1", getString(R.string.theme) }, { "s2", sp.themeString() }},
                 {{ "s1", getString(R.string.text_size) }, { "s2", sp.textSizeString() }}};
-        int[] to = { R.id.item_text1, R.id.item_text2 };
-        ArrayList<Map<String, Object>> data = new ArrayList<>(3);
-        for (String[][] a : strings) {
+        ArrayList<Map<String, Object>> data1 = new ArrayList<>(3);
+        for (String[][] a : strings1) {
             Map<String, Object> m = new HashMap<>();
             for (String[] b : a) m.put(b[0], b[1]);
-            data.add(m);
+            data1.add(m);
         }
-        settings.setAdapter(new SimpleAdapter(getContext(), data, R.layout.item, from, to));
-        settings.setOnItemClickListener(listener);
+        appearance.setAdapter(new SimpleAdapter(getContext(), data1, R.layout.item, from, to));
+        appearance.setOnItemClickListener(listener1);
+        String[][][] strings2 = new String[][][]{
+                {{ "s1", getString(R.string.unit) }, { "s2", sp.weightUnitString() }}};
+        ArrayList<Map<String, Object>> data2 = new ArrayList<>((1));
+        for (String[][] a : strings2) {
+            Map<String, Object> m = new HashMap<>();
+            for (String[] b : a) m.put(b[0], b[1]);
+            data2.add(m);
+        }
+        general.setAdapter(new SimpleAdapter(getContext(), data2, R.layout.item, from, to));
+        general.setOnItemClickListener(listener2);
         return view;
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        listener = (AdapterView.OnItemClickListener)context;
+        MainActivity activity = (MainActivity)context;
+        listener1 = activity.configListener1;
+        listener2 = activity.configListener2;
     }
 }

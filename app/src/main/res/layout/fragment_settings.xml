@@ -21,7 +21,6 @@
             android:padding="@dimen/settings_padding">
 
             <TextView
-                android:id="@+id/settings_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/settings_padding"
@@ -31,6 +30,35 @@
 
             <ListView
                 android:id="@+id/appearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/settings_padding"
+        android:background="?attr/colorPrimarySurface">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/settings_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/settings_padding"
+                android:text="@string/general"
+                android:textSize="?android:attr/textSize"
+                android:textColor="?attr/colorAccent"/>
+
+            <ListView
+                android:id="@+id/general"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

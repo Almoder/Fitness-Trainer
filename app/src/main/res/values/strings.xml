@@ -31,7 +31,7 @@
     <string name="title">Title</string>
     <string name="type">type</string>
     <string name="primary">primary</string>
-    <!-- Preferences -->
+    <!-- Settings -->
     <string name="appearance">Appearance</string>
     <string name="lang">Language</string>
     <string name="lang_eng">English</string>
@@ -43,6 +43,12 @@
     <string name="text_small">Small</string>
     <string name="text_default">Default</string>
     <string name="text_large">Large</string>
+    <string name="general">General</string>
+    <string name="kilogram">Kilogram</string>
+    <string name="pound">Pound</string>
+    <string name="unit">Weight unit</string>
+    <string name="unit_kg">Kg</string>
+    <string name="unit_lb">Lbs</string>
     <!-- Articles -->
     <string name="isometric">Isometric exercises</string>
     <string name="isolation">Isolation exercises</string>
@@ -106,5 +112,13 @@
         <item>@string/exc_type1</item>
         <item>@string/exc_type2</item>
         <item>@string/exc_type3</item>
+    </string-array>
+    <string-array name="unit_entries">
+        <item>@string/kilogram</item>
+        <item>@string/pound</item>
+    </string-array>
+    <string-array name="unit_values">
+        <item>@string/unit_kg</item>
+        <item>@string/unit_lb</item>
     </string-array>
 </resources>
