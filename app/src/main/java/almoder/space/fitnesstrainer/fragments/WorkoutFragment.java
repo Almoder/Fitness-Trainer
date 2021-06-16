@@ -24,6 +24,9 @@ import java.util.concurrent.Executors;
 
 import almoder.space.fitnesstrainer.Exercise;
 import almoder.space.fitnesstrainer.R;
+import almoder.space.fitnesstrainer.RVEAdapter.ExerciseDataSource;
+import almoder.space.fitnesstrainer.RVEAdapter.ExerciseDiffUtilCallback;
+import almoder.space.fitnesstrainer.RVEAdapter.MainThreadExecutor;
 import almoder.space.fitnesstrainer.RVEAdapter.RVEAdapter;
 import almoder.space.fitnesstrainer.SharedPreferencer;
 import almoder.space.fitnesstrainer.Workout;
@@ -70,18 +73,18 @@ public class WorkoutFragment extends Fragment implements RVEAdapter.OnItemClickL
 
     public void initRecyclerView() {
         SharedPreferencer sp = new SharedPreferencer(view.getContext());
-        RVEAdapter.ExerciseDataSource dataSource = new RVEAdapter.ExerciseDataSource(
+        ExerciseDataSource dataSource = new ExerciseDataSource(
                 sp.loadWorkout(id).exercises());
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
                 .setPageSize(4)
                 .build();
         PagedList<Exercise> pagedList = new PagedList.Builder<>(dataSource, config)
-                .setNotifyExecutor(new RVEAdapter.MainThreadExecutor())
+                .setNotifyExecutor(new MainThreadExecutor())
                 .setFetchExecutor(Executors.newSingleThreadExecutor())
                 .setInitialKey(position)
                 .build();
-        RVEAdapter adapter = new RVEAdapter(new RVEAdapter.ExerciseDiffUtilCallback(), this);
+        RVEAdapter adapter = new RVEAdapter(new ExerciseDiffUtilCallback(), this);
         adapter.submitList(pagedList);
         RecyclerView rv = view.findViewById(R.id.recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(view.getContext()));

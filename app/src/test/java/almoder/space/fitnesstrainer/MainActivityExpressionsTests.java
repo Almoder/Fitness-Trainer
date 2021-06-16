@@ -3,10 +3,7 @@ package almoder.space.fitnesstrainer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static almoder.space.fitnesstrainer.MainActivity.Expressions.editTextIsVisible;
-import static almoder.space.fitnesstrainer.MainActivity.Expressions.isArticlesOpened;
-import static almoder.space.fitnesstrainer.MainActivity.Expressions.isBackStackHasEntries;
-import static almoder.space.fitnesstrainer.MainActivity.Expressions.isWorkoutsEmptyOnBackPress;
+import static almoder.space.fitnesstrainer.MainActivity.Expressions.*;
 
 public class MainActivityExpressionsTests {
 

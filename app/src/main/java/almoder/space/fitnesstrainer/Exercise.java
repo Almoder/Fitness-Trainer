@@ -19,6 +19,8 @@ public class Exercise {
     private String equipment, steps, tips, builder;
     private final Context c;
 
+    public Exercise() { this.c = null; }
+
     public Exercise(Context c) {
         this.c = c;
     }
@@ -48,7 +50,7 @@ public class Exercise {
 
     public Exercise(Context c, int num, int reps, int weight) {
         this(c, num, reps);
-        weightUnit(weight);
+        weightInit(weight);
     }
 
     public void initAll() {
@@ -111,7 +113,7 @@ public class Exercise {
     public void weight(int weight) {
         boolean r = new SharedPreferencer(c).weightUnit() == R.string.unit_kg;
         this.weight = r ? weight : (int)(weight * 0.45); }
-    private void weightUnit(int weight) {
+    public void weightInit(int weight) {
         boolean r = new SharedPreferencer(c).weightUnit() == R.string.unit_kg;
         this.weight = r ? weight : (int)(weight / 0.45);
     }

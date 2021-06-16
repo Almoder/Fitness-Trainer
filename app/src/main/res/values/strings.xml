@@ -53,6 +53,7 @@
     <string name="isometric">Isometric exercises</string>
     <string name="isolation">Isolation exercises</string>
     <string name="compound">Compound exercises</string>
+    <string name="top8for_weight_loss">Top 8 best exercises for weight loss</string>
     <string name="exc_type1">isometric</string>
     <string name="exc_type2">isolation</string>
     <string name="exc_type3">compound</string>
@@ -107,6 +108,7 @@
         <item>@string/isometric</item>
         <item>@string/isolation</item>
         <item>@string/compound</item>
+        <item>@string/top8for_weight_loss</item>
     </string-array>
     <string-array name="exc_types">
         <item>@string/exc_type1</item>

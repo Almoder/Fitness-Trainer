@@ -2,9 +2,9 @@ package almoder.space.fitnesstrainer;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import almoder.space.fitnesstrainer.MainActivity.Logic;
 import almoder.space.fitnesstrainer.fragments.*;
+import static almoder.space.fitnesstrainer.CustomAsserting.*;
 
 public class MainActivityLogicTests {
 
@@ -68,13 +68,10 @@ public class MainActivityLogicTests {
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void getOnCreateItemIdExceptionTest() { logic.getOnCreateItemId(false, false); }
-
     @Test
     public void getOnCreateTitleTest() {
-        boolean[][] args = {{ false, false }, { false, true }, { true, false }, { true, true }};
-        int[] expecteds = { R.string.undefined, R.string.app_name, R.string.m4, R.string.m4 };
+        boolean[][] args = {{ true, true }, { false, true }, { true, false }};
+        int[] expecteds = { R.string.m4, R.string.app_name, R.string.m4 };
         int[] actuals = new int[args.length];
         for (int i = 0; i < actuals.length; i++)
             actuals[i] = logic.getOnCreateTitle(args[i][0], args[i][1]);
@@ -92,9 +89,6 @@ public class MainActivityLogicTests {
             actuals[i] = logic.getOnCreateFragment(args[i][0], args[i][1]).getClass();
         Assert.assertArrayEquals(expecteds, actuals);
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void getOnCreateFragmentExceptionTest() { logic.getOnCreateFragment(false, false); }
 
     @Test
     public void getOnDescAddClickToastTest1() {
@@ -119,15 +113,19 @@ public class MainActivityLogicTests {
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
-    @Test(expected = NullPointerException.class)
-    public void getOnDescAddClickToastExceptionTest1() { logic.getOnDescAddClickToast(null); }
-
-    @Test(expected = NullPointerException.class)
-    public void getOnDescAddClickToastExceptionTest2() { logic.getOnDescAddClickToast("1", null); }
-
-    @Test(expected = NullPointerException.class)
-    public void getOnDescAddClickToastExceptionTest3() { logic.getOnDescAddClickToast(null, "1"); }
-
-    @Test(expected = NullPointerException.class)
-    public void getOnDescAddClickToastExceptionTest4() { logic.getOnDescAddClickToast(null, null); }
+    @Test
+    public void mainActivityLogicExceptionsTest() {
+        Function[] functions1 = {
+                () -> logic.getOnCreateItemId(false, false),
+                () -> logic.getOnCreateTitle(false, false),
+                () -> logic.getOnCreateFragment(false, false)
+        }, functions2 = {
+                () -> logic.getOnDescAddClickToast(null),
+                () -> logic.getOnDescAddClickToast("1", null),
+                () -> logic.getOnDescAddClickToast(null, "1"),
+                () -> logic.getOnDescAddClickToast(null, null)
+        };
+        assertArrayOfExceptions(functions1, IllegalArgumentException.class);
+        assertArrayOfExceptions(functions2, NullPointerException.class);
+    }
 }

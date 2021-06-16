@@ -91,7 +91,7 @@ public class Logic {
     public int getOnCreateTitle(boolean intentHasExtra, boolean sisIsNull) {
         if (intentHasExtra) return R.string.m4;
         if (sisIsNull) return R.string.app_name;
-        return R.string.undefined;
+        throw new IllegalArgumentException();
     }
 
     public Fragment getOnCreateFragment(boolean intentHasExtra, boolean sisIsNull) {
