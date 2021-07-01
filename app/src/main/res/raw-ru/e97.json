@@ -1,24 +1,24 @@
 {
     "id": "0104",
     "name": "back-extension-stability-ball",
-    "title": "Back Extension on Stability Ball",
-    "primer": "This exercise provides flexibility as it strengthens the muscles of the back and core.",
-    "type": "isolation",
+    "title": "Разгибание спины на мяче для стабилизации",
+    "primer": "Упражнение для укрепления мышц спины и брюшного пресса.",
+    "type": "изолирующий",
     "primary": [
-        "erector spinae"
+        "выпрямляющая позвоночник мышца"
     ],
     "secondary": [
-        "core",
-        "ischiocrural muscles"
+        "брюшной пресс",
+        "передняя большеберцовая мышца"
     ],
     "equipment": [
-        "exercise ball"
+        "фитбол"
     ],
     "steps": [
-        "Lie prone (on your stomach) on a Stability Ball with your toes firmly planted on the floor for balance.",
-        "With your hands across your chest or at your ears, raise your chest off the ball so you are hyperextending your spine.",
-        "Slowly return your chest to the ball.",
-        "Repeat."
+        "Лягте животом на мяч для стабилизации, плотно прижав пальцы ног к полу для равновесия.",
+        "Скрестив руки на груди или за головой, приподнимите груди на мячом так, чтобы вы черезмерно растянули позвоночник.",
+        "Медленно вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

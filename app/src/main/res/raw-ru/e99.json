@@ -1,31 +1,30 @@
 {
     "id": "0107",
     "name": "dumbbell-dead-lifts",
-    "title": "Dead Lifts: Dumbbell",
-    "primer": "This is an exercise for lower back, hamstring and calves strengthening.",
-    "type": "isolation",
+    "title": "Становая тяга: гантели",
+    "primer": "Упражнение для укрепления поясницы, подколенных сухожилий и икр.",
+    "type": "изолирующий",
     "primary": [
-        "erector spinae"
+        "выпрямляющая позвоночник мышца"
     ],
     "secondary": [
-        "gastrocnemius",
-        "soleus",
-        "ischiocrural muscles"
+        "передняя большеберцовая мышца",
+        "икроножная мышца",
+        "камбаловидная мышца"
     ],
     "equipment": [
-        "dumbbells"
+        "гантели"
     ],
     "steps": [
-        "Grasp 2 dumbbells and stand with your feet shoulder width apart.",
-        "Keeping your back straight bend at the waist, allow some bend in your knees.",
-        "Grasp the dumbbells with an overhand grip in each hand.",
-        "Straighten your back as you hold the dumbbells at arm’s length.",
-        "Bend over again lowering the dumbbells to just above the floor.",
-        "Return to starting position.",
-        "Repeat."
+        "Возьмите по гантели в каждую руку и встаньте, расставив ноги на ширине плеч.",
+        "Держа спину прямой, наклонитесь, ноги немного согните в коленях.",
+        "Выпрямите спину, держа гантели на расстоянии вытянутой руки.",
+        "Снова наклонитесь, опуская гантели чуть выше пола.",
+        "Вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [
-        "Do not increase the weight on this exercise until you have mastered the correct form."
+        "Не увеличивайте вес в этом упражнении, пока не овладеете правильной техникой."
     ],
     "references": []
 }

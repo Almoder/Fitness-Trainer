@@ -1,29 +1,27 @@
 {
     "id": "0091",
     "name": "wide-grip-chin-up",
-    "title": "Wide Grip Chin Up",
-    "primer": "This variation on the basic chin up is a great exercise for people who rock climb.",
-    "type": "isolation",
+    "title": "Подтягивания широким хватом",
+    "primer": "Разновидность подтягивания лоя укрепления трапециевидных мышц.",
+    "type": "изолирующий",
     "primary": [
-        "trapezius"
+        "трапециевидная"
     ],
     "secondary": [
-        "trapezius",
-        "biceps brachii"
+        "бицепс"
     ],
     "equipment": [
-        "body",
-        "pull-up bar"
+        "тело",
+        "перекладина"
     ],
     "steps": [
-        "Grasp a chin up bar with a slightly wider than shoulder width grip.",
-        "Keeping your body straight pull yourself up and to one side of the bar.",
-        "Lower your body back down to the starting position.",
-        "Raise yourself to the other side of the bar.",
-        "Repeat."
+        "Возьмитесь за перекладину широким хватом.",
+        "Повисните на перекладине на полностью вытянутых руках.",
+        "Медленно подтянитесь, чтобы подбородок был выше перекладины.",
+        "Контролируемым движением вернитесь в исходное положение."
     ],
     "tips": [
-        "Ensure to hang dow completely before alternating to the other side."
+        "Для предотвращения травм старайтесь максимально задействовать мышцы пресса и спины."
     ],
     "references": []
 }

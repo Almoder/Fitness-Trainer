@@ -1,30 +1,29 @@
 {
     "id": "0090",
     "name": "narrow-parallel-grip-chin-ups",
-    "title": "Narrow Parallel Grip Chin-ups",
-    "primer": "This is an exercise similar to the regular Chin Up but focuses more on shoulder strengthening.",
-    "type": "isolation",
+    "title": "Подтягивания узким хватом",
+    "primer": "Разновидность подтягивания для украпления и скульптурирования мышц плеч.",
+    "type": "изолирующий",
     "primary": [
-        "deltoid",
-        "latissimus dorsi"
+        "дельтовиная",
+        "широчайшая мышца спины"
     ],
     "secondary": [
-        "back",
-        "core"
+        "мышцы спины",
+        "пресс"
     ],
     "equipment": [
-        "bar",
-        "body"
+        "тело",
+        "перекладина"
     ],
     "steps": [
-        "Grasp the bar with an supinated (overhand) grip so that your palms are facing.",
-        "Let your body hang from the bar with your arms straight.",
-        "Slowly pull yourself up so that your chin is higher than the bar.",
-        "With a controlled movement lower yourself to the starting position.",
-        "Repeat"
+        "Возьмитесь за перекладину прямым хватом, ладони на ширине плеч.",
+        "Повисните на перекладине на полностью вытянутых руках.",
+        "Медленно подтянитесь, чтобы подбородок был выше перекладины.",
+        "Контролируемым движением вернитесь в исходное положение."
     ],
     "tips": [
-        "Ensure that your body remains in one line throughout this exercise."
+        "Для предотвращения травм старайтесь максимально задействовать мышцы пресса и спины."
     ],
     "references": []
 }

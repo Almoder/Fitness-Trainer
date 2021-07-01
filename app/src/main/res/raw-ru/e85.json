@@ -1,23 +1,23 @@
 {
     "id": "0092",
     "name": "straight-arm-push-down",
-    "title": "Straight Arm Push Down",
-    "primer": "This exercise for strengthening the Lats and also works the Triceps.",
-    "type": "isolation",
+    "title": "Жим троса прямыми руками",
+    "primer": "Упражнение для укрепления широчайших мышц спины и трицепсов.",
+    "type": "изолирующий",
     "primary": [
-        "latissimus dorsi"
+        "широчайшая мышца спины"
     ],
     "secondary": [
-        "triceps brachii"
+        "трицепс"
     ],
     "equipment": [
-        "cable"
+        "тросовый тренажер"
     ],
     "steps": [
-        "Grasp wide grip pull down bar with a wide grip so your hands are on the portion of the bar which curves down.",
-        "Stand erect with your abs drawn in.",
-        "Keeping a slight bend in your elbows and your wrist steady pull the bar down from the starting position to your upper thighs.",
-        "With a controlled motion bring the bar back up to starting position."
+        "Возьмитесь за перекладину прямым хватом (ладони смотрят вниз), руки полностью выпрямлены.",
+        "Встаньте прямо и напрягите пресс.",
+        "Сохраняя небольшой сгиб в локтях и устойчивое положение запястья, надавите на перекладину, опустив её к бедрам.",
+        "Контролируемым движением вернитесь в исходное положение (поднимите перекладину)."
     ],
     "tips": [],
     "references": []

@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryDark"
-    android:orientation="vertical"
-    android:paddingTop="8sp">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/wkt_desc_cv"

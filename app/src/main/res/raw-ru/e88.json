@@ -1,23 +1,23 @@
 {
     "id": "0095",
     "name": "underhand-pull-down",
-    "title": "Pull Down: Underhand",
-    "primer": "This is an exercise for lats and biceps strengthening.",
-    "type": "isolation",
+    "title": "Тяга перекладины вниз прямым хватом",
+    "primer": "Упражнение на укрепление широчайших мышц спины и бицепсов.",
+    "type": "изолирующий",
     "primary": [
-        "latissimus dorsi"
+        "широчайшая мышца спины"
     ],
     "secondary": [
-        "biceps brachii"
+        "бицепс"
     ],
     "equipment": [
-        "cable"
+        "тросовый тренажер"
     ],
     "steps": [
-        "Sitting upright with your abs drawn in grasp a Pull Down bar with and underhand grip shoulder width apart.",
-        "Pull the bar down till the bar reaches your upper chest, keeping your elbows close to your body.",
-        "Slowly return the bar to the starting position.",
-        "Repeat."
+        "Сядьте ровно и возьмитесь за перекладину прямым хватом.",
+        "Отводя голову назад, потяните перекладину вниз пока она не коснется груди.",
+        "Задержитесь на мгновение, затем вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

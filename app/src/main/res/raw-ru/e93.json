@@ -1,26 +1,27 @@
 {
     "id": "0100",
     "name": "smith-machine-dead-lifts",
-    "title": "Dead Lifts: Smith Machine",
-    "primer": "This is the same as a Dead Lift but the Smith Machine allows for better control of the weight.",
-    "type": "isolation",
+    "title": "Становая тяга в тренажере Смита",
+    "primer": "Безопасный вариант становой тяги.",
+    "type": "изолирующий",
     "primary": [
-        "erector spinae"
+        "выпрямляющая позвоночник мышца"
     ],
     "secondary": [
-        "ischiocrural muscles",
-        "gastrocnemius",
-        "soleus"
+        "передняя большеберцовая мышца",
+        "икроножная мышца",
+        "камбаловидная мышца"
     ],
     "equipment": [
-        "smith machine"
+        "штанга",
+        "тренажер Смита"
     ],
     "steps": [
-        "Stand with your feet shoulder width apart so that your feet are under the bar.",
-        "Keeping your back straight bend at the waist, allow some bend in your knees.",
-        "Grasp the par with an overhand grip approximately 16 inches apart.",
-        "Straighten your back as you hold the bar at arm’s length.",
-        "Bend over again lowering the bar to just above the floor."
+        "Встаньте, расставив ноги на ширине плеч, чтобы ступни оказались под перекладиной.",
+        "Держа спину прямой, наклонитесь, ноги немного согнуты в талии.",
+        "Возьмитесь за перекладину прямым хватом на расстоянии примерно 16 дюймов между ладонями.",
+        "Выпрямите спину, держа штангу на расстоянии вытянутой руки.",
+        "Снова наклонитесь, опустив штангу чуть выше пола."
     ],
     "tips": [],
     "references": []

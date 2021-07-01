@@ -1,27 +1,27 @@
 {
     "id": "0089",
     "name": "chin-ups",
-    "title": "Chin Ups",
-    "primer": "This is an extremely good exercise for upper arm and middle back strengthening.",
-    "type": "isolation",
+    "title": "Подтягивания обратным узким хватом",
+    "primer": "Разновидность подтягивания для укрепления предплечья и средней части спины.",
+    "type": "изолирующий",
     "primary": [
-        "latissimus dorsi"
+        "широчайшая мышца спины"
     ],
     "secondary": [
-        "biceps brachii"
+        "бицепс"
     ],
     "equipment": [
-        "body",
-        "bar"
+        "тело",
+        "перекладина"
     ],
     "steps": [
-        "Grasp the bar with an supinated (overhand) grip.",
-        "Let your body hang from the bar with your arms straight.",
-        "Slowly pull yourself up so that your chin is higher than the bar.",
-        "With a controlled movement lower yourself to the starting position."
+        "Возьмитесь за штангу супинированным (обратным) хватом, ладони на ширине плеч.",
+        "Повисните на перекладине на полностью вытянутых руках.",
+        "Медленно подтянитесь, чтобы подбородок был выше перекладины.",
+        "Контролируемым движением вернитесь в исходное положение."
     ],
     "tips": [
-        "Ensure to contract your back and core muscles throughout this exercise to prevent injury and to maximise the effectiveness of the exercise."
+        "Для предотвращения травм старайтесь максимально задействовать мышцы пресса и спины."
     ],
     "references": []
 }

@@ -1,23 +1,23 @@
 {
     "id": "0105",
     "name": "supermans",
-    "title": "Supermans",
-    "primer": "This is an excellent exercise and a stretch for the lower back and core muscles.",
-    "type": "isolation",
+    "title": "\"Супермен\"",
+    "primer": "Отличное упражнение и растяжка для поясницы и основных мышц.",
+    "type": "изолирующий",
     "primary": [
-        "erector spinae"
+        "выпрямляющая позвоночник мышца"
     ],
     "secondary": [
-        "core"
+        "брюшной пресс"
     ],
     "equipment": [
-        "body"
+        "тело"
     ],
     "steps": [
-        "Lie flat on your stomach with your arms stretched out in front of you.",
-        "Raise your arms and legs off the floor and hold this position for 2 seconds.",
-        "Return to the starting position on the floor.",
-        "Repeat."
+        "Лягте на живот и вытяните руки перед собой.",
+        "Поднимите руки и ноги от пола и уерживайте это положение в течение двух секунд.",
+        "Вернитесь в исходное положение.",
+        "Повторяйте."
     ],
     "tips": [],
     "references": []

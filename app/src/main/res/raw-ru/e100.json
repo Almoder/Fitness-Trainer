@@ -1,21 +1,21 @@
 {
     "id": "0109",
     "name": "bridging",
-    "title": "Bridging",
-    "primer": "This is an excellent exercise for strengthening and maintaining the core muscles.",
-    "type": "isolation",
+    "title": "Подъем таза лежа",
+    "primer": "Упражнение для укрепления и поддержания мышц преса и ног",
+    "type": "изолирующий",
     "primary": [
-        "glutaeus maximus"
+        "большая ягодичная мышца"
     ],
     "secondary": [
-        "core"
+        "пресс"
     ],
     "equipment": [
-        "body"
+        "тело"
     ],
     "steps": [
-        "Lie on your back with your knees bent and your feet flat on the floor.",
-        "Lift up hips and bum off the floor as you draw your abs in and keep your gluts tight."
+        "Лягте на спину, согнув оклени и поставив ступни на пол.",
+        "Поднимите таз от пола, втягивая пресс и напрягая мышцы живота."
     ],
     "tips": [],
     "references": []

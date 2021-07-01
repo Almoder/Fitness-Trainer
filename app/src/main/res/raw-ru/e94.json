@@ -1,23 +1,22 @@
 {
     "id": "0101",
     "name": "barbell-good-mornings",
-    "title": "Good Mornings: Barbell",
-    "primer": "This is one of the oldest exercises in bodybuilding but it still is one of the best for working the lower back.",
-    "type": "isolation",
+    "title": "Доброе утро: штанга",
+    "primer": "Одно из старейших упражнений для укрепления поясницы.",
+    "type": "изолирующий",
     "primary": [
-        "erector spinae"
+        "выпрямляющая позвоночник мышца"
     ],
     "secondary": [
-        "ischiocrural muscles"
+        "передняя большеберцовая мышца"
     ],
     "equipment": [
-        "barbell"
+        "штанга"
     ],
     "steps": [
-        "Place a barbell across your shoulders.",
-        "Keeping your head up and your back completely straight, bend at the waist until your back is parallel with the floor.",
-        "Return to starting position.",
-        "Repeat."
+        "Положите штангу на плечи.",
+        "Задрав голову вверх и полностью выпрямив спину, согнитесь в талии до тех пор, пока спина не станет параллельна полу.",
+        "Вернитесь в исходное положение. Повторяйте."
     ],
     "tips": [],
     "references": []

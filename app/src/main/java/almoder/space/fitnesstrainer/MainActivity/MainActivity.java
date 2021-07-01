@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
         exerciseAdding = false;
+        isWorkout = false;
         hideKeyboard();
         fragmentary.replace(logic.getFragmentById(item.getItemId()), title);
         toolbar.setTitle(title);

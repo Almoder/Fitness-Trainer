@@ -1,28 +1,26 @@
 {
     "id": "0098",
-    "name": "pullover-stability-ball-weight",
-    "title": "Pullover On Stability Ball With Weight",
-    "primer": "This is an exercise for back, shoulders and neck strengthening.",
+    "name": "stability-ball-abdominal-crunch",
+    "title": "Stability Ball Abdominal Crunch",
+    "primer": "This crunch uses a Stability Ball.",
     "type": "isolation",
     "primary": [
-        "deltoid"
+        "abdominals"
     ],
-    "secondary": [
-        "back",
-        "trapezius"
-    ],
+    "secondary": [],
     "equipment": [
-        "exercise ball",
-        "dumbbell"
+        "body"
     ],
     "steps": [
-        "Grasp a Barbell or Dumbbell and sit on a Ball with your feet firmly placed on the floor.",
-        "Lower your body so your upper abs are the only part of your body supported on the Ball.",
-        "Bring the Barbell or Dumbbell to your chest with your arms extend.",
-        "In an arcing motion raise the Barbell or Dumbbell over and behind your head towards the floor.",
-        "Return to starting position.",
-        "Repeat."
+        "This crunch uses a Stability Ball. The ball allows you a better range of movement because it adapts better to your spine.",
+        "Sit on top of an exercise or stability ball with your feet placed firmly on the floor for support.",
+        "Position yourself so that your lower back is centered on the middle of the ball.",
+        "Lie back and bring your hands across your chest, or on either side of your head (over your ears).",
+        "Raise your head, chest and shoulders up crunching your abs as you sit upright.",
+        "Pause for a moment and then lower yourself to the starting position."
     ],
-    "tips": [],
+    "tips": [
+        "For best results, use a full range of motion in this exercise."
+    ],
     "references": []
 }

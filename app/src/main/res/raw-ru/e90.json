@@ -1,29 +1,29 @@
 {
     "id": "0097",
     "name": "wide-grip-lat-pull-down",
-    "title": "Pull Down: Wide Bar (Wide Grip)",
-    "primer": "This is an exercise for lats, biceps and middle back strengthening.",
-    "type": "isolation",
+    "title": "Тяга широкой перекладины",
+    "primer": "Упражнение для укрепления широчайших мышц спины, бицепсов и средней части спины.",
+    "type": "изолирующий",
     "primary": [
-        "latissimus dorsi"
+        "широчайшая мышца спины"
     ],
     "secondary": [
-        "biceps brachii",
-        "latissimus dorsi"
+        "бицепс",
+        "широчайшая мышца спины"
     ],
     "equipment": [
-        "cable",
-        "wide bar"
+        "тросовый тренажер",
+        "широкая перекладина"
     ],
     "steps": [
-        "Sit at a cable pull down machine fitted with a wide bar.",
-        "Grasp the bar with a wide overhand grip (palms facing forward) .",
-        "With your abs drawn in and back straight pull the bar down to your upper chest.",
-        "Pause for a moment and then return the bar to the starting position.",
-        "Repeat."
+        "Сядьте за тросовый тренажер с широкой перекладиной.",
+        "Возьмитесь за перекладину широким хватом сверху (ладони смотрят вперед).",
+        "Втянув пресс и выпрямив спину потяните перекладину к верхней части груди.",
+        "Сделайте паузу на мгновение, а затем верните штангу в исхожное положние.",
+        "Повторяйте."
     ],
     "tips": [
-        "Ensure you maintain a straight back trough out this exercise."
+        "Старайтесь держать спину прямой на протяжении выполнения упражнения."
     ],
     "references": []
 }
