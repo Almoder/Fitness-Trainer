@@ -14,7 +14,9 @@ public class MainActivityExpressionsTests {
         };
         boolean[] expecteds = { false, false, true, false, false };
         boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = isArticlesOpened(args[i]);
+        for (int i = 0; i < actuals.length; i++) {
+            actuals[i] = isArticlesOpened(args[i]);
+        }
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
@@ -26,8 +28,9 @@ public class MainActivityExpressionsTests {
         };
         boolean[] expecteds = { true, false, false, false, false };
         boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++)
+        for (int i = 0; i < actuals.length; i++) {
             actuals[i] = isWorkoutsEmptyOnBackPress(args[i][0], args[i][1]);
+        }
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
@@ -36,10 +39,14 @@ public class MainActivityExpressionsTests {
         int[] args = { 0, 1, 100, -1, -100, Integer.MIN_VALUE, Integer.MAX_VALUE };
         boolean[] expecteds = { false, false, true, false, false, false, true };
         boolean[] actuals = new boolean[args.length];
-        for (int i = 0; i < actuals.length; i++) actuals[i] = isBackStackHasEntries(args[i]);
+        for (int i = 0; i < actuals.length; i++) {
+            actuals[i] = isBackStackHasEntries(args[i]);
+        }
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
     @Test(expected = NullPointerException.class)
-    public void editTextIsVisibleExpressionText() { editTextIsVisible(null); }
+    public void editTextIsVisibleExpressionText() {
+        editTextIsVisible(null);
+    }
 }

@@ -62,12 +62,21 @@ public class ExerciseFragment extends Fragment {
             excAdding = sis.getBoolean("excAdding", excAdding);
             reps = sis.getString("repsEditText", "");
             weight = sis.getString("weightEditText", "");
-        } else if (exc != null) num = exc.num();
-        else exc = new Exercise(getContext(), num);
+        }
+        else if (exc != null) {
+            num = exc.num();
+        }
+        else {
+            exc = new Exercise(getContext(), num);
+        }
         exc.initAll();
         TextView[] tvs = new TextView[6];
-        for (int i = 0; i < tvs.length; i++) tvs[i] = view.findViewById(ids[i]);
-        for (int i = 0; i < exc.params().length; i++) tvs[i].setText(exc.params()[i]);
+        for (int i = 0; i < tvs.length; i++) {
+            tvs[i] = view.findViewById(ids[i]);
+        }
+        for (int i = 0; i < exc.params().length; i++) {
+            tvs[i].setText(exc.params()[i]);
+        }
         ImageView iv = view.findViewById(R.id.description_image);
         if (exc.tips() != null) {
             tvs[4].setVisibility(View.VISIBLE);
@@ -102,10 +111,12 @@ public class ExerciseFragment extends Fragment {
         outState.putInt("reps", exc.reps());
         outState.putInt("weight", exc.weight());
         outState.putBoolean("excAdding", excAdding);
-        if (ed1 != null && isRepsEditTextChanged(ed1.getText()))
+        if (ed1 != null && isRepsEditTextChanged(ed1.getText())) {
             outState.putString("repsEditText", ed1.getText().toString());
-        if (ed2 != null && isWeightTextChanged(ed2.getText()))
+        }
+        if (ed2 != null && isWeightTextChanged(ed2.getText())) {
             outState.putString("weightEditText", ed2.getText().toString());
+        }
     }
 
     private void process(@NonNull View view) {
@@ -114,8 +125,12 @@ public class ExerciseFragment extends Fragment {
         handler.post(new Runnable() {
            @Override
            public void run() {
-               if (imgCh) iv.setImageResource(exc.imgRes2());
-               else iv.setImageResource(exc.imgRes1());
+               if (imgCh) {
+                   iv.setImageResource(exc.imgRes2());
+               }
+               else {
+                   iv.setImageResource(exc.imgRes1());
+               }
                imgCh = !imgCh;
                handler.postDelayed(this, 1000);
            }
@@ -132,8 +147,12 @@ public class ExerciseFragment extends Fragment {
             try {
                 int v = new SharedPreferencer(getContext())
                         .weightUnit() == R.string.unit_kg ? 200 : 400;
-                if (Integer.parseInt(charSequence.toString()) > v) ed2.setText(String.valueOf(v));
-            } catch (NumberFormatException e) { System.out.println(e.getMessage()); }
+                if (Integer.parseInt(charSequence.toString()) > v) {
+                    ed2.setText(String.valueOf(v));
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         @Override

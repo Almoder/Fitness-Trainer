@@ -17,11 +17,11 @@ public class RVWAdapter extends RecyclerView.Adapter<RVWAdapter.ContentViewHolde
     private boolean edit = false;
     private final String count;
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClicked(int position);
     }
 
-    public static class ContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView wktTitle, wktCount;
         ImageView wktImage;
         OnItemClickListener cvClickListener;

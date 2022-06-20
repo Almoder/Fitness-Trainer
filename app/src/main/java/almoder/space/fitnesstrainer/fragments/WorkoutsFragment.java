@@ -73,9 +73,13 @@ public class WorkoutsFragment extends Fragment implements RVWAdapter.OnItemClick
         if (edit) {
             sp.removeWorkout(position);
             adapter.notifyDataSetChanged();
-            if (thereIsNoWorkouts(sp.workouts.size())) onOptionsItemSelected(editItem);
+            if (thereIsNoWorkouts(sp.workouts.size())) {
+                onOptionsItemSelected(editItem);
+            }
         }
-        else listener.wkItemClicked(position, sp.workouts.get(position).title());
+        else {
+            listener.wkItemClicked(position, sp.workouts.get(position).title());
+        }
     }
 
     @Override

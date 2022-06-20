@@ -23,8 +23,9 @@ public class WorkoutAddingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_adding, container, false);
         EditText editText = view.findViewById(R.id.adding_edit_title);
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             editText.setText(savedInstanceState.getString("titleEdit", "Error"));
+        }
         editText.setFocusable(true);
         return view;
     }

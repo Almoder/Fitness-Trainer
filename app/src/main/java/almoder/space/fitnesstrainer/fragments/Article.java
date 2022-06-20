@@ -44,7 +44,9 @@ public class Article extends Fragment {
         Scanner scanner = new Scanner(getResources().openRawResource(getResources().getIdentifier(
                 "a" + id, "raw", requireContext().getPackageName())));
         StringBuilder builder = new StringBuilder();
-        while (scanner.hasNextLine()) builder.append(scanner.nextLine());
+        while (scanner.hasNextLine()) {
+            builder.append(scanner.nextLine());
+        }
         String string = builder.toString(), text = "";
         int[][] a;
         try {
@@ -63,7 +65,9 @@ public class Article extends Fragment {
             int[] attrs = { android.R.attr.labelTextSize, R.attr.colorAccent/*, R.attr.colorPrimarySurface*/ };
             TypedArray ta = requireContext().obtainStyledAttributes(
                     new SharedPreferencer(getContext()).theme(), attrs);
-            for (int[] i : a) setHeader(ss, ta, i[0], i[1]);
+            for (int[] i : a) {
+                setHeader(ss, ta, i[0], i[1]);
+            }
             c.setText(ss);
             ta.recycle();
         } catch (JSONException e) {
@@ -81,7 +85,9 @@ public class Article extends Fragment {
 
     @SuppressLint("ResourceType")
     private void setHeader(SpannableString ss, TypedArray ta, int s, int f) {
-        if (s == f) return;
+        if (s == f) {
+            return;
+        }
         ss.setSpan(new AbsoluteSizeSpan((int)ta.getDimension(0, 17.0f)), s, f, 0);
         ss.setSpan(new ForegroundColorSpan(ta.getColor(1, Color.BLACK)), s, f, 0);
     }

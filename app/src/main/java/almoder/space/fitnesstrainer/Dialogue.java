@@ -9,7 +9,9 @@ public class Dialogue {
     private final Context c;
     private final SharedPreferencer sp;
 
-    public Dialogue(Context c) { this.c = c; sp = new SharedPreferencer(c); }
+    public Dialogue(Context c) {
+        this.c = c; sp = new SharedPreferencer(c);
+    }
 
     public AlertDialog langDialog() {
         return new AlertDialog.Builder(c)

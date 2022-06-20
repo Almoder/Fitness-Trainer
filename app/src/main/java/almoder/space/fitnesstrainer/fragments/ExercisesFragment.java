@@ -55,8 +55,12 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
                              @Nullable Bundle sis) {
         View view = inflater.inflate(R.layout.fragment_exercises, container, false);
         ExerciseDataSource dataSource = new ExerciseDataSource(new Exercise(view.getContext()));
-        if (sis != null) position = sis.getInt("pos", 0);
-        if (position > 0) position--;
+        if (sis != null) {
+            position = sis.getInt("pos", 0);
+        }
+        if (position > 0) {
+            position--;
+        }
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
                 .setInitialLoadSizeHint(12)
@@ -103,7 +107,9 @@ public class ExercisesFragment extends Fragment implements RVEAdapter.OnItemClic
             this.position = Objects.requireNonNull(pagedList.get(position)).num();
             listener.exItemClicked(this.position, null);
         }
-        else Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+        else {
+            Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

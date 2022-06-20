@@ -22,7 +22,7 @@ public class MainActivityLogicTests {
         };
         int[] actuals = new int[args.length];
         for (int i = 0; i < actuals.length; i++)
-            actuals[i] = logic.getTitleById(args[i]);
+            actuals[i] = logic.getTitleResById(args[i]);
         Assert.assertArrayEquals(expecteds, actuals);
     }
 

@@ -40,7 +40,9 @@ public class WorkoutFragment extends Fragment implements RVEAdapter.OnItemClickL
     private MenuItem menuItem;
     private View view;
 
-    public WorkoutFragment() { this.id = -1; position = 0; }
+    public WorkoutFragment() {
+        this.id = -1; position = 0;
+    }
 
     public WorkoutFragment(int id) {
         this.id = id;
@@ -60,12 +62,16 @@ public class WorkoutFragment extends Fragment implements RVEAdapter.OnItemClickL
                              @Nullable Bundle sis) {
         view = inflater.inflate(R.layout.fragment_wkt_desc, container, false);
 
-        if (sis != null) id = sis.getInt("id", -1);
+        if (sis != null) {
+            id = sis.getInt("id", -1);
+        }
         if (id != -1) {
             wkt = new SharedPreferencer(view.getContext()).loadWorkout(id);
             TextView textView = view.findViewById(R.id.wkt_desc_exes_count);
             textView.setText(getString(R.string.exs_count) + " " + wkt.count());
-            if (sis != null) position = sis.getInt("pos", 0);
+            if (sis != null) {
+                position = sis.getInt("pos", 0);
+            }
             initRecyclerView();
         }
         return view;
@@ -129,11 +135,16 @@ public class WorkoutFragment extends Fragment implements RVEAdapter.OnItemClickL
             String temp = getString(R.string.exs_count) + " " + wkt.count();
             TextView textView = view.findViewById(R.id.wkt_desc_exes_count);
             textView.setText(temp);
-            if (wkt.count() == 0) onOptionsItemSelected(menuItem);
+            if (wkt.count() == 0) {
+                onOptionsItemSelected(menuItem);
+            }
         }
-        else if (listener != null && wkt.exercises().get(position) != null)
+        else if (listener != null && wkt.exercises().get(position) != null) {
             listener.exItemClicked(position, wkt.exercises().get(position));
-        else Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getContext(), "Pos: " + position, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

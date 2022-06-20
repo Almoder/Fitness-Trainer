@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements
         fragmentary = new Fragmentary(getSupportFragmentManager());
         logic = new Logic(this);
         boolean intentHasExtra = getIntent().hasExtra("flag"), sisIsNull = sis == null;
-        if (intentHasExtra) getIntent().removeExtra("flag");
+        if (intentHasExtra) {
+            getIntent().removeExtra("flag");
+        }
         if (intentHasExtra || sisIsNull) {
             title = logic.getOnCreateTitle(intentHasExtra, sisIsNull);
             fragmentary.replace(logic.getOnCreateFragment(intentHasExtra, sisIsNull), title);
@@ -83,8 +85,12 @@ public class MainActivity extends AppCompatActivity implements
             title = sis.getInt("title", R.string.undefined);
             titleString = sis.getString("m", "Error");
         }
-        if (isWorkout) toolbar.setTitle(titleString);
-        else toolbar.setTitle(title);
+        if (isWorkout) {
+            toolbar.setTitle(titleString);
+        }
+        else {
+            toolbar.setTitle(title);
+        }
     }
 
     private void setLocale() {
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
-        title = logic.getTitleById(item.getItemId());
+        title = logic.getTitleResById(item.getItemId());
         if (isFragmentOpened(toolbar.getTitle(), getString(title))) {
             drawer.closeDrawer(GravityCompat.START);
             return true;
@@ -120,9 +126,13 @@ public class MainActivity extends AppCompatActivity implements
     public void exItemClicked(int id, Exercise exc) {
         exerciseId = id;
         title(R.string.m1);
-        if (isWorkout) fragmentary.replace(new ExerciseFragment(id, exerciseAdding,
-                sp.loadWorkout(workoutId).exercises().get(exerciseId)), title);
-        else fragmentary.replace(new ExerciseFragment(id, exerciseAdding, exc), title);
+        if (isWorkout) {
+            fragmentary.replace(new ExerciseFragment(id, exerciseAdding,
+                    sp.loadWorkout(workoutId).exercises().get(exerciseId)), title);
+        }
+        else {
+            fragmentary.replace(new ExerciseFragment(id, exerciseAdding, exc), title);
+        }
     }
 
     @Override
@@ -149,9 +159,16 @@ public class MainActivity extends AppCompatActivity implements
     public void onDoneClick(View view) {
         EditText editText = findViewById(R.id.adding_edit_title);
         String title = String.valueOf(editText.getText());
-        if (title.isEmpty()) showToast(R.string.title_is_empty);
-        else if (!sp.addWorkout(new Workout(title))) showToast(R.string.workout_exist);
-        else { hideKeyboard(); onBackPressed(); }
+        if (title.isEmpty()) {
+            showToast(R.string.title_is_empty);
+        }
+        else if (!sp.addWorkout(new Workout(title))) {
+            showToast(R.string.workout_exist);
+        }
+        else {
+            hideKeyboard();
+            onBackPressed();
+        }
     }
 
     public void onExcDoneClick(View view) {
@@ -162,8 +179,10 @@ public class MainActivity extends AppCompatActivity implements
                 showToast(logic.getOnDescAddClickToast(reps, weight))) {
             hideKeyboard();
             sp.loadWorkouts();
-            if (exerciseAdding) sp.getWorkout(workoutId).addExercise(
-                    this, exerciseId, Integer.parseInt(reps), Integer.parseInt(weight));
+            if (exerciseAdding) {
+                sp.getWorkout(workoutId).addExercise(this, exerciseId, Integer.parseInt(reps),
+                        Integer.parseInt(weight));
+            }
             else {
                 sp.getWorkout(workoutId).exercises().get(exerciseId).reps(Integer.parseInt(reps));
                 sp.getWorkout(workoutId).exercises().get(exerciseId).weight(Integer.parseInt(weight));
@@ -177,7 +196,9 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onTypeClick(View view) {
         TextView b = (TextView)view;
-        if (isWorkout || exerciseAdding) return;
+        if (isWorkout || exerciseAdding) {
+            return;
+        }
         fragmentary.replace(new Article(logic.getArticleIdByType(b.getText())), title);
         title(R.string.m3);
     }
@@ -185,8 +206,12 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (isWorkout) outState.putString("m", titleString);
-        else outState.putInt("title", title);
+        if (isWorkout) {
+            outState.putString("m", titleString);
+        }
+        else {
+            outState.putInt("title", title);
+        }
         outState.putInt("wktId", workoutId);
         outState.putInt("excId", exerciseId);
         outState.putBoolean("isWorkout", exerciseAdding);
@@ -208,25 +233,35 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
-        if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START);
-        else if (alertDialog != null && alertDialog.isShowing()) alertDialog.cancel();
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.cancel();
+        }
         else if (title == 0) {
             title(R.string.m2);
             fragmentary.replace(new WorkoutsFragment(), title);
         }
-        else if (isWorkoutsEmptyOnBackPress(title, sp.count())) return;
+        else if (isWorkoutsEmptyOnBackPress(title, sp.count())) {
+            return;
+        }
         else if (isBackStackHasEntries(fm.getBackStackEntryCount())) {
             if (fragmentary.popBackStack()) {
                 exerciseAdding = false;
                 title(0, fragmentary.title());
                 fragmentary.replace(new WorkoutFragment(workoutId), "_" + fragmentary.title());
             }
-            else title(fragmentary.titleResId());
+            else {
+                title(fragmentary.titleResId());
+            }
         }
-        else new Dialogue(this).confirmExitDialog((di, i) -> {
+        else {
+            new Dialogue(this).confirmExitDialog((di, i) -> {
                 if (i == DialogInterface.BUTTON_POSITIVE) finishAndRemoveTask();
                 else di.dismiss();
             }).show();
+        }
         nav.setCheckedItem(logic.getItemIdByTitleRes(title));
     }
 
@@ -260,7 +295,9 @@ public class MainActivity extends AppCompatActivity implements
     private final Runnable reloadWaiter = new Runnable() {
         @Override
         public void run() {
-            if (alertDialog.isShowing()) new Handler().postDelayed(this, 1);
+            if (alertDialog.isShowing()) {
+                new Handler().postDelayed(this, 1);
+            }
             else if (sp.hasChanges()) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class)
                         .putExtra("flag", true));
@@ -274,10 +311,25 @@ public class MainActivity extends AppCompatActivity implements
         imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
     }
 
-    private void title(int resId) { title(resId, getString(resId)); }
-    private void title(int resId, String title) { this.title = resId; toolbar.setTitle(title); }
-    private void showToast(String text) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show(); }
+    private void title(int resId) {
+        title(resId, getString(resId));
+    }
+
+    private void title(int resId, String title) {
+        this.title = resId; toolbar.setTitle(title);
+    }
+
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
     private boolean showToast(int resId) {
-        if (resId == 0) return true; else { showToast(getString(resId)); return false; }
+        if (resId == 0) {
+            return true;
+        }
+        else {
+            showToast(getString(resId));
+            return false;
+        }
     }
 }

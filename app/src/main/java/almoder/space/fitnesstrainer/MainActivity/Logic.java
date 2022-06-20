@@ -28,7 +28,7 @@ public class Logic {
     }
 
     @SuppressLint("NonConstantResourceId")
-    public int getTitleById(int id) {
+    public int getTitleResById(int id) {
         switch (id) {
             case R.id.nav_exercise: return R.string.m1;
             case R.id.nav_workouts: return R.string.m2;

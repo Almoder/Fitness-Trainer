@@ -12,12 +12,20 @@ public class SharedPreferencer {
     private final Context c;
     public LinkedList<Workout> workouts = new LinkedList<>();
 
-    public SharedPreferencer(Context c) { this.c = c; }
+    public SharedPreferencer(Context c) {
+        this.c = c;
+    }
 
     public boolean addWorkout(Workout workout) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        if (count() != workouts.size()) loadWorkouts();
-        for (Workout wd : workouts) if (workout.title().equals(wd.title())) return false;
+        if (count() != workouts.size()) {
+            loadWorkouts();
+        }
+        for (Workout wd : workouts) {
+            if (workout.title().equals(wd.title())) {
+                return false;
+            }
+        }
         workouts.add(workout);
         saveWorkout(workout, count());
         sPref.edit().putInt("wktCount", count() + 1).apply();
@@ -25,48 +33,66 @@ public class SharedPreferencer {
     }
 
     public Workout getWorkout(int id) {
-        if (id < 0 || id >= workouts.size()) return null;
+        if (id < 0 || id >= workouts.size()) {
+            return null;
+        }
         return workouts.get(id);
     }
 
     public void saveWorkout(Workout workout, int id) {
-        if (workout == null) return;
+        if (workout == null) {
+            return;
+        }
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
         editor.putString("w" + id, workout.title());
         if (workout.count() != 0) {
             String temp = "w" + id + "e";
             editor.putInt(temp + "Count", workout.count());
-            if (workout.exercises() != null) for (int i = 0; i < workout.exercises().size(); i++) {
-                Exercise e = workout.exercises().get(i);
-                editor.putInt(temp + i + "num", e.num());
-                editor.putInt(temp + i + "reps", e.reps());
-                editor.putInt(temp + i + "weight", e.weight());
+            if (workout.exercises() != null) {
+                for (int i = 0; i < workout.exercises().size(); i++) {
+                    Exercise e = workout.exercises().get(i);
+                    editor.putInt(temp + i + "num", e.num());
+                    editor.putInt(temp + i + "reps", e.reps());
+                    editor.putInt(temp + i + "weight", e.weight());
+                }
             }
-        } else editor.putInt("w" + id + "eCount", 0);
+        } else {
+            editor.putInt("w" + id + "eCount", 0);
+        }
         editor.apply();
     }
 
     public void saveWorkouts() {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         sPref.edit().clear().apply();
-        for (int i = 0; i < workouts.size(); i++) saveWorkout(workouts.get(i), i);
+        for (int i = 0; i < workouts.size(); i++) {
+            saveWorkout(workouts.get(i), i);
+        }
         sPref.edit().putInt("wktCount", workouts.size()).apply();
     }
 
     public void removeWorkout(int id) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
-        if (count() != workouts.size()) loadWorkouts();
+        if (count() != workouts.size()) {
+            loadWorkouts();
+        }
         if (workouts.remove(id) != null) {
-            if (workouts.size() != 0) saveWorkouts();
-            else sPref.edit().clear().putInt("wktCount", 0).apply();
+            if (workouts.size() != 0) {
+                saveWorkouts();
+            }
+            else {
+                sPref.edit().clear().putInt("wktCount", 0).apply();
+            }
         }
     }
 
     public Workout loadWorkout(int id) {
         sPref = c.getSharedPreferences("workouts", Context.MODE_PRIVATE);
         Workout ret = new Workout(sPref.getString("w" + id, ""));
-        if (ret.title().isEmpty()) return ret;
+        if (ret.title().isEmpty()) {
+            return ret;
+        }
         String temp = "w" + id + "e";
         for (int i = 0; i < sPref.getInt(temp + "Count", 0); i++) {
             ret.addExercise(c, sPref.getInt(temp + i + "num", 1),
@@ -81,7 +107,9 @@ public class SharedPreferencer {
         workouts = new LinkedList<>();
         for (int i = 0, s = 0; s < count() || i < 100; i++) {
             String title = sPref.getString("w" + i, "");
-            if (title.equals("")) continue;
+            if (title.equals("")) {
+                continue;
+            }
             String temp = "w" + i + "e";
             workouts.add(new Workout(sPref.getString("w" + i, "")));
             for (int j = 0; j < sPref.getInt(temp + "Count", 0); j++) {
@@ -111,7 +139,9 @@ public class SharedPreferencer {
 
     public void locale(String str) {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        if (locale().equals(str)) return;
+        if (locale().equals(str)) {
+            return;
+        }
         sPref.edit().putString("localization", str).apply();
         hasChanges(true);
     }
@@ -121,9 +151,13 @@ public class SharedPreferencer {
         return sPref.getString("localization", "en");
     }
 
-    public int localeResId() { return locale().equals("en") ? R.string.lang_eng : R.string.lang_rus; }
+    public int localeResId() {
+        return locale().equals("en") ? R.string.lang_eng : R.string.lang_rus;
+    }
 
-    public String localeString() { return c.getString(localeResId()); }
+    public String localeString() {
+        return c.getString(localeResId());
+    }
 
     public void theme(int themeId, int textSizeId) {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
@@ -155,7 +189,9 @@ public class SharedPreferencer {
     }
 
     public String themeString() {
-        if (themeId() == 0) return c.getString(R.string.theme_default);
+        if (themeId() == 0) {
+            return c.getString(R.string.theme_default);
+        }
         else return c.getString(R.string.theme_dark);
     }
 
@@ -165,7 +201,9 @@ public class SharedPreferencer {
 
     public void weightUnit(int unitResId) {
         sPref = c.getSharedPreferences("config", Context.MODE_PRIVATE);
-        if (unitResId == weightUnit()) return;
+        if (unitResId == weightUnit()) {
+            return;
+        }
         sPref.edit().putInt("weightUnit", unitResId).apply();
         hasChanges(true);
     }
@@ -175,5 +213,7 @@ public class SharedPreferencer {
         return sPref.getInt("weightUnit", R.string.unit_kg);
     }
 
-    public String weightUnitString() { return c.getString(weightUnit()); }
+    public String weightUnitString() {
+        return c.getString(weightUnit());
+    }
 }

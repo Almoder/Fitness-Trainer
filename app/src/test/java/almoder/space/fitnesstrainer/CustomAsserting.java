@@ -16,8 +16,12 @@ public class CustomAsserting {
             ret = func.call();
         }
         catch (Exception e) {
-            if (!e.getClass().equals(exc)) Assert.fail(ret.toString());
-            else return;
+            if (!e.getClass().equals(exc)) {
+                Assert.fail(ret.toString());
+            }
+            else {
+                return;
+            }
         }
         Assert.fail("Expected: " + exc.toString() + ", but was: " + ret.toString());
     }
@@ -28,7 +32,9 @@ public class CustomAsserting {
             func.call();
         }
         catch (Exception e) {
-            if (!e.getClass().equals(exc)) Assert.fail("Expecteds[" + i + "]: catch wrong Exception!");
+            if (!e.getClass().equals(exc)) {
+                Assert.fail("Expecteds[" + i + "]: catch wrong Exception!");
+            }
             else return;
         }
         Assert.fail("Expecteds[" + i + "]: " + exc.toString() + " wasn't thrown!");
@@ -37,8 +43,12 @@ public class CustomAsserting {
     public static void assertArrayOfExceptions(@NonNull Function[] functions,
                                                @NonNull Class<? extends Exception> expected) {
         String excMsg = "Functions array is empty!";
-        if (functions.length == 0) throw new ArrayIndexOutOfBoundsException(excMsg);
-        for (int i = 0; i < functions.length; i++) assertException(functions[i], expected, i);
+        if (functions.length == 0) {
+            throw new ArrayIndexOutOfBoundsException(excMsg);
+        }
+        for (int i = 0; i < functions.length; i++) {
+            assertException(functions[i], expected, i);
+        }
     }
 
     @FunctionalInterface
@@ -48,10 +58,13 @@ public class CustomAsserting {
                                        @NonNull Class<? extends Exception> exc) {
         try {
             proc.call();
-        }
-        catch (Exception e) {
-            if (!e.getClass().equals(exc)) Assert.fail("Wrong exception!");
-            else return;
+        } catch (Exception e) {
+            if (!e.getClass().equals(exc)) {
+                Assert.fail("Wrong exception!");
+            }
+            else {
+                return;
+            }
         }
         Assert.fail(exc.toString() + " wasn't thrown!");
     }
@@ -60,10 +73,13 @@ public class CustomAsserting {
                                         @NonNull Class<? extends Exception> exc, int i) {
         try {
             proc.call();
-        }
-        catch (Exception e) {
-            if (!e.getClass().equals(exc)) Assert.fail("Expecteds[" + i + "]: catch wrong Exception!");
-            else return;
+        } catch (Exception e) {
+            if (!e.getClass().equals(exc)) {
+                Assert.fail("Expecteds[" + i + "]: catch wrong Exception!");
+            }
+            else {
+                return;
+            }
         }
         Assert.fail("Expecteds[" + i + "]: " + exc.toString() + " wasn't thrown!");
     }
@@ -71,7 +87,11 @@ public class CustomAsserting {
     public static void assertArrayOfExceptions(@NonNull Procedure[] procedures,
                                                @NonNull Class<? extends Exception> expected) {
         String excMsg = "Functions array is empty!";
-        if (procedures.length == 0) throw new ArrayIndexOutOfBoundsException(excMsg);
-        for (int i = 0; i < procedures.length; i++) assertException(procedures[i], expected, i);
+        if (procedures.length == 0) {
+            throw new ArrayIndexOutOfBoundsException(excMsg);
+        }
+        for (int i = 0; i < procedures.length; i++) {
+            assertException(procedures[i], expected, i);
+        }
     }
 }
